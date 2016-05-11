@@ -17,10 +17,11 @@
         xid="titleBar1"> 
         <div class="x-titlebar-left" xid="left1"> 
           <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon"
-            xid="button2" icon="icon-android-arrow-back" onClick="window.location.href='./main.w';" style="width:63px;"> 
+            xid="button2" icon="icon-android-arrow-back" onClick="{operation:'window.close'};" style="width:63px;"> 
             <i xid="detailsBtn" class="icon-android-arrow-back"/>  
             <span xid="span2"/> 
           </a> 
+          
         </div>  
         <div class="x-titlebar-title" xid="title1">设置</div>  
         <div class="x-titlebar-right reverse" xid="right1"> 
