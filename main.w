@@ -46,7 +46,7 @@
        <span xid="span2"></span></a> </div> 
      <div class="x-titlebar-title" xid="title1">空气净化器</div>
      <div class="x-titlebar-right reverse" xid="right1">
-      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="icon-social-reddit" style="width:70px;height:46px;" onClick="{operation:'popOver1.show'}">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="icon-social-reddit" style="width:70px;height:46px;">
        <i xid="i3" class="icon-social-reddit"></i>
        <span xid="span3"></span></a> </div> </div> </div> 
    <div class="x-panel-content center-block" xid="content1" style="background-color:#8a8fef;">
@@ -115,9 +115,9 @@
    <div class="x-panel-bottom" xid="bottom1"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar2">
    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="height:100%;width:100%;">
    <div class="x-col" xid="col31" style="Text-align:center;">
-    <button xid="button6" style="background-color:#009933;">主页</button></div> 
+    <button xid="button6" style="background-color:#009933;" onClick="window.location.href='./main.w';">主页</button></div> 
    <div class="x-col" xid="col32" style="Text-align:center;">
-    <button xid="button5" style="background-color:#009933;">设置</button></div> 
+    <button xid="button5" style="background-color:#009933;" onClick="window.location.href='./control.w';">设置</button></div> 
    <div class="x-col" xid="col33" style="Text-align:center;">
     <button xid="button8" style="background-color:#009933;">更多</button></div> </div></div></div></div>
   <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1" direction="left-bottom" style="width:60%;">
@@ -132,6 +132,4 @@
     <i xid="i6"></i>
     <span xid="span19">添加设备</span></a> </li>
   <li class="x-menu-divider divider" xid="divider2"></li></ul></div>
-  <div component="$UI/system/components/justep/popOver/popOver" class="x-popOver" xid="popOver1">
-   <div class="x-popOver-overlay" xid="div26"></div>
-   <div class="x-popOver-content" xid="div27"></div></div></div>
+  </div>

@@ -17,19 +17,14 @@
         xid="titleBar1"> 
         <div class="x-titlebar-left" xid="left1"> 
           <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon"
-            xid="button2" icon="icon-navicon-round" style="width:63px;"> 
-            <i xid="detailsBtn" class="icon-navicon-round"/>  
+            xid="button2" icon="icon-android-arrow-back" onClick="window.location.href='./main.w';" style="width:63px;"> 
+            <i xid="detailsBtn" class="icon-android-arrow-back"/>  
             <span xid="span2"/> 
           </a> 
         </div>  
         <div class="x-titlebar-title" xid="title1">设置</div>  
         <div class="x-titlebar-right reverse" xid="right1"> 
-          <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon"
-            label="button" xid="button3" icon="icon-power" style="width:70px;height:46px;"> 
-            <i xid="i3" class="icon-power"/>  
-            <span xid="span3"/> 
-          </a> 
-        </div> 
+          </div> 
       </div> 
     </div>  
     <div class="x-panel-content center-block" xid="content1" style="background-color:#8a8fef;"> 
@@ -109,7 +104,7 @@
         </div> 
       </div>  
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"> 
-        <div class="x-col" xid="col16" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg" label="定时开关机" xid="button14">
+        <div class="x-col" xid="col16" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时开关机" xid="button14">
    <i xid="i13"></i>
    <span xid="span14">定时开关机</span></a></div>
       </div>  
@@ -119,13 +114,34 @@
    <span xid="span10">关机</span></a></div> 
       </div> 
     </div>  
-    <div class="x-panel-bottom" xid="bottom1"/> 
-  </div> 
-<ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu" xid="menu1"><li class="x-menu-item" xid="item1">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="1小时" xid="button12">
-    <i xid="i11"></i>
-    <span xid="span12">1小时</span></a> </li>
+    <div class="x-panel-bottom" xid="bottom1">
+   <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar2">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="height:100%;width:100%;">
+     <div class="x-col" xid="col31" style="Text-align:center;">
+      <button xid="button12" style="background-color:#009933;" onClick="window.location.href='./main.w';">主页</button></div> 
+     <div class="x-col" xid="col32" style="Text-align:center;">
+      <button xid="button3" style="background-color:#009933;" onClick="window.location.href='./control.w';">设置</button></div> 
+     <div class="x-col" xid="col33" style="Text-align:center;">
+      <button xid="button11" style="background-color:#009933;">更多</button></div> </div> </div> </div></div> 
+<div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1">
+   <div class="x-popMenu-overlay" xid="div3"></div>
+   <ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu x-popMenu-content" xid="menu1"><li class="x-menu-item" xid="item1">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="1小时" xid="button1">
+    <i xid="i1"></i>
+    <span xid="span1">1小时</span></a> </li>
   <li class="x-menu-item" xid="item2">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="2小时" xid="button13">
-    <i xid="i12"></i>
-    <span xid="span13">2小时</span></a> </li></ul></div>
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="2小时" xid="button4">
+    <i xid="i2"></i>
+    <span xid="span4">2小时</span></a> </li>
+  <li class="x-menu-item" xid="item3">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="3小时" xid="button5">
+    <i xid="i4"></i>
+    <span xid="span5">3小时</span></a> </li>
+  <li class="x-menu-item" xid="item4">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="5小时" xid="button6">
+    <i xid="i5"></i>
+    <span xid="span6">5小时</span></a> </li>
+  <li class="x-menu-item" xid="item5">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="8小时" xid="button7">
+    <i xid="i6"></i>
+    <span xid="span7">8小时</span></a> </li></ul></div></div>
