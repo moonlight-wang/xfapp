@@ -2,18 +2,6 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" class="main13" component="$UI/system/components/justep/window/window"
   design="device:mobile;" xid="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;left:84px;top:1px;"> 
-    <div component="$UI/system/components/justep/data/baasData" autoLoad="false"
-      xid="baasData1" saveAction="saveNetease_user" queryAction="queryRegist_user"
-      tableName="netease_user" url="/justep/netease" idColumn="fID"> 
-      <column label="机器码" name="fID" type="String" xid="default1"/>  
-      <column label="姓名" name="fName" type="String" xid="default2"/>  
-      <column label="密码" name="passwd" type="String" xid="default3"/>  
-      <column label="电话" name="fPhoneNumber" type="String" xid="default4"/>  
-      <column label="地址" name="fAddress" type="String" xid="default5"/> 
-    </div>  
-    <!--   <div component="$UI/system/components/justep/data/baasData" autoLoad="false" xid="myPlatformData"></div> --> 
-  </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full x-card x-has-iosstatusbar"
     xid="panel2"> 
     <div class="x-panel-top" xid="top1"> 
@@ -33,7 +21,7 @@
               <i class="icon-ios7-contact"/> 
             </span>  
             <input component="$UI/system/components/justep/input/input" class="form-control x-inputText"
-              xid="nameInput" placeHolder="请输入用户名"/> 
+              xid="nameInput" placeHolder="请输入用户名" max="js:new Date()" min="js:new Date()" bind-value="username"/> 
           </div> 
         </div>  
         <div class="list-group-item" xid="div6"> 
@@ -42,7 +30,7 @@
               <i class="icon-unlocked" xid="i3"/> 
             </span>  
             <input component="$UI/system/components/justep/input/password" class="form-control x-inputText"
-              xid="passwordInput" placeHolder="请输入密码"/> 
+              xid="passwordInput" placeHolder="请输入密码" bind-value="password"/> 
           </div> 
         </div> 
       </div>  

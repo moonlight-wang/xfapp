@@ -1,5 +1,6 @@
 define(function(require){
 	var $ = require("jquery");
+	var io = require("./socket.io");
 	var justep = require("$UI/system/lib/justep");
 	var ShellImpl = require('$UI/system/lib/portal/shellImpl');
 	var CommonUtils = require("$UI/system/components/justep/common/utils");
@@ -47,9 +48,20 @@ define(function(require){
 		}
 		
 	};
-	/*Model.prototype.modelLoad = function(event){
-		justep.Shell.showPage("login");
-	};*/
+
+	var idHex='00000'+parseInt('00000123').toString(16);
+	console.log(idHex);
+	var socket = io('http://' + document.domain + ':4213');
+    var iot={};
+    iot.deviceId=idHex.substr(idHex.length-6).toUpperCase();
+//    // 连接后登录
+    socket.emit('appLogin', {deviceId:iot.deviceId});
+    socket.emit('app2server',{deviceId:iot.deviceId,msg:'come from app'});
+//    // 后端推送来消息时
+    socket.on('server2app', function(msg) {
+        console.log(msg);
+        $('#company').val(parseInt(msg[4]+msg[5],16));
+    });
 
 	return Model;
 });

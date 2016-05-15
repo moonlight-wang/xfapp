@@ -4,6 +4,10 @@ define(function(require) {
 	
 	var Model = function() {
 		this.callParent();
+		this.username= justep.Bind.observable('nameInput');
+		this.password= justep.Bind.observable('passwordInput');
+		this.username='wang1';
+		this.password='admin';
 	};
 
 	// 进入注册页 
@@ -12,43 +16,26 @@ define(function(require) {
 		justep.Shell.showPage(demo);
 	};
 
-
 	Model.prototype.loginIsmBtn = function(event) {
-		var phoneInput = this.comp("nameInput").val();
-		var passwordInput = this.comp("passwordInput").val();
-
-		var userData = this.comp("baasData1");
-		userData.clear();
-		userData.filters.setVar("userPhone", phoneInput);
-		userData.filters.setVar("password", passwordInput);
-		userData.refreshData();
-		if (userData.count()> 0) {
-			//justep.Util.hint("登录成功");
-			justep.Shell.userName.set(phoneInput);
-			localStorage.removeItem("userUUID");
-
-			var user = {};
-			user.userid = phoneInput;
-			user.accountType = "ISM";
-			user.name = phoneInput || "NONAME";
-			localStorage.setItem("userUUID", JSON.stringify(user));
-            localStorage.setItem("userName", phoneInput);
-            
-			
-			justep.Shell.showPage('main', {
-					userName : phoneInput
-				});
-		    justep.Shell.closePage('login');
-				
-			
-			
-			
-		} else {
-			justep.Util.hint("用户名或密码有误！", {
-				"type" : "danger"
-			});
+		var user={};
+		user.emp_no=this.username;
+		user.password=this.password;
+		user.ajax=1;
+		$.post('http://localhost/xf/public/check_login',user,function(data){
+			if (data.status==1) {
+				//justep.Util.hint("登录成功");
+				justep.Shell.userName.set(this.username);
+	            localStorage.setItem("user", this.username);
+				justep.Shell.showPage('main', {
+						userName : this.username
+					});
+			    justep.Shell.closePage('login');
+			} else {
+				justep.Util.hint("用户名或密码有误！", {
+					"type" : "danger"
+			},'json');
 		}
-
+		})
 	};
 
 	return Model;
