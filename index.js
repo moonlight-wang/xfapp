@@ -6,6 +6,11 @@ define(function(require){
 	var CommonUtils = require("$UI/system/components/justep/common/utils");
 	var Model = function(){
 		this.callParent();
+		localStorage.setItem("rtServerIP",'192.168.1.102');
+		localStorage.setItem("ajaxServerIP",'localhost');
+		localStorage.setItem("sID",'00000123');
+		localStorage.setItem("userid",'4');
+		localStorage.setItem("sName",'sdfsdf4');
 		var shellImpl = new ShellImpl(this, {
 			"contentsXid" : "pages",
 			"pageMappings" : {
@@ -23,6 +28,9 @@ define(function(require){
 				},
 				"add" : {
 					url : require.toUrl('./add.w')
+				},
+				"list" : {
+					url : require.toUrl('./list.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;
@@ -49,19 +57,7 @@ define(function(require){
 		
 	};
 
-	var idHex='00000'+parseInt('00000123').toString(16);
-	console.log(idHex);
-	var socket = io('http://' + document.domain + ':4213');
-    var iot={};
-    iot.deviceId=idHex.substr(idHex.length-6).toUpperCase();
-//    // 连接后登录
-    socket.emit('appLogin', {deviceId:iot.deviceId});
-    socket.emit('app2server',{deviceId:iot.deviceId,msg:'come from app'});
-//    // 后端推送来消息时
-    socket.on('server2app', function(msg) {
-        console.log(msg);
-        $('#company').val(parseInt(msg[4]+msg[5],16));
-    });
+	
 
 	return Model;
 });

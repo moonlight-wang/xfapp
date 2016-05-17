@@ -25,10 +25,10 @@
        <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="设备ID添加设备" xid="button11" target="content5">
    <i xid="i11"></i>
    <span xid="span11">设备ID添加设备</span></a></div> </div> </div> 
-  <div component="$UI/system/components/justep/output/output" class="x-output" xid="output1" bind-ref='$model.fileData.ref("filePath")'></div></div> </div></div>
+  </div> </div></div>
   <div class="x-contents-content" xid="content4"><iframe xid="iframe1" height="100%" width="100%"/> </div>
   <div class="x-contents-content" xid="content5"><div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar1">
-   <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" onClick="{'operation':'window.close'};"  xid="button1" icon="icon-chevron-left">
+   <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button"  xid="button1" icon="icon-chevron-left" target="content2">
    <i xid="i1" class="icon-chevron-left"></i>
    <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1"></div>

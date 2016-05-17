@@ -2,13 +2,12 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window"
   design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:288px;left:505px;">
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:288px;left:505px;" onLoad="modelLoad">
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="valueData" idColumn="vID">
       <column name="vID" type="Integer" xid="xid1"/>  
       <column label="频率" name="pinlv" type="String" xid="xid2"/>  
-      <data xid="default1">[{"vID":1,"pinlv":"25"}]</data>
-    </div>
+      <data xid="default1">[]</data></div>
   </div>  
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full"
     xid="panel1"> 
@@ -25,7 +24,9 @@
         </div>  
         <div class="x-titlebar-title" xid="title1">设置</div>  
         <div class="x-titlebar-right reverse" xid="right1"> 
-          </div> 
+          <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="保存" xid="button11" onClick="saveClick">
+   <i xid="i11"></i>
+   <span xid="span12">保存</span></a></div> 
       </div> 
     </div>  
     <div class="x-panel-content center-block" xid="content1" style="background-color:#8a8fef;"> 
@@ -33,7 +34,7 @@
         <div class="x-col" xid="col1" style="Text-align:center;">定时</div>  
         <div class="x-col" xid="col2"> 
           <span component="$UI/system/components/justep/button/toggle" class="x-toggle"
-            xid="toggle1"/> 
+            xid="toggle1" checked="false" onChange="toggleChecked"/> 
         </div> 
       </div>  
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2"> 
@@ -43,22 +44,25 @@
             xid="toggle2"/> 
         </div> 
       </div>  
-      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3"> 
+      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
+   <div class="x-col" xid="col18" style="Text-align:center;">功能</div>
+   <div class="x-col" xid="col15">
+    <span component="$UI/system/components/justep/button/toggle" class="x-toggle" xid="toggle3"></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row3"> 
         <div class="x-col" xid="col7" style="Text-align:center;">静电除尘</div>  
         <div class="x-col" xid="col6"> 
           <div component="$UI/system/components/justep/labelEdit/labelEdit"
             class="x-label-edit x-label30" xid="labelEdit4" style="width:40%;"> 
             <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit"
               xid="select5" style="weigh:30%;height:333%;width:100%;"> 
-              <option value="1" xid="default10">1</option>  
-              <option value="2" xid="default11">2</option>  
-              <option value="3" xid="default12">3</option>  
-              <option value="4" xid="default13">4</option>  
-              <option value="5" xid="default14">5</option>  
-              <option value="6" xid="default15">6</option>  
-              <option value="7" xid="default16">7</option>  
-              <option value="8" xid="default17">8</option>  
-              <option value="9" xid="default18">9</option> 
+              <option value="50" xid="default10">50</option>  
+              <option value="60" xid="default11">60</option>  
+              <option value="70" xid="default12">70</option>  
+              <option value="80" xid="default13">80</option>  
+              <option value="100" xid="default14">100</option>  
+              <option value="130" xid="default15">130</option>  
+              <option value="160" xid="default16">160</option>  
+              <option value="200" xid="default17">200</option>  
+              <option value="255" xid="default18">255</option> 
             </select> 
           </div> 
         </div> 
@@ -99,15 +103,18 @@
               xid="select1" style="weigh:30%;height:333%;width:100%;"> 
               <option value="1" xid="default9">智能</option>  
               <option value="2" xid="default8">手动</option>  
-              <option value="3" xid="default7">睡眠</option> 
+              <option value="3" xid="default7" label="睡眠"></option> 
             </select> 
           </div> 
         </div> 
       </div>  
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"> 
-        <div class="x-col" xid="col16" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时开关机" xid="button14">
+        <div class="x-col" xid="col16" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时开机" xid="button14">
    <i xid="i13"></i>
-   <span xid="span14">定时开关机</span></a></div>
+   <span xid="span14"><![CDATA[定时开机]]></span></a>
+  <a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时关机" xid="button12">
+   <i xid="i12"></i>
+   <span xid="span13">定时关机</span></a></div>
       </div>  
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8"> 
         <div class="x-col" xid="col17" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg" label="关机" xid="button10" icon="glyphicon glyphicon-off">

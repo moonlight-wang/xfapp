@@ -23,12 +23,8 @@ define(function(require) {
 		user.ajax=1;
 		$.post('http://localhost/xf/public/check_login',user,function(data){
 			if (data.status==1) {
-				//justep.Util.hint("登录成功");
-				justep.Shell.userName.set(this.username);
-	            localStorage.setItem("user", this.username);
-				justep.Shell.showPage('main', {
-						userName : this.username
-					});
+	            localStorage.setItem("userid", data.userid);
+				justep.Shell.showPage('list');
 			    justep.Shell.closePage('login');
 			} else {
 				justep.Util.hint("用户名或密码有误！", {
