@@ -33,7 +33,7 @@
    <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1"></div>
    <div class="x-titlebar-right reverse" xid="right1"></div></div><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1"  placeHolder="请输入设备ID号"></input>
-  <div xid="div4" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="添加" xid="button12">
+  <div xid="div4" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="添加" xid="button12" onClick="saveClick">
    <i xid="i12"></i>
    <span xid="span12"></span></a></div>
   </div></div></div>

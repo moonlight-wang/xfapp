@@ -21,7 +21,7 @@ define(function(require) {
 		user.emp_no=this.username;
 		user.password=this.password;
 		user.ajax=1;
-		$.post('http://localhost/xf/public/check_login',user,function(data){
+		$.post('http://'+localStorage.getItem("ajaxServerIP")+'/xf/public/check_login',user,function(data){
 			if (data.status==1) {
 	            localStorage.setItem("userid", data.userid);
 				justep.Shell.showPage('list');

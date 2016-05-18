@@ -18,5 +18,18 @@ define(function(require){
 		}
 		cordova.plugins.barcodeScanner.scan(onSuccess);
 	};
+	Model.prototype.saveClick=function(event){
+		var sID=this.comp('input1').value;
+		var user={};
+		user.opmode="add";
+		user.ajax=1;
+		user.userid= localStorage.getItem("userid");
+		user.deviceid=sID;
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/save', user, function(data,status) {
+			if(status=="success"){
+				alert('添加成功');
+			}
+		});
+	};
 	return Model;
 });

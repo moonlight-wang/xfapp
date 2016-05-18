@@ -57,9 +57,9 @@
    <span xid="span33">地址选择</span></a></div> </div>
   <div class="list-group-item" xid="div23">
    <div class="h5" xid="div24">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="管理设备" xid="button21" style="width:100%;" url="/xfapp/add.w" onClick="openPage">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="设备列表" xid="button21" style="width:100%;" url="/xfapp/list.w" onClick="openPage">
      <i xid="i20"></i>
-     <span xid="span34">管理设备</span></a> </div> </div>
+     <span xid="span34">设备列表</span></a> </div> </div>
   <div class="list-group-item" xid="div34">
    <div class="h5" xid="div35">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="滤芯重置" xid="button22" style="width:100%;">
@@ -86,9 +86,7 @@
    <span xid="span2"></span></a></div> 
      <div class="x-titlebar-title" xid="title1">空气净化器</div>
      <div class="x-titlebar-right reverse" xid="right1">
-      <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button3" icon="icon-social-reddit" style="width:70px;height:46px;">
-       <i xid="i3" class="icon-social-reddit"></i>
-       <span xid="span3"></span></a> </div> </div> </div> 
+      </div> </div> </div> 
    <div class="x-panel-content center-block" xid="content1" style="background-color:#8a8fef;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
@@ -182,7 +180,7 @@
         <i xid="i2"></i>
         <span xid="span4">设置</span></a> </div> 
       <div class="x-col" xid="col33" style="Text-align:center;">
-       <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:#009933;" xid="button4" onClick="openPage" url="/xfapp/control.w">
+       <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="管理" style="background-color:#009933;" xid="button4" onClick="openPage" url="/xfapp/edit.w">
         <i xid="i2"></i>
-        <span xid="span4">更多</span></a> </div> </div> </div> </div> </div></div> 
-   <div class="x-wing-right" xid="right2"></div></div></div>
+        <span xid="span4">管理</span></a> </div> </div> </div> </div> </div></div> 
+   </div></div>

@@ -4,6 +4,7 @@ define(function(require) {
 	var utils = require("$UI/system/components/justep/common/utils");
 	var bmap = require('$UI/system/components/justep/bmap/bmap');
 	var io = require("./socket.io");
+	var socket;
 	require("cordova!com.justep.cordova.plugin.baidulocation");
 
 	var Model = function() {
@@ -15,6 +16,7 @@ define(function(require) {
 	};
 	Model.prototype.modelLoad = function(event) {
 		var sid = localStorage.getItem("sID");
+		var wbServerIP = localStorage.getItem("wbServerIP");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
@@ -24,7 +26,7 @@ define(function(require) {
 		var info = this.comp('infoData');
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		var socket = io('http://192.168.1.102:4213');
+		socket = io('http://' + wbServerIP + ':4213');
 		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 		// // 连接后登录
 		socket.emit('appLogin', {
@@ -33,14 +35,15 @@ define(function(require) {
 		socket.emit('app2server', {
 			deviceId : iot.deviceId,
 			msg : 'come from app'
-			
+
 		});
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);
 			localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
+
 			var mode = parseInt(msg[8] + msg[9], 16);
-			localStorage.setItem("neiWai",parseInt(msg[8],16));
+			localStorage.setItem("neiWai", parseInt(msg[8], 16));
 			info.newData({
 				index : 0,
 				defaultValues : [ {
@@ -70,7 +73,7 @@ define(function(require) {
 			});
 			$.get('http://' + ajaxServerIP + '/xf/contact/getWeather', {
 				ajax : 1,
-				userid : 4,
+				userid : userid,
 				city : data.city
 			}, function(wdata, wstatus) {
 				if (wstatus == 'success') {
@@ -95,7 +98,7 @@ define(function(require) {
 			return "理想";
 		} else if (TOVC >= 25 && TOVC <= 84) {
 			return "合适";
-		} else {
+		} else if (TOVC > 84) {
 			return "危害";
 		}
 	};

@@ -6,8 +6,8 @@ define(function(require){
 	var CommonUtils = require("$UI/system/components/justep/common/utils");
 	var Model = function(){
 		this.callParent();
-		localStorage.setItem("rtServerIP",'192.168.1.102');
-		localStorage.setItem("ajaxServerIP",'localhost');
+		localStorage.setItem("wbServerIP",'192.168.1.102');
+		localStorage.setItem("ajaxServerIP",'192.168.1.108');
 		localStorage.setItem("sID",'00000123');
 		localStorage.setItem("userid",'4');
 		localStorage.setItem("sName",'sdfsdf4');
@@ -31,6 +31,9 @@ define(function(require){
 				},
 				"list" : {
 					url : require.toUrl('./list.w')
+				},
+				"edit" : {
+					url : require.toUrl('./edit.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;

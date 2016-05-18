@@ -16,7 +16,7 @@ define(function(require) {
 		var user = {};
 		user.userid = localStorage.getItem('userid');
 		user.ajax = 1;
-		$.post('http://localhost/xf/contact/index', user, function(data) {
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/index', user, function(data) {
 			var ldata = data.list;
 			for (var i = 0; i < ldata.length; i++) {
 				list.newData({
@@ -28,7 +28,7 @@ define(function(require) {
 					} ]
 				});
 			}
-			var socket = io('http://' + localStorage.getItem("rtServerIP") + ':4213');
+			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
 			var iot = {};
 			socket.emit('getOnlineListFirst');
 			socket.on('deviceList', function(iot) {
@@ -63,6 +63,12 @@ define(function(require) {
 		}else{
 			alert("当前设备离线！");
 		}
+	};
+	Model.prototype.openPages = function(event) {
+		var url = event.source.$domNode.attr('url');
+		if (url.substr(0, 1) == "/")
+			url = '$UI' + url;
+		justep.Shell.showPage(require.toUrl(url));
 	};
 	return Model;
 });

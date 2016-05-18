@@ -15,9 +15,13 @@
     <div class="x-panel-top" xid="top1"> 
       <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar"
         xid="titleBar1" title="我的设备"> 
-        <div class="x-titlebar-left" xid="left1"/>  
+        <div class="x-titlebar-left" xid="left1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" onClick="{'operation':'window.close'};" label="button" xid="button1" icon="icon-chevron-left">
+   <i xid="i1" class="icon-chevron-left"></i>
+   <span xid="span1"></span></a></div>  
         <div class="x-titlebar-title" xid="title1">我的设备</div>  
-        <div class="x-titlebar-right reverse" xid="right1"/>
+        <div class="x-titlebar-right reverse" xid="right1"><a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" url="/xfapp/add.w" xid="button2" icon="icon-plus" onClick="openPages">
+   <i xid="i2" class="icon-plus"></i>
+   <span xid="span2"></span></a></div>
       </div> 
     </div>  
     <div class="x-panel-content  x-scroll-view" xid="content1" _xid="C6F5B0969BE00001D49313F012631710"> 

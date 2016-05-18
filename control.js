@@ -51,14 +51,16 @@ define(function(require) {
 	Model.prototype.saveClick=function(event){
 		var sid = localStorage.getItem("sID");
 		var msg = "AAEA05";
-		var rtServerIP = localStorage.getItem("rtServerIP");
+		var wbServerIP = localStorage.getItem("wbServerIP");
 		var pl = this.comp('output1').value.toString(16);
 		if(pl.length<2){
 			pl="0"+pl;
 		}
 		msg=msg+pl;
+		var toggle2=this.comp('toggle2');
+		toggle2.get('checked')?msg=msg+"1":msg=msg+"0";
 		var mod=this.getElementByXid('select1').value;
-		msg=msg+"0"+mod;
+		msg=msg+mod;
 		var toggle1=this.comp('toggle1');
 		toggle1.get('checked')?msg=msg+"1":msg=msg+"0";
 		var toggle3=this.comp('toggle3');
@@ -70,7 +72,7 @@ define(function(require) {
 		
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		var socket = io('http://'+rtServerIP+':4213');
+		var socket = io('http://'+wbServerIP+':4213');
 		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 		// // 连接后登录
 		socket.emit('appLogin', {
