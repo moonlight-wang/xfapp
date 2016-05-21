@@ -6,11 +6,10 @@ define(function(require){
 	var CommonUtils = require("$UI/system/components/justep/common/utils");
 	var Model = function(){
 		this.callParent();
-		localStorage.setItem("wbServerIP",'192.168.1.102');
-		localStorage.setItem("ajaxServerIP",'192.168.1.108');
+//		localStorage.setItem("wbServerIP",'192.168.1.131');
+//		localStorage.setItem("ajaxServerIP",'192.168.1.130');
 		localStorage.setItem("sID",'00000123');
 		localStorage.setItem("userid",'4');
-		localStorage.setItem("sName",'sdfsdf4');
 		var shellImpl = new ShellImpl(this, {
 			"contentsXid" : "pages",
 			"pageMappings" : {
@@ -34,6 +33,9 @@ define(function(require){
 				},
 				"edit" : {
 					url : require.toUrl('./edit.w')
+				},
+				"config" : {
+					url : require.toUrl('./config.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;

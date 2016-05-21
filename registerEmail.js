@@ -6,127 +6,32 @@ define(function(require) {
 		this.callParent();
 	};
 
-	//获取邮箱验证码
-	Model.prototype.sendsmsButton = function(event) {
-		var email = this.comp("userName").val();
-		var reg = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
-		if(!reg.test(email)){
-			justep.Util.hint("邮箱格式不正确");
-		}else{
-			var me =this;
-			Baas.sendRequest({
-				"url" : "/justep/Register",
-				"action" : "sendEmail",
-				"params" : {
-					param : email
-				},
-				"success" : function(data) {
-					var num = data.count;
-					if(num>0){
-						justep.Util.hint("邮箱已存在");
-					}else{
-						me.sendCode();
-					}
-				},
-				"error" : function() {	
-				}
-			});
-		}
-	};
-	//发送验证码
-	Model.prototype.sendCode = function(event) {
-		var comp = this.comp("sendsmsbutton");
-		Timmer.apply(comp, [ 60, "免费获取验证码", "重新发送" ]);
-		var email = this.comp("email").val();
-		var me = this;
-		Baas.sendRequest({
-			"url" : "/justep/Register",
-			"action" : "sendEmail",
-			"params" : {
-				param : email
-			},
-			"success" : function(data) {
-				var codes = data.code;
-				localStorage.value = codes;
-				me.comp("sendsmsbutton").mytimer();
-				justep.Util.hint("请求成功");
-			},
-			"error" : function() {
-			justep.Util.hint("请求失败");
-			}
-		});
-	};
-
+	
 	//注册
 	Model.prototype.verifyButton = function(event) {
-		var userData = this.comp("userData");
-		
 		var userName = this.comp("userName").val();
-		//获取发送的验证码
 		var val = this.comp("repassword").val();
-		//获取输入的验证码
-		
-		//获取密码
 		var password = this.comp("password").val();
-		var reg = /^[a-zA-Z][a-zA-Z0-9_]{2,9}$/;
-		var reg1= /^[a-zA-Z0-9_]{8}$/;
-		if(!reg.test(userName) || !reg1.test(password)){
-			justep.Util.hint("用户名或密码格式不正确");
-		}else{
-			if(val==password){
-			    
-				userData.setValue("fPhoneNumber", userName);
-				userData.setValue("userPasswd", password);
-				userData.saveData();
-				justep.Util.hint("注册成功");
-				justep.Shell.closePage();
-				
+		var res=/^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{8,22}$/;
+		if(res.test(password)){
+		var user={};
+		user.ajax=1;
+		user.emp_no=userName;
+		user.password=password;
+		user.repassword=val;
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/public/regist', user, function(data) {
+			if(data.status==0){
+				justep.Util.hint(data['info'], {
+					"type" : "danger"
+				}, 'json');
 			}else{
-				justep.Util.hint("输入密码不同");
-			}	
-		}	
-	};
-
-	
-	function Timmer(loopSecond, titile1, title2, lisentner) { // todo
-		// 还要检查一个结果返回变量。
-		this.loopSecond = loopSecond;
-		this.waittime = loopSecond;
-		var self = this;
-		this.mytimer = function() {
-			if (self.waittime <= 0) {
-				self.set({
-					"disabled" : false,
-					"label" : titile1
-				});
-				this.waittime = loopSecond; // 可设 60秒
-			} else {
-				self.set({
-					"disabled" : true,
-					"label" : title2 + "(" + self.waittime + ")"
-				});
-				self.waittime--;
-				setTimeout(function() {
-					self.mytimer();
-				}, 1000);
+				justep.Util.hint('注册成功，请返回登录！');
 			}
-		}
-	};
-	
-	//保存数据事设置初始值
-	Model.prototype.userDataAfterNew = function(event){
-		var data = this.comp("userData");
-		data.setValue("fID", justep.UUID.createUUID());
-		data.setValue("fType", "邮箱");
-		data.setValue("fName", "新用户");
-		data.setValue("fAddress", "北京");
-	};
-
-	Model.prototype.modelLoad = function(event){
-		var data = this.comp("userData");
-		var row = data.getCurrentRow();
-		if(!row){
-			data.newData();
+		});
+		}else{
+			justep.Util.hint("密码格式不正确！", {
+					"type" : "danger"
+				}, 'json');
 		}
 	};
 

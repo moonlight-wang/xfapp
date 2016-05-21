@@ -2,7 +2,7 @@
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window"
   design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:288px;left:505px;" onLoad="modelLoad">
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:248px;left:500px;" onLoad="modelLoad">
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="valueData" idColumn="vID">
       <column name="vID" type="Integer" xid="xid1"/>  
@@ -108,15 +108,42 @@
           </div> 
         </div> 
       </div>  
-      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7"> 
-        <div class="x-col" xid="col16" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时开机" xid="button14">
-   <i xid="i13"></i>
-   <span xid="span14"><![CDATA[定时开机]]></span></a>
-  <a component="$UI/system/components/justep/button/button" class="btn btn-default" onClick="{operation:'popMenu1.show'}" label="定时关机" xid="button12">
-   <i xid="i12"></i>
-   <span xid="span13">定时关机</span></a></div>
-      </div>  
-      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8"> 
+      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
+   <div class="x-col" xid="col10" style="Text-align:center;">
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
+   <div class="x-col" xid="col14"></div>
+   <div class="x-col" xid="col16"><span xid="span14" class="pull-left">
+   <span component="$UI/system/components/justep/button/toggle" class="x-toggle" xid="toggle4" checked="false" ON="开机" OFF="关机"></span></span></div>
+   </div></div>
+   <div class="x-col" xid="col11">
+    
+  <span xid="span11" class="pull-left" style="width:40%;"><div component="$UI/system/components/justep/labelEdit/labelEdit" class="x-label-edit x-label30" xid="labelEdit1" style="width:90%;">
+   <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select2" style="weigh:30%;height:333%;width:100%;">
+    <option value="01" xid="default4">1小时</option>
+    <option value="02" xid="default3">2小时</option>
+    <option value="03" xid="default2" label="3小时"></option>
+    <option value="04" xid="default3">4小时</option>
+    <option value="05" xid="default3">5小时</option>
+    <option value="06" xid="default3">6小时</option>
+    <option value="07" xid="default3">7小时</option>
+    <option value="08" xid="default3">8小时</option>
+    <option value="09" xid="default3">9小时</option>
+    <option value="10" xid="default3">10小时</option>
+    <option value="11" xid="default3">11小时</option>
+    <option value="12" xid="default3">12小时</option>
+    <option value="13" xid="default3">13小时</option>
+    <option value="14" xid="default3">14小时</option>
+    <option value="15" xid="default3">15小时</option>
+    <option value="20" xid="default3">20小时</option>
+    </select> </div></span>
+  <span xid="span13" class="pull-left" style="width:40%;"><div component="$UI/system/components/justep/labelEdit/labelEdit" class="x-label-edit x-label30" xid="labelEdit3" style="width:90%;">
+   <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select3" style="weigh:30%;height:333%;width:100%;">
+    <option value="10" xid="default6">10分钟</option>
+    <option value="20" xid="default5">20分钟</option>
+    <option value="30" xid="default19" label="30分钟"></option>
+    <option value="40" xid="default5">40分钟</option>
+    <option value="50" xid="default5">50分钟</option>
+    </select> </div></span></div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row8"> 
         <div class="x-col" xid="col17" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-lg" label="关机" xid="button10" icon="glyphicon glyphicon-off">
    <i xid="i9" class="glyphicon glyphicon-off"></i>
    <span xid="span10">关机</span></a></div> 
@@ -134,9 +161,9 @@
        <i xid="i3"></i>
        <span xid="span3">设置</span></a> </div> 
      <div class="x-col" xid="col3" style="Text-align:center;">
-      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:#009933;" xid="button13" onClick="openPage" url="/xfapp/control.w">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="管理" style="background-color:#009933;" xid="button13" onClick="openPage" url="/xfapp/edit.w">
        <i xid="i3"></i>
-       <span xid="span3">更多</span></a> </div> </div> </div> </div></div> 
+       <span xid="span3">管理</span></a> </div> </div> </div> </div></div> 
 <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1">
    <div class="x-popMenu-overlay" xid="div3"></div>
    <ul component="$UI/system/components/justep/menu/menu" class="x-menu dropdown-menu x-popMenu-content" xid="menu1"><li class="x-menu-item" xid="item1">

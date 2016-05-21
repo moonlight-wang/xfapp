@@ -75,7 +75,7 @@
     <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="意见反馈" xid="button24" style="width:100%;">
      <i xid="i23"></i>
      <span xid="span37">意见反馈</span></a> </div> </div></div>
-   <div class="x-wing-content" xid="content2">
+   <div class="x-wing-content" xid="content2" style="background-color:#72D994">
     <div class="x-wing-backdrop" xid="div22"></div>
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1">
@@ -86,8 +86,11 @@
    <span xid="span2"></span></a></div> 
      <div class="x-titlebar-title" xid="title1">空气净化器</div>
      <div class="x-titlebar-right reverse" xid="right1">
-      </div> </div> </div> 
-   <div class="x-panel-content center-block" xid="content1" style="background-color:#8a8fef;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="分享" onClick="shareClick" xid="button3">
+   <i xid="i3"></i>
+   <span xid="span3">分享</span></a></div> </div> </div> 
+   <div class="x-panel-content center-block" xid="content1">
+   
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col15" bind-text=' $model.infoData.ref("name")'></div>

@@ -15,7 +15,7 @@ define(function(require) {
 		user.userid = localStorage.getItem("userid");
 		type == 'cityData' ? user.pid = vo1 : user.pid = vo2;
 		var cData = this.comp(type);
-		$.get('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/getAreas', user, function(data, status) {
+		$.get('http://' + localStorage.getItem("ajaxServerIP") + '/contact/getAreas', user, function(data, status) {
 			var opts = data.value;
 			for (var i = 0; i < opts.length; i++) {
 				cData.newData({
@@ -33,7 +33,7 @@ define(function(require) {
 		var sID=localStorage.getItem("sID");
 		this.getElementByXid('input5').value=sID;
 		var userid = localStorage.getItem("userid");
-		$.get('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/add', {
+		$.get('http://' + localStorage.getItem("ajaxServerIP") + '/contact/add', {
 			ajax : 1,
 			userid : userid
 		}, function(data) {
@@ -55,14 +55,14 @@ define(function(require) {
 		user.opmode="edit";
 		user.ajax=1;
 		user.userid= localStorage.getItem("userid");
-		user.deviceid="00001112";
+		user.deviceid=sID;
 		user.devicename=this.comp('input1').val();
 		user.province=this.getElementByXid('province').value;
 		user.city=this.getElementByXid('city').value;
 		user.county=this.getElementByXid('county').value;
 		user.address=this.comp('input2').val();
 		user.mobile=this.comp('input3').val();
-		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/save', user, function(data,status) {
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data,status) {
 			if(status=="success"){
 				alert('更改成功');
 			}

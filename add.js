@@ -25,7 +25,7 @@ define(function(require){
 		user.ajax=1;
 		user.userid= localStorage.getItem("userid");
 		user.deviceid=sID;
-		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/save', user, function(data,status) {
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data,status) {
 			if(status=="success"){
 				alert('添加成功');
 			}

@@ -10,7 +10,9 @@
         <div class="x-titlebar-left" xid="div2"> 
           </div>  
         <div class="x-titlebar-title" xid="div3">登录界面</div>  
-        <div class="x-titlebar-right reverse" xid="div4"/> 
+        <div class="x-titlebar-right reverse" xid="div4"><a component="$UI/system/components/justep/button/button" class="btn btn-link" label="配置" xid="button1" onClick="configClick">
+   <i xid="i2"></i>
+   <span xid="span1">配置</span></a></div> 
       </div> 
     </div>  
     <div class="x-panel-content  x-cards panel-body" xid="content1"> 

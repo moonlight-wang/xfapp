@@ -16,7 +16,7 @@ define(function(require) {
 		var user = {};
 		user.userid = localStorage.getItem('userid');
 		user.ajax = 1;
-		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/contact/index', user, function(data) {
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/index', user, function(data) {
 			var ldata = data.list;
 			for (var i = 0; i < ldata.length; i++) {
 				list.newData({
@@ -61,7 +61,9 @@ define(function(require) {
 
 			justep.Shell.showPage('main');
 		}else{
-			alert("当前设备离线！");
+			justep.Util.hint("当前设备离线！", {
+					"type" : "danger"
+				}, 'json');
 		}
 	};
 	Model.prototype.openPages = function(event) {

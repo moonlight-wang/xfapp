@@ -17,7 +17,14 @@ define(function(require) {
 	Model.prototype.menuBtnClick = function(event) {
 		justep.Shell.showLeft();
 	};
-
+    Model.prototype.controlClick = function(event){
+    	var toggler=this.comp('toggle4');
+    	toggler.get('checked')?toggler.set({
+    		'checked':null
+    	}):toggler.set({
+    		'checked':'true'
+    	});
+    };
 	Model.prototype.openPage = function(event) {
 		var url = event.source.$domNode.attr('url');
 		if (url.substr(0, 1) == "/")
@@ -25,7 +32,7 @@ define(function(require) {
 		justep.Shell.showPage(require.toUrl(url));
 	};
 	Model.prototype.toggleChecked = function(event) {
-		var dsbtn = this.comp('button14');
+		var dsbtn = this.comp('toggle4');
 		dsbtn.get('disabled') ? dsbtn.set({
 			'disabled' : false
 		}) : dsbtn.set({
@@ -41,7 +48,7 @@ define(function(require) {
 			} ]
 		});
 		var toggle = this.comp('toggle1');
-		var dsbtn = this.comp('button14');
+		var dsbtn = this.comp('toggle4');
 		toggle.get('checked') ? dsbtn.set({
 			'disabled' : false
 		}) : dsbtn.set({
@@ -50,26 +57,40 @@ define(function(require) {
 	};
 	Model.prototype.saveClick=function(event){
 		var sid = localStorage.getItem("sID");
-		var msg = "AAEA05";
+		var msg = "AAEA05";                                   //05
 		var wbServerIP = localStorage.getItem("wbServerIP");
 		var pl = this.comp('output1').value.toString(16);
 		if(pl.length<2){
-			pl="0"+pl;
+			pl="0"+pl;                                        //pl
 		}
 		msg=msg+pl;
 		var toggle2=this.comp('toggle2');
-		toggle2.get('checked')?msg=msg+"1":msg=msg+"0";
+		toggle2.get('checked')?msg=msg+"1":msg=msg+"0";       //mod
 		var mod=this.getElementByXid('select1').value;
 		msg=msg+mod;
 		var toggle1=this.comp('toggle1');
-		toggle1.get('checked')?msg=msg+"1":msg=msg+"0";
+		var gn;
+		toggle1.get('checked')?gn="1":gn="0";
 		var toggle3=this.comp('toggle3');
-		toggle3.get('checked')?msg=msg+"1":msg=msg+"2";
+		toggle3.get('checked')?gn=gn+"1":gn=gn+"2";           //gn
 		//var nw=localStorage.getItem("neiWai");
-		msg=msg+"00171705160000000003";
-		var chu=parseInt(this.getElementByXid('select5').value).toString(16);
-		msg=msg+chu+"00000018AB";
+		msg=msg+gn+"0017170516";
+		var mnt=this.getElementByXid('select3').value;        //mnt*2
+		var hour=this.getElementByXid('select2').value;       //hour*2
+		msg=msg+mnt+hour+mnt+hour;
+		var toggle4=this.comp('toggle4');
+		toggle4.get('checked')?msg=msg+"13":msg=msg+"03";     //13+03
 		
+		var chu=parseInt(this.getElementByXid('select5').value).toString(16);  //chu
+		msg=msg+chu+"000000";
+		var arr=msg.substring(4);
+		var sum=0;
+		for(var i=0;i<arr.length;i++){
+			sum+=parseInt(arr[i],16);
+		}
+		sum = sum.toString(16);
+		sum=sum.substr(-2);
+		msg=msg+sum+"AB";
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
 		var socket = io('http://'+wbServerIP+':4213');

@@ -6,6 +6,7 @@ define(function(require) {
 	var io = require("./socket.io");
 	var socket;
 	require("cordova!com.justep.cordova.plugin.baidulocation");
+	require("cordova!cordova-plugin-x-socialsharing");
 
 	var Model = function() {
 		this.callParent();
@@ -26,7 +27,7 @@ define(function(require) {
 		var info = this.comp('infoData');
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		socket = io('http://' + wbServerIP + ':4213');
+		socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
 		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 		// // 连接后登录
 		socket.emit('appLogin', {
@@ -60,7 +61,7 @@ define(function(require) {
 				} ]
 			});
 		});
-		$.get('http://' + ajaxServerIP + '/xf/contact/edit', {
+		$.get('http://' + ajaxServerIP + '/contact/edit', {
 			ajax : 1,
 			userid : userid,
 			id : sid
@@ -71,7 +72,7 @@ define(function(require) {
 					"city" : data.city,
 				} ]
 			});
-			$.get('http://' + ajaxServerIP + '/xf/contact/getWeather', {
+			$.get('http://' + ajaxServerIP + '/contact/getWeather', {
 				ajax : 1,
 				userid : userid,
 				city : data.city
@@ -87,7 +88,7 @@ define(function(require) {
 						} ]
 					});
 				}
-			}, 'json')
+			}, 'json');
 		}, 'json');
 
 	};
@@ -234,7 +235,6 @@ define(function(require) {
 			 */
 		return gpsDtd.promise();
 	};
-
 	Model.prototype.locationClick = function(event) {
 		var self = this;
 		var gpsDtd = self.getLocation();
@@ -246,6 +246,9 @@ define(function(require) {
 				src : "justep"
 			});
 		});
+	};
+	Model.prototype.shareClick = function(event) {
+		plugins.socialsharing.share("中嘉新风", null, null, "http://iot.mengtiankeji.com");
 	};
 	return Model;
 });
