@@ -29,7 +29,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+    <div class="x-panel-content" xid="content1" style="background:url(./img/beijing.jpg) no-repeat;background-size:100% 100%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
    <div class="x-col" xid="col8"><div xid="div1">
    <span xid="span1" style="width:20%;Text-align:right;" class="pull-left">
     <label xid="label1">设备ID：</label></span> 
@@ -50,7 +50,7 @@
    <span xid="span5" class="pull-left" style="width:26%;">
     <select component="$UI/system/components/justep/select/select" type="text" dtype="1" name="province" class="form-control" xid="province" style="width:100%;" onChange="getAddr" bind-options="pData" bind-optionsValue="pID" bind-optionsLabel="province">
      <option value="9999999" xid="default4">--请选择--</option>
-     <volist name="province" id="vo" xid="default5">
+     <volist name="province" xid="default5">
       <option xid="default6"></option></volist> </select> </span> 
    <span xid="span12" class="pull-left" style="width:26%;">
     <select component="$UI/system/components/justep/select/select" type="text" dtype="2" name="city" class="form-control" xid="city" style="width:100%;" onChange="getAddr" bind-options="cityData" bind-optionsValue="cID" bind-optionsLabel="c"></select></span> 

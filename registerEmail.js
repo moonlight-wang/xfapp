@@ -19,13 +19,15 @@ define(function(require) {
 		user.emp_no=userName;
 		user.password=password;
 		user.repassword=val;
-		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/xf/public/regist', user, function(data) {
+		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/regist', user, function(data) {
 			if(data.status==0){
 				justep.Util.hint(data['info'], {
 					"type" : "danger"
 				}, 'json');
 			}else{
-				justep.Util.hint('注册成功，请返回登录！');
+				justep.Util.hint('注册成功，请返回登录！', {
+					"type" : "success"
+				}, 'json');
 			}
 		});
 		}else{

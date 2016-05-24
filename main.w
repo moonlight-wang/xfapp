@@ -33,7 +33,8 @@
   <column label="湿度" name="hmy" type="String" xid="xid27"></column>
   <column label="频率" name="fqy" type="String" xid="xid28"></column>
   <column label="室内PM2.5" name="nPM" type="String" xid="xid29"></column>
-  <column label="功能开关" name="gn" type="String" xid="xid30"></column></div></div> 
+  <column label="功能开关" name="gn" type="String" xid="xid30"></column>
+  <data xid="default4">[]</data></div></div> 
 <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1" direction="left-bottom" style="width:60%;">
    <div class="pull-left x-popMenu-overlay" xid="div25" style="left:0px;"></div>
    <ul component="$UI/system/components/justep/menu/menu" class="x-menu pull-left dropdown-menu x-popMenu-content" xid="menu1">
@@ -49,7 +50,11 @@
     <span xid="span1">button</span></a> </li></ul></div>
   <div component="$UI/system/components/justep/wing/wing" class="x-wing" xid="wing1">
    <div class="x-wing-left" xid="left2">
-  <div class="list-group-item" xid="div26">
+  <div class="list-group-item" xid="div28">
+   <div class="h5" xid="div29">
+    <span xid="span15" style="height:100%;width:20%;"><img src="$UI/xfapp/img/qq.png" alt="" xid="image1" style="width:10%;" height="10%"></img></span>
+  <span xid="span16"><![CDATA[]]>
+  <label xid="label7"><![CDATA[]]></label></span></div> </div><div class="list-group-item" xid="div26">
    <div class="h5" xid="div27">
     
     <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="地址选择" xid="button20" style="width:100%;" onClick="locationClick">
@@ -74,7 +79,8 @@
    <div class="h5" xid="div39">
     <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="意见反馈" xid="button24" style="width:100%;">
      <i xid="i23"></i>
-     <span xid="span37">意见反馈</span></a> </div> </div></div>
+     <span xid="span37">意见反馈</span></a> </div> </div>
+  </div>
    <div class="x-wing-content" xid="content2" style="background-color:#72D994">
     <div class="x-wing-backdrop" xid="div22"></div>
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
@@ -89,7 +95,7 @@
       <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="分享" onClick="shareClick" xid="button3">
    <i xid="i3"></i>
    <span xid="span3">分享</span></a></div> </div> </div> 
-   <div class="x-panel-content center-block" xid="content1">
+   <div class="x-panel-content center-block" xid="content1" style="background:url(./img/beijing.jpg) no-repeat;background-size:100% 100%;">
    
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
@@ -103,7 +109,7 @@
         <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
          <div class="x-col" xid="col24" bind-text=' $model.aData.val("city")'></div></div> </div> 
        <div class="x-col" xid="col9" style="Text-align:left;position:relative;">
-        <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button7" icon="glyphicon glyphicon-repeat">
+        <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button7" icon="glyphicon glyphicon-repeat" onClick="locationClick">
          <i xid="i5" class="glyphicon glyphicon-repeat" style="color:black;"></i>
          <span xid="span6"></span></a> </div> </div> </div> 
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col7">

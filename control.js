@@ -9,7 +9,6 @@ define(function(require) {
 		var row = event.bindingContext.$object;
 		row.val("pinlv", parseInt(row.val("pinlv")) + 1);
 	};
-
 	Model.prototype.reduceCountBtnClick = function(event) {
 		var row = event.bindingContext.$object;
 		row.val("pinlv", (row.val("pinlv") > 0) ? parseInt(row.val("pinlv") - 1) : 0);
@@ -59,7 +58,15 @@ define(function(require) {
 		var sid = localStorage.getItem("sID");
 		var msg = "AAEA05";                                   //05
 		var wbServerIP = localStorage.getItem("wbServerIP");
-		var pl = this.comp('output1').value.toString(16);
+		var pl = this.comp('output1').value;
+		if(pl!=null){
+			pl = pl.toString(16);
+		}else{
+			justep.Util.hint("频率不能为空！", {
+					"type" : "danger"
+				}, 'json');
+				return ;
+		}
 		if(pl.length<2){
 			pl="0"+pl;                                        //pl
 		}
@@ -73,20 +80,20 @@ define(function(require) {
 		toggle1.get('checked')?gn="1":gn="0";
 		var toggle3=this.comp('toggle3');
 		toggle3.get('checked')?gn=gn+"1":gn=gn+"2";           //gn
-		//var nw=localStorage.getItem("neiWai");
 		msg=msg+gn+"0017170516";
 		var mnt=this.getElementByXid('select3').value;        //mnt*2
 		var hour=this.getElementByXid('select2').value;       //hour*2
 		msg=msg+mnt+hour+mnt+hour;
 		var toggle4=this.comp('toggle4');
 		toggle4.get('checked')?msg=msg+"13":msg=msg+"03";     //13+03
-		
 		var chu=parseInt(this.getElementByXid('select5').value).toString(16);  //chu
 		msg=msg+chu+"000000";
 		var arr=msg.substring(4);
 		var sum=0;
-		for(var i=0;i<arr.length;i++){
-			sum+=parseInt(arr[i],16);
+		var i=0;
+		for(;i<arr.length;){
+			sum+=parseInt(arr[i]+arr[i+1],16);
+			i+=2;
 		}
 		sum = sum.toString(16);
 		sum=sum.substr(-2);
@@ -103,8 +110,6 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : msg
 		});
-		console.log(msg);
-		
 	};
 	return Model;
 });

@@ -26,7 +26,7 @@
     </div>  
     <div class="x-panel-content  x-scroll-view" xid="content1" _xid="C6F5B0969BE00001D49313F012631710"> 
       
-  <div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView1">
+  <div class="x-scroll" component="$UI/system/components/justep/scrollView/scrollView" xid="scrollView1" onPullDown="modelLoad">
    <div class="x-content-center x-pull-down container" xid="div1">
     <i class="x-pull-down-img glyphicon x-icon-pull-down" xid="i3"></i>
     <span class="x-pull-down-label" xid="span3">下拉刷新...</span></div> 

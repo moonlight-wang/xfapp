@@ -16,8 +16,8 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
+		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
-		var wbServerIP = localStorage.getItem("wbServerIP");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
@@ -36,15 +36,29 @@ define(function(require) {
 		socket.emit('app2server', {
 			deviceId : iot.deviceId,
 			msg : 'come from app'
-
+		});
+		info.newData({
+			index : 0,
+			defaultValues : [ {
+				"fqy" : 40,
+				"mode" : 2,
+				"TOVC" : 43,
+				"name" : "测试",
+				"CO2" : 360,
+				"nPM" : 23,
+				"tmp" : 26,
+				"hmy" : 56,
+				"status" : 11,
+				"gn" : 2,
+			} ]
 		});
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);
 			localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
-
 			var mode = parseInt(msg[8] + msg[9], 16);
 			localStorage.setItem("neiWai", parseInt(msg[8], 16));
+			info.clear();
 			info.newData({
 				index : 0,
 				defaultValues : [ {
@@ -101,13 +115,23 @@ define(function(require) {
 			return "合适";
 		} else if (TOVC > 84) {
 			return "危害";
+		} else {
+			return "未知";
 		}
 	};
 	Model.prototype.CO = function() {
 		var nData = this.comp("infoData");
 		var CO2 = parseInt(nData.val("CO2"));
-		if (CO2 <= 1000) {
+		if (CO2 >= 350 && CO2 < 450) {
+			return "自然";
+		} else if (CO2 >= 450 && CO2 < 1000) {
 			return "清新";
+		} else if (CO2 >= 1000 && CO2 < 2000) {
+			return "浑浊";
+		} else if (CO2 >= 2000 && CO2 <= 5000) {
+			return "缺氧";
+		} else {
+			return "未知";
 		}
 	};
 	Model.prototype.TEM = function() {
@@ -121,6 +145,8 @@ define(function(require) {
 			return "温暖";
 		} else if (TEMP >= 30) {
 			return "炎热";
+		} else {
+			return "未知";
 		}
 	};
 	Model.prototype.Humidity = function() {
@@ -132,6 +158,8 @@ define(function(require) {
 			return "适宜";
 		} else if (humidity >= 60) {
 			return "潮湿";
+		} else {
+			return "未知";
 		}
 	};
 	Model.prototype.qLy = function() {
@@ -149,6 +177,8 @@ define(function(require) {
 			return "重度污染";
 		} else if (nPM > 250) {
 			return "严重污染";
+		} else {
+			return "未知";
 		}
 	};
 	Model.prototype.gongNeng = function() {
@@ -157,8 +187,12 @@ define(function(require) {
 		switch (gn) {
 		case 1 || 11 || 21 || 31:
 			return "开";
+			break;
 		case 2 || 12 || 22 || 32:
 			return "关";
+			break;
+		default:
+			return "未知";
 		}
 	};
 	Model.prototype.click = function(event) {
@@ -224,15 +258,7 @@ define(function(require) {
 			 * true 相对准确
 			 */
 			navigator.geolocation.getCurrentPosition(success, fail);
-			/*
-			 * var gpsWatchID = navigator.geolocation.watchPosition(success,
-			 * fail,{ timeout: 30*1000, maximumAge: 30000, enableHighAccuracy:
-			 * true});
-			 */
-		} /*
-			 * else { justep.Util.hint("获取地理位置失败，暂时采用默认地址"); gpsDtd.resolve({
-			 * longitude : 116.45764191999997, latitude : 39.8622934399999 }); }
-			 */
+		}
 		return gpsDtd.promise();
 	};
 	Model.prototype.locationClick = function(event) {
@@ -245,6 +271,7 @@ define(function(require) {
 				content : "",
 				src : "justep"
 			});
+			console.log(position);
 		});
 	};
 	Model.prototype.shareClick = function(event) {
