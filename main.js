@@ -41,14 +41,14 @@ define(function(require) {
 			index : 0,
 			defaultValues : [ {
 				"fqy" : 40,
-				"mode" : 2,
+				"mode" : "智能",
 				"TOVC" : 43,
 				"name" : "测试",
 				"CO2" : 360,
 				"nPM" : 23,
 				"tmp" : 26,
 				"hmy" : 56,
-				"status" : 11,
+				"status" : "在线",
 				"gn" : 2,
 			} ]
 		});

@@ -52,7 +52,7 @@
    <div class="x-wing-left" xid="left2">
   <div class="list-group-item" xid="div28">
    <div class="h5" xid="div29">
-    <span xid="span15" style="height:100%;width:20%;"><img src="$UI/xfapp/img/qq.png" alt="" xid="image1" style="width:10%;" height="10%"></img></span>
+    <span xid="span15" style="height:100%;width:20%;"><img src="$UI/xfapp/img/touxiang.jpg" alt="" xid="image1" style="width:10%;" height="10%"></img></span>
   <span xid="span16"><![CDATA[]]>
   <label xid="label7"><![CDATA[]]></label></span></div> </div><div class="list-group-item" xid="div26">
    <div class="h5" xid="div27">
