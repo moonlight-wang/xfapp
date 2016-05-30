@@ -87,7 +87,12 @@ define(function(require) {
 		var toggle4=this.comp('toggle4');
 		toggle4.get('checked')?msg=msg+"13":msg=msg+"03";     //13+03
 		var chu=parseInt(this.getElementByXid('select5').value).toString(16);  //chu
-		msg=msg+chu+"000000";
+		if(localStorage.getItem("address")){
+			msg=msg+chu+localStorage.getItem("address");
+		}else{
+			justep.Util.hint("设备未刷新", {"type":"danger"},"json");
+			return;
+		}
 		var arr=msg.substring(4);
 		var sum=0;
 		var i=0;
@@ -98,6 +103,7 @@ define(function(require) {
 		sum = sum.toString(16);
 		sum=sum.substr(-2);
 		msg=msg+sum+"AB";
+		console.log(msg);
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
 		var socket = io('http://'+wbServerIP+':4213');

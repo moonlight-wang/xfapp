@@ -72,16 +72,16 @@
      <span xid="span35">滤芯重置</span></a> </div> </div>
   <div class="list-group-item" xid="div36">
    <div class="h5" xid="div37">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="关于我们" xid="button23" style="width:100%;">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="关于我们" xid="button23" style="width:100%;" url="/xfapp/about.w" onClick="openPage">
      <i xid="i22"></i>
      <span xid="span36">关于我们</span></a> </div> </div>
   <div class="list-group-item" xid="div38">
    <div class="h5" xid="div39">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="意见反馈" xid="button24" style="width:100%;">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="意见反馈" xid="button24" style="width:100%;" url="/xfapp/feedBack.w" onClick="openPage">
      <i xid="i23"></i>
      <span xid="span37">意见反馈</span></a> </div> </div>
   </div>
-   <div class="x-wing-content" xid="content2" style="background-color:#72D994">
+   <div class="x-wing-content" xid="content2">
     <div class="x-wing-backdrop" xid="div22"></div>
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1">
@@ -95,7 +95,7 @@
       <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="分享" onClick="shareClick" xid="button3">
    <i xid="i3"></i>
    <span xid="span3">分享</span></a></div> </div> </div> 
-   <div class="x-panel-content center-block" xid="content1" style="background:url(./img/beijing.jpg) no-repeat;background-size:100% 100%;">
+   <div class="x-panel-content center-block" xid="content1">
    
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
@@ -161,7 +161,7 @@
       <div xid="div10">
        <br xid="default10"></br>
        <span xid="span7" bind-text='$model.infoData.ref("hmy")'></span></div> </div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="position:absolute;bottom:0px;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12">
      <div class="x-col" xid="col2">
       <div xid="div12" style="Text-align:center;font-size:12px;">频率</div>
       <div xid="div13" style="Text-align:center;font-size:12px;" bind-text=' $model.infoData.val("fqy")+"Hz";'></div></div> 

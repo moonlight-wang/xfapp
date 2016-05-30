@@ -16,6 +16,14 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
+		var content=this.getElementByXid('content1');
+//		var s=localStorage.getItem("orientation");
+//		if(s=='landscape-primary'){
+//			content.style.backgroundColor="#000fff";
+//		}else if (s=='portrait-primary'){
+			content.style.background="url(./img/beijing.jpg) no-repeat";
+			content.style.backgroundSize="100% 100%";
+//		}
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
@@ -55,6 +63,9 @@ define(function(require) {
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);
+			var arr=msg.substr(34,6);
+			console.log(arr);
+			localStorage.setItem("address",arr);
 			localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
 			var mode = parseInt(msg[8] + msg[9], 16);
 			localStorage.setItem("neiWai", parseInt(msg[8], 16));
@@ -66,9 +77,9 @@ define(function(require) {
 					"mode" : modeCased(mode),
 					"TOVC" : parseInt(msg[6] + msg[7], 16),
 					"name" : sname,
-					"CO2" : parseInt(msg[20] + msg[21], 16),
-					"nPM" : parseInt(msg[16] + msg[17], 16),
-					"tmp" : parseInt(msg[26] + msg[27], 16),
+					"CO2" : parseInt(msg[22]+msg[23]+msg[20] + msg[21], 16),
+					"nPM" : parseInt(msg[18]+msg[19]+msg[16] + msg[17], 16),
+					"tmp" : parseInt(msg[26] + msg[27], 16)<100?parseInt(msg[26] + msg[27], 16):"-"+(parseInt(msg[26] + msg[27], 16)-100),
 					"hmy" : parseInt(msg[32] + msg[33], 16),
 					"status" : status,
 					"gn" : parseInt(msg[10] + msg[11], 16),

@@ -2,6 +2,9 @@ define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
 	var io = require("./socket.io");
+	require("$UI/system/lib/cordova/cordova");
+	require("cordova!cordova-plugin-screen-orientation");
+	
 	var Model = function() {
 		this.callParent();
 	};
@@ -56,6 +59,7 @@ define(function(require) {
 	};
 	Model.prototype.listClick = function(event) {
 		var row = event.bindingContext.$object;
+//		localStorage.setItem("orientation",window.screen.orientation);
 		if (row.row.status.value.latestValue == "在线") {
 			var sID = row.row.sID.value.latestValue;
 			var sname = row.row.sname.value.latestValue;

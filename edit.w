@@ -69,7 +69,7 @@
    <span xid="span9" class="pull-right" style="width:80%;">
     <input component="$UI/system/components/justep/input/input" class="form-control" xid="input3"></input></span> </div></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
-   <div class="x-col" xid="col4" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="保存" xid="button1" onClick="saveClicked">
+   <div class="x-col" xid="col4" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default btn-block" label="保存" xid="button1" onClick="saveClicked">
    <i xid="i1"></i>
    <span xid="span11">保存</span></a></div>
    </div></div>

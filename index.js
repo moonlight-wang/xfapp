@@ -36,6 +36,12 @@ define(function(require){
 				},
 				"config" : {
 					url : require.toUrl('./config.w')
+				},
+				"feedBack" : {
+					url : require.toUrl('./feedBack.w')
+				},
+				"about" : {
+					url : require.toUrl('./about.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;
