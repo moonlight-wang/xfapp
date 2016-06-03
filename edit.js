@@ -80,7 +80,9 @@ define(function(require) {
 		user.mobile = this.comp('input3').val();
 		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data, status) {
 			if (status == "success") {
-				justep.Util.hint("更改成功！");
+				justep.Util.hint("更改成功", {
+					"type" : "success"
+				}, 'json');
 			}
 		});
 	};

@@ -16,7 +16,7 @@
       </div> 
     </div>  
     <div class="x-panel-content  x-cards panel-body" xid="content1"> 
-      <div xid="div1" class="list-group"> 
+      <div xid="div14" style="Text-align:center;"><img src="$UI/xfapp/img/logo.png" alt="" xid="image1" height="60%"></img></div><div xid="div1" class="list-group"> 
         <div class="list-group-item"> 
           <div class="input-group" xid="div7"> 
             <span class="input-group-addon" xid="span2"> 

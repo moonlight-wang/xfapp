@@ -27,14 +27,18 @@
   <column label="设备名" name="name" type="String" xid="xid8"></column>
   <column label="状态" name="status" type="String" xid="xid9"></column>
   <column label="模式" name="mode" type="String" xid="xid23"></column>
-  <column label="甲醛" name="TOVC" type="String" xid="xid24"></column>
+  <column label="甲醛" name="TOVC" type="Double" xid="xid24"></column>
   <column label="二氧化碳" name="CO2" type="String" xid="xid25"></column>
   <column label="温度" name="tmp" type="String" xid="xid26"></column>
   <column label="湿度" name="hmy" type="String" xid="xid27"></column>
   <column label="频率" name="fqy" type="String" xid="xid28"></column>
   <column label="室内PM2.5" name="nPM" type="String" xid="xid29"></column>
   <column label="功能开关" name="gn" type="String" xid="xid30"></column>
-  <data xid="default4">[]</data></div></div> 
+  <data xid="default4">[]</data>
+  <rule xid="rule2">
+   <col name="TOVC" xid="ruleCol3">
+    <calculate xid="calculate3">
+     <expr xid="default5"></expr></calculate> </col> </rule></div></div> 
 <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1" direction="left-bottom" style="width:60%;">
    <div class="pull-left x-popMenu-overlay" xid="div25" style="left:0px;"></div>
    <ul component="$UI/system/components/justep/menu/menu" class="x-menu pull-left dropdown-menu x-popMenu-content" xid="menu1">
@@ -81,7 +85,7 @@
      <i xid="i23"></i>
      <span xid="span37">意见反馈</span></a> </div> </div>
   </div>
-   <div class="x-wing-content" xid="content2">
+   <div class="x-wing-content" xid="content2" style="color:#e4e4e4;">
     <div class="x-wing-backdrop" xid="div22"></div>
   <div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel1">
    <div class="x-panel-top" xid="top1">
@@ -95,14 +99,14 @@
       <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="分享" onClick="shareClick" xid="button3">
    <i xid="i3"></i>
    <span xid="span3">分享</span></a></div> </div> </div> 
-   <div class="x-panel-content center-block" xid="content1">
+   <div class="x-panel-content center-block" xid="content1" style="background:url('img/beijing.jpg') no-repeat;background-size:100% 100%;">
    
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="height:12%;">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col15" bind-text=' $model.infoData.ref("name")'></div>
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col19" bind-text=' $model.infoData.ref("status")'></div></div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3">
-     <div class="x-col" style="Text-align:center;font-size:12px;" xid="col20">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="height:20%;">
+     <div class="x-col" style="Text-align:center;font-size:15px;" xid="col20">
       <div component="$UI/system/components/justep/row/row" class="x-row x-row-center" xid="row1" style="height:30%;"></div>
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
        <div class="x-col" xid="col6" style="Text-align:right;font-size:12px;">
@@ -112,10 +116,10 @@
         <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button7" icon="glyphicon glyphicon-repeat" onClick="locationClick">
          <i xid="i5" class="glyphicon glyphicon-repeat" style="color:black;"></i>
          <span xid="span6"></span></a> </div> </div> </div> 
-     <div class="x-col" style="Text-align:center;font-size:12px;" xid="col7">
+     <div class="x-col" style="Text-align:center;font-size:15px;" xid="col7">
       <div style="Text-align:center;font-size:12px;" xid="div1">室外PM2.5</div>
       <div style="Text-align:center;font-size:20px;" xid="div4" bind-text=' $model.valueData.val("wPM")'></div></div> 
-     <div class="x-col" style="Text-align:center;font-size:12px;" xid="col21">
+     <div class="x-col" style="Text-align:center;font-size:15px;" xid="col21">
       <div xid="div5">
        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row7">
         <div class="x-col" style="Text-align:center;font-size:12px;" xid="col11">
@@ -123,13 +127,13 @@
         <div class="x-col" style="Text-align:center;font-size:12px;" xid="col10">
          <div xid="div6" bind-text=' $model.valueData.ref("weather")'></div>
          <div xid="div7" bind-text=' $model.valueData.ref("temperature")'></div></div> </div> </div> </div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row11">
+    <div component="$UI/system/components/justep/row/row" class="x-row" style="display:none;" xid="row11">
      <div class="x-col" xid="col25" style="Text-align:center;font-size:12px;">
       <div xid="div2" style="Text-align:center;font-size:12px;">
        <span xid="span9" bind-text='$model.infoData.ref("name")'></span>
        <span xid="span10">在全国空气质量排名：</span>
        <span xid="span11" bind-text='$model.valueData.ref("ranking")' style="font-size:18px;"></span></div> </div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="height:15%;">
      <div class="x-col" xid="col1" style="Text-align:center;">TVOC
       <div xid="div3">
        <br xid="default7"></br>
@@ -138,21 +142,40 @@
       <div xid="div8">
        <br xid="default8"></br>
        <span xid="span13" bind-text='$model.infoData.ref("CO2")'></span></div> </div> </div> 
+    <div xid="div30" style="height:25%;">
+   <span xid="span5" class="pull-left" style="width:33%;height:100%;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
+   <div class="x-col" xid="col27"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
+     <div class="x-col" xid="col34" style="Text-align:center;">
+      <label xid="label5" bind-text="$model.tvoc()" style="Text-align:center;background-color:rgba(17, 241, 127, 0.98);border-radius:50%;width:40%;">label</label></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4">
-     <div class="x-col" xid="col4" style="Text-align:center;">
-      <label xid="label1" bind-text="$model.tvoc()" style="Text-align:center;background-color:#99ff33;">label</label></div> 
-     <div class="x-col" xid="col5" style="Text-align:center;font-size:12px;">室内PM2.5
-      <div xid="div9">
-       <span xid="span14" bind-text='$model.infoData.ref("nPM")' style="Text-align:center;font-size:30px;"></span></div> </div> 
-     <div class="x-col" xid="col12" style="Text-align:center;">
-      <label xid="label2" bind-text="$model.CO()" style="Text-align:center;background-color:#99ff33;">label</label></div> </div> 
+   <div class="x-col" xid="col4"></div>
+   </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21">
+   <div class="x-col" xid="col18"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="top:70%;">
+     <div class="x-col" xid="col46" style="Text-align:center;">
+      <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;background-color:rgba(17, 241, 127, 0.98);border-radius:50%;width:40%;">label</label></div> </div> 
+  </span> 
+   <span xid="span17" class="pull-left" style="width:34%;background:url('img/yuanhuan.png') no-repeat;background-size:100% 100%;border-radius:50% 50%;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
+   <div class="x-col" xid="col28"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
+     <div class="x-col" xid="col38" style="Text-align:center;font-size:12px;">室内PM2.5
+      <div xid="div31">
+       <span xid="span21" bind-text='$model.infoData.ref("nPM")' style="Text-align:center;font-size:30px;"></span></div> </div> </div> 
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row18">
+     <div class="x-col" xid="col50" style="Text-align:center;font-size:12px;" bind-text=" $model.qLy()"></div></div> 
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row24">
+   <div class="x-col" xid="col29"></div></div></span> 
+   <span xid="span20" class="pull-right" style="width:33%;height:100%;">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
+   <div class="x-col" xid="col35"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
+     <div class="x-col" xid="col42" style="Text-align:center;">
+      <label xid="label6" bind-text="$model.CO()" style="Text-align:center;background-color:rgba(17, 241, 127, 0.98);border-radius:50%;width:40%;">label</label></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8">
-     <div class="x-col" xid="col16" style="Text-align:center;">
-      <label xid="label3" bind-text="$model.TEM()" style="Text-align:center;background-color:#99ff33;">label</label></div> 
-     <div class="x-col" xid="col18" style="Text-align:center;font-size:12px;" bind-text=' $model.qLy()'></div>
-     <div class="x-col" xid="col17" style="Text-align:center;">
-      <label xid="label4" bind-text="$model.Humidity()" style="Text-align:center;background-color:#99ff33;">label</label></div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row9">
+   <div class="x-col" xid="col16"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20">
+   <div class="x-col" xid="col17"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row19" style="bottom:0px;">
+     <div class="x-col" xid="col54" style="Text-align:center;">
+      <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;background-color:rgba(17, 241, 127, 0.98);border-radius:50%;width:40%;">label</label></div> </div> 
+  </span> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row9" style="height:15%;">
      <div class="x-col" xid="col23" style="Text-align:center;">温度
       <div xid="div11">
        <br xid="default9"></br>
@@ -161,11 +184,11 @@
       <div xid="div10">
        <br xid="default10"></br>
        <span xid="span7" bind-text='$model.infoData.ref("hmy")'></span></div> </div> </div> 
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="height:13%;">
      <div class="x-col" xid="col2">
       <div xid="div12" style="Text-align:center;font-size:12px;">频率</div>
       <div xid="div13" style="Text-align:center;font-size:12px;" bind-text=' $model.infoData.val("fqy")+"Hz";'></div></div> 
-     <div class="x-col" xid="col8">
+     <div class="x-col" xid="col8" style="display:none;">
       <div xid="div14" style="Text-align:center;font-size:12px;">风量</div>
       <div xid="div15" style="Text-align:center;font-size:12px;" bind-text='$model.mData.val("blast")? $model.mData.val("blast")+"m²/h":"";'></div></div> 
      <div class="x-col" xid="col14">
@@ -176,7 +199,8 @@
       <div xid="div19" style="Text-align:center;font-size:12px;" bind-text=' $model.gongNeng()'></div></div> 
      <div class="x-col" xid="col30">
       <div xid="div20" style="Text-align:center;font-size:12px;">童锁</div>
-      <div xid="div21" style="Text-align:center;font-size:12px;" bind-text=' $model.mData.val("lock") ==1?"开":"关";'></div></div> </div> </div> 
+      <div xid="div21" style="Text-align:center;font-size:12px;" bind-text=' $model.mData.val("lock") ==1?"开":"关";'></div></div> </div> 
+  </div> 
    <div class="x-panel-bottom" xid="bottom1">
     <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar2">
      <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="height:100%;width:100%;">

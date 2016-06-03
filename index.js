@@ -6,10 +6,6 @@ define(function(require){
 	var CommonUtils = require("$UI/system/components/justep/common/utils");
 	var Model = function(){
 		this.callParent();
-//		localStorage.setItem("wbServerIP",'192.168.1.131');
-//		localStorage.setItem("ajaxServerIP",'192.168.1.130');
-		localStorage.setItem("sID",'00000123');
-		localStorage.setItem("userid",'4');
 		var shellImpl = new ShellImpl(this, {
 			"contentsXid" : "pages",
 			"pageMappings" : {

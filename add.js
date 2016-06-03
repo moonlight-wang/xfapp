@@ -25,9 +25,12 @@ define(function(require){
 		user.ajax=1;
 		user.userid= localStorage.getItem("userid");
 		user.deviceid=sID;
+		user.city = "289";
 		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data,status) {
 			if(status=="success"){
-				alert('添加成功');
+				justep.Util.hint("添加成功", {
+					"type" : "success"
+				}, 'json');
 			}
 		});
 	};

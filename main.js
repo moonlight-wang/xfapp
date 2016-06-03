@@ -16,14 +16,6 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
-		var content=this.getElementByXid('content1');
-//		var s=localStorage.getItem("orientation");
-//		if(s=='landscape-primary'){
-//			content.style.backgroundColor="#000fff";
-//		}else if (s=='portrait-primary'){
-			content.style.background="url(./img/beijing.jpg) no-repeat";
-			content.style.backgroundSize="100% 100%";
-//		}
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
@@ -64,7 +56,6 @@ define(function(require) {
 		socket.on('server2app', function(msg) {
 			console.log(msg);
 			var arr=msg.substr(34,6);
-			console.log(arr);
 			localStorage.setItem("address",arr);
 			localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
 			var mode = parseInt(msg[8] + msg[9], 16);
@@ -120,11 +111,11 @@ define(function(require) {
 	Model.prototype.tvoc = function() {
 		var nData = this.comp("infoData");
 		var TOVC = parseInt(nData.val("TOVC"));
-		if (TOVC >= 0 && TOVC <= 24) {
+		if (TOVC >= 0 && TOVC <= 2) {
 			return "理想";
-		} else if (TOVC >= 25 && TOVC <= 84) {
+		} else if (TOVC >= 3 && TOVC <= 8) {
 			return "合适";
-		} else if (TOVC > 84) {
+		} else if (TOVC > 8) {
 			return "危害";
 		} else {
 			return "未知";
@@ -229,10 +220,7 @@ define(function(require) {
 							longitude : data.longitude,
 							latitude : data.latitude
 						});
-					}/*
-						 * , cancel : function(res) { gpsDtd.resolve({ longitude :
-						 * 116.45764191999997, latitude : 39.8622934399999 }); }
-						 */
+					}
 				});
 			}).fail(function() {
 				gpsDtd.resolve({
@@ -292,13 +280,13 @@ define(function(require) {
 });
 function modeCased(mode) {
 	switch (mode) {
-	case 1 || 11:
+	case 11:
 		return "智能";
 		break;
-	case 2 || 12:
+	case 12:
 		return "手动";
 		break;
-	case 3 || 13:
+	case 13:
 		return "睡眠";
 		break;
 	default:

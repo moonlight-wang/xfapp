@@ -16,6 +16,7 @@ define(function(require) {
     	justep.Shell.showPage('config');
     };
 	Model.prototype.loginIsmBtn = function(event) {
+		if(localStorage.getItem("ajaxServerIP")){
 		var user = {};
 		user.emp_no = this.username;
 		localStorage.setItem('userName', this.username);
@@ -32,6 +33,11 @@ define(function(require) {
 				}, 'json');
 			}
 		});
+		}else{
+			justep.Util.hint("未配置网络，请点击右上角配置！", {
+					"type" : "danger"
+				}, 'json');
+		}
 	};
 	return Model;
 });
