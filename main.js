@@ -76,6 +76,7 @@ define(function(require) {
 					"gn" : parseInt(msg[10] + msg[11], 16),
 				} ]
 			});
+			localStorage.setItem("moshi", modeCased(mode));
 		});
 		$.get('http://' + ajaxServerIP + '/contact/edit', {
 			ajax : 1,

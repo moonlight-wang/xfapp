@@ -103,15 +103,19 @@
    
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="height:8%;">
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
-     <div class="x-col" style="Text-align:center;font-size:12px;" xid="col15" bind-text=' $model.infoData.ref("name")'></div>
+     <div class="x-col" style="Text-align:center;font-size:12px;" xid="col15">
+  <span xid="span40"><a component="$UI/system/components/justep/button/button" class="btn btn-link" xid="button6" style="height:100%;" icon="icon-android-add" onClick="openPage" url="/xfapp/edit.w">
+   <i xid="i8" class="icon-android-add"></i>
+   <span xid="span39"></span></a></span>
+  <span xid="span41"><label xid="label3" bind-text=' $model.infoData.ref("name")'><![CDATA[]]></label></span></div>
      <div class="x-col" style="Text-align:center;font-size:12px;" xid="col19" bind-text=' $model.infoData.ref("status")'></div></div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row3" style="border-bottom:1px solid #fff;height:14%;">
      <div class="x-col" style="Text-align:center;font-size:15px;" xid="col20">
       <div component="$UI/system/components/justep/row/row" class="x-row x-row-center" xid="row1" style="height:30%;"></div>
       <div component="$UI/system/components/justep/row/row" class="x-row" xid="row6">
        <div class="x-col" xid="col6" style="Text-align:right;font-size:12px;">
-        <div component="$UI/system/components/justep/row/row" class="x-row" xid="row10">
-         <div class="x-col" xid="col24" bind-text=' $model.aData.val("city")'></div></div> </div> 
+        
+  <label xid="label2" style="width:100%;" bind-text='$model.aData.ref("city")'></label></div> 
        <div class="x-col" xid="col9" style="Text-align:left;position:relative;">
         <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" label="button" xid="button7" icon="glyphicon glyphicon-map-marker" onClick="locationClick">
          <i xid="i5" class="glyphicon glyphicon-map-marker" style="color:black;"></i>
@@ -221,7 +225,7 @@
         <i xid="i2"></i>
         <span xid="span4">设置</span></a> </div> 
       <div class="x-col" xid="col33" style="Text-align:center;">
-       <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="管理" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/edit.w">
+       <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/edit.w">
         <i xid="i2"></i>
-        <span xid="span4">管理</span></a> </div> </div> </div> </div> </div></div> 
+        <span xid="span4">更多</span></a> </div> </div> </div> </div> </div></div> 
    </div></div>
