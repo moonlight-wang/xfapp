@@ -89,8 +89,23 @@ define(function(require) {
 		toggle2.get('checked') ? mod = "0" + parseInt("1" + mod).toString(16) : mod = "0" + mod;
 		msg = msg + mod;
 		var toggle1 = this.comp('toggle1');
-		var gn;
-		toggle1.get('checked') ? gn = "1" : gn = "0";
+		var gn,mnt,mnt1;
+		if(toggle1.get('checked')) {
+			gn = "1";
+			if(this.getElementByXid('select3').value && this.getElementByXid('select4').value){
+				mnt = ("0" + parseInt(this.getElementByXid('select3').value).toString(16)).substr(-2); 
+				mnt1 = ("0" + parseInt(this.getElementByXid('select4').value).toString(16)).substr(-2);
+			}else{
+				justep.Util.hint("未选择开关机时间！", {
+					"type" : "danger"
+				}, "json");
+				return;
+			}
+		 }else{
+			 gn = "0";
+			 mnt="00";
+			 mnt1="00";
+		 }
 		var toggle3 = this.comp('toggle3');
 		toggle3.get('checked') ? gn = gn + "1" : gn = gn + "2"; // gn
 		gn = "0" + parseInt(gn).toString(16);
@@ -102,19 +117,7 @@ define(function(require) {
 		var minute = ("0" + myDate.getMinutes().toString(16)).substr(-2);
 
 		msg = msg + gn + minute + hours + dat + month + year;
-		var mnt = "00";
-		if (this.getElementByXid('select3').value) {
-			mnt = ("0" + parseInt(this.getElementByXid('select3').value).toString(16)).substr(-2); // mnt*2
-		} else {
-			mnt = "00";
-		}
 		var hour = ("0" + parseInt(this.getElementByXid('select2').value).toString(16)).substr(-2); // hour*2
-		var mnt1 = "00";
-		if (this.getElementByXid('select4').value) {
-			mnt1 = ("0" + parseInt(this.getElementByXid('select4').value).toString(16)).substr(-2); // mnt*2
-		} else {
-			mnt1 = "00";
-		}
 		var hour1 = ("0" + parseInt(this.getElementByXid('select6').value).toString(16)).substr(-2);
 		msg = msg + mnt + hour + mnt1 + hour1;
 		var nww="0d";
@@ -148,6 +151,9 @@ define(function(require) {
 		var idHex = '00000' + parseInt(sid).toString(16);
 		var socket = io('http://' + wbServerIP + ':4213');
 		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+		/*socket.emit('appLogin', {
+			deviceId : iot.deviceId
+		});*/
 		socket.emit('app2server', {
 			deviceId : iot.deviceId,
 			msg : msg
