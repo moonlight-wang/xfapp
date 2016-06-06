@@ -198,37 +198,19 @@
         </div> 
       </div> 
     </div>  
-    <div class="x-panel-bottom" xid="bottom2"> 
-      <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar"
-        xid="titleBar3"> 
-        <div component="$UI/system/components/justep/row/row" class="x-row"
-          xid="row4" style="height:100%;width:100%;"> 
-          <div class="x-col" xid="col9" style="Text-align:center;"> 
-            <a component="$UI/system/components/justep/button/button" class="btn btn-default"
-              label="主页" style="background-color:#009933;" xid="button13" onClick="openPage"
-              url="/xfapp/main.w"> 
-              <i xid="i3"/>  
-              <span xid="span3">主页</span>
-            </a> 
-          </div>  
-          <div class="x-col" xid="col8" style="Text-align:center;"> 
-            <a component="$UI/system/components/justep/button/button" class="btn btn-default"
-              label="设置" style="background-color:#009933;" xid="button13" onClick="openPage"
-              url="/xfapp/control.w"> 
-              <i xid="i3"/>  
-              <span xid="span3">设置</span>
-            </a> 
-          </div>  
-          <div class="x-col" xid="col3" style="Text-align:center;"> 
-            <a component="$UI/system/components/justep/button/button" class="btn btn-default"
-              label="管理" style="background-color:#009933;" xid="button13" onClick="openPage"
-              url="/xfapp/edit.w"> 
-              <i xid="i3"/>  
-              <span xid="span3">管理</span>
-            </a> 
-          </div> 
-        </div> 
-      </div> 
-    </div>
-  </div> 
+    <div class="x-panel-bottom" xid="bottom1">
+   <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar2">
+    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="height:100%;width:100%;">
+     <div class="x-col" xid="col31" style="Text-align:center;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="主页" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/main.w">
+       <i xid="i2"></i>
+       <span xid="span3">主页</span></a> </div> 
+     <div class="x-col" xid="col32" style="Text-align:center;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="设置" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/control.w">
+       <i xid="i2"></i>
+       <span xid="span3">设置</span></a> </div> 
+     <div class="x-col" xid="col33" style="Text-align:center;">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/edit.w">
+       <i xid="i2"></i>
+       <span xid="span3">更多</span></a> </div> </div> </div> </div></div> 
 </div>
