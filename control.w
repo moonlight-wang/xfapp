@@ -188,9 +188,9 @@
          <option value="23" xid="default5">23点</option></select> </div> </span> 
       <span xid="span1" class="pull-left" style="width:50%;">
        <div component="$UI/system/components/justep/labelEdit/labelEdit" class="x-label-edit x-label30" xid="labelEdit6" style="width:95%;">
-        <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select4" style="weigh:30%;height:333%;width:100%;" bind-optionsValue="m" bind-options="mData" bind-optionsLabel="xianshi"></select></div> </span> </div> </div> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="display:none;"> 
+        <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select4" style="weigh:30%;height:333%;width:100%;" bind-optionsValue="m" bind-options="mData" bind-optionsLabel="xianshi"></select></div> </span> </div> </div> </div> </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row8"> 
         <div class="x-col" xid="col17" style="Text-align:center;">
-          <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-lg btn-only-icon"
+          <a component="$UI/system/components/justep/button/button" class="btn btn-primary btn-lg btn-only-icon"
             label="关机" xid="button10" icon="glyphicon glyphicon-off"> 
             <i xid="i9" class="glyphicon glyphicon-off"/>  
             <span xid="span10">关机</span>

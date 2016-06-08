@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:331px;left:481px;" onLoad="modelLoad"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="valueData" idColumn="ID"><column name="ID" type="Integer" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:331px;left:481px;" onLoad="modelLoad" onActive="mdataActive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="valueData" idColumn="ID"><column name="ID" type="Integer" xid="xid1"></column>
   <column label="室外PM2.5" name="wPM" type="Float" xid="xid2"></column>
   <column label="天气状况" name="weather" type="String" xid="xid6"></column>
   <column label="室外温度" name="temperature" type="String" xid="xid7"></column>
@@ -14,12 +14,9 @@
     <calculate xid="calculate2">
      <expr xid="default3"></expr></calculate> </col> </rule></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="mData" idColumn="mID"><column name="mID" type="Integer" xid="xid17"></column>
-  <column name="frequency" type="Double" xid="xid18"></column>
-  <column name="blast" type="Double" xid="xid19"></column>
   <column name="lx" type="Boolean" xid="xid20"></column>
-  <column name="gongneng" type="Boolean" xid="xid21"></column>
   <column name="lock" type="Boolean" xid="xid22"></column>
-  <data xid="default6">[{&quot;mID&quot;:1,&quot;frequency&quot;:25,&quot;blast&quot;:30,&quot;lx&quot;:&quot;1&quot;,&quot;gongneng&quot;:&quot;1&quot;,&quot;lock&quot;:&quot;1&quot;}]</data></div>
+  <data xid="default6">[{&quot;mID&quot;:1,&quot;lx&quot;:&quot;0&quot;,&quot;lock&quot;:&quot;0&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="aData" idColumn="ID"><column name="ID" type="Integer" xid="xid3"></column>
   <column label="城市" name="city" type="String" xid="xid4"></column>
   <rule xid="rule3"></rule></div>
@@ -205,7 +202,7 @@
       <div xid="div15" style="Text-align:center;font-size:12px;" bind-text='$model.mData.val("blast")? $model.mData.val("blast")+"m²/h":"";'></div></div> 
      <div class="x-col" xid="col14">
       <div xid="div16" style="Text-align:center;font-size:12px;">滤芯</div>
-      <div xid="div17" style="Text-align:center;font-size:12px;" bind-text=' $model.mData.val("lx") ==1?"更换":"不更换";'></div></div> 
+      <div xid="div17" style="Text-align:center;font-size:12px;" bind-text=' $model.mData.val("lx") ==1?"更换":"良好";'></div></div> 
      <div class="x-col" xid="col26">
       <div xid="div18" style="Text-align:center;font-size:12px;">功能</div>
       <div xid="div19" style="Text-align:center;font-size:12px;" bind-text=' $model.gongNeng()'></div></div> 

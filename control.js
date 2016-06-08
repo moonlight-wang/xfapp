@@ -67,6 +67,27 @@ define(function(require) {
 		});
 		var toggle = this.comp('toggle1');
 	};
+	Model.prototype.colseClick = function(event){
+		var msg2 = "AAEA051E01020000000000000000000032"+localStorage.getItem("address");
+		var arr = msg2.substring(4);
+		var sum = 0;
+		var i = 0;
+		for (; i < arr.length;) {
+			sum += parseInt(arr[i] + arr[i + 1], 16);
+			i += 2;
+		}
+		sum = sum.toString(16);
+		sum = sum.substr(-2);
+		msg2 = msg2 + sum + "AB";
+		var iot = {};
+		var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
+		var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+		socket.emit('app2server', {
+			deviceId : iot.deviceId,
+			msg : msg2
+		});
+	};
 	Model.prototype.saveClick = function(event) {
 		var sid = localStorage.getItem("sID");
 		var msg = "AAEA05"; // 05
@@ -86,7 +107,13 @@ define(function(require) {
 		msg = msg + pl;
 		var toggle2 = this.comp('toggle2');
 		var mod = this.getElementByXid('select1').value;
-		toggle2.get('checked') ? mod = "0" + parseInt("1" + mod).toString(16) : mod = "0" + mod;
+		if(toggle2.get('checked')){
+			mod = "0" + parseInt("1" + mod).toString(16);
+			localStorage.setItem("lock","1");
+		} else{
+			mod = "0" + mod;
+			localStorage.setItem("lock","0");
+		}
 		msg = msg + mod;
 		var toggle1 = this.comp('toggle1');
 		var gn,mnt,mnt1;
@@ -120,7 +147,7 @@ define(function(require) {
 		var hour = ("0" + parseInt(this.getElementByXid('select2').value).toString(16)).substr(-2); // hour*2
 		var hour1 = ("0" + parseInt(this.getElementByXid('select6').value).toString(16)).substr(-2);
 		msg = msg + mnt + hour + mnt1 + hour1;
-		var nww="0d";
+		var nww="01";
 		msg = msg + nww;
 		var chu = "32";
 		if (this.getElementByXid('select5').value) {
@@ -158,9 +185,9 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : msg
 		});
-		justep.Util.hint("保存成功", {
+		/*justep.Util.hint("保存成功", {
 					"type" : "success"
-				}, 'json');
+				}, 'json');*/
 	};
 	return Model;
 });

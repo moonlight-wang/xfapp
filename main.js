@@ -109,6 +109,19 @@ define(function(require) {
 		}, 'json');
 
 	};
+	Model.prototype.mdataActive = function(){
+		var mData = this.comp('mData');
+		if(localStorage.getItem("lock")){
+			mData.clear();
+			mData.newData({
+				index : 0,
+				defaultValues : [ {
+					"lx" : "0",
+					"lock" : localStorage.getItem("lock")
+				} ]
+			});
+		}
+	};
 	Model.prototype.tvoc = function() {
 		var nData = this.comp("infoData");
 		var TOVC = parseInt(nData.val("TOVC"));
