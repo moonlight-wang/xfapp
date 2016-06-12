@@ -16,12 +16,26 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
+		console.log(window.screen.height);
+		console.log(window.screen.width);
+		
+		/*if(window.screen.height<window.screen.width){
+			var mar = ((window.screen.width-window.screen.height/2)/2).toString();
+			var max = window.screen.height/2;
+			var win = this.comp("wing1");
+			win.$domNode.context.style.marginLeft=mar+"px";
+			win.$domNode.context.style.maxWidth=max+"px";
+			console.log(win.$domNode.context.style);
+		}*/
+		
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
 		var status = localStorage.getItem("status");
+		var span = this.getElementByXid("span17");
+		span.style.height = window.screen.width*0.34+"px";
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
@@ -76,6 +90,22 @@ define(function(require) {
 					"gn" : parseInt(msg[10] + msg[11], 16),
 				} ]
 			});
+			var nPM = parseInt(info.val("nPM"));
+			if (nPM <= 35) {
+				span.style.backgroundImage="url('./img/lv.png')";
+			} else if (nPM > 35 && nPM <= 75) {
+				span.style.backgroundImage="url('./img/huang.png')";
+			} else if (nPM > 75 && nPM <= 115) {
+				span.style.backgroundImage="url('./img/ju.png')";
+			} else if (nPM > 115 && nPM <= 150) {
+				span.style.backgroundImage="url('./img/hong.png')";
+			} else if (nPM > 150 && nPM <= 250) {
+				span.style.backgroundImage="url('./img/zhong.png')";
+			} else if (nPM > 250) {
+				span.style.backgroundImage="url('./img/yan.png')";
+			} else {
+				span.style.backgroundImage="url('./img/lv.png')";
+			}
 			localStorage.setItem("moshi", modeCased(mode));
 		});
 		$.get('http://' + ajaxServerIP + '/contact/edit', {

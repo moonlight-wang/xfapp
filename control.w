@@ -12,9 +12,10 @@
     </div>  
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="plData" idColumn="col0">
-      <column name="col0" type="String" xid="xid3"/>  
-      <column name="pl" type="String" xid="xid4"/>
-    </div>  
+      <column name="col0" type="String" xid="xid3"></column>
+  <column name="pl" type="String" xid="xid4"></column>
+  <column name="a" type="String" xid="xid8"></column>
+  <data xid="default11">[]</data></div>  
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="mData" idColumn="col0">
       <column name="col0" type="String" xid="xid5"/>  
@@ -73,8 +74,8 @@
           <div component="$UI/system/components/justep/labelEdit/labelEdit"
             class="x-label-edit x-label30" xid="labelEdit4" style="width:40%;"> 
             <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit"
-              xid="select5" style="weigh:30%;height:333%;width:100%;" bind-options="plData"
-              bind-optionsValue="pl" bind-optionsLabel="pl"></select> 
+              xid="select5" style="weigh:30%;width:100%;height:100%;" bind-options="plData"
+              bind-optionsValue="pl" bind-optionsLabel="a" bind-ref='$model.plData.ref("a")'></select> 
           </div> 
         </div> 
       </div>  

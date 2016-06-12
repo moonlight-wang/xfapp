@@ -55,10 +55,18 @@ define(function(require) {
 			plData.newData({
 				index : 0,
 				defaultValues : [ {
-					"pl" : j
+					"pl" : j,
+					"a" : j
 				} ]
 			});
 		}
+		plData.newData({
+				index : 0,
+				defaultValues : [ {
+					"pl" : "49",
+					"a" : "静电除尘"
+				} ]
+			});
 		valueData.newData({
 			index : 0,
 			defaultValues : [ {
