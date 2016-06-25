@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div xmlns="http://www.w3.org/1999/xhtml" component="$UI/system/components/justep/window/window" design="device:m;" xid="window" class="window">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="left:18px;top:83px;height:244px;" onLoad="modelLoad"> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:384px;left:57px;" onLoad="modelLoad"> 
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="infoData" idColumn="ID">
    <column name="ID" type="Integer" xid="xid5"></column>
    <column label="设备名" name="name" type="String" xid="xid8"></column>
@@ -29,7 +29,7 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="height:8%;">
+    <div class="x-panel-content" xid="content1" style="background:url('./img/beijing.jpg') no-repeat;background-size:100% 100%;color:#e4e4e4;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row5" style="height:8%;">
    <div class="x-col" style="Text-align:center;font-size:12px;" xid="col13" bind-text=' $model.infoData.ref("mode")'></div>
    <div class="x-col" style="Text-align:center;font-size:12px;" xid="col15">
     <span xid="span40">
@@ -39,7 +39,22 @@
     <span xid="span41">
      <label xid="label3" bind-text=' $model.infoData.ref("name")'></label></span> </div> 
    <div class="x-col" style="Text-align:center;font-size:12px;" xid="col19" bind-text=' $model.infoData.ref("status")'></div></div>
-  <p xid="p1" style="height:8%;background-color:#000"><img src="" alt="" xid="image1" height="100%"></img></p></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="width:90%;margin-left:5%">
+   <div class="x-col" xid="col3" style="text-align:center;border-bottom:2px solid #fff;font-size:16px" label="滤芯状态">滤芯状态</div></div>
+  <div xid="div1" style="height:10%;width:90%;margin-left:10%"><span xid="span1" class="pull-left" style="width:80%;height:100%;"><![CDATA[粗效过滤]]><p xid="p1" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;"><img src="./img/lvtiao.png" alt="" xid="image1" style="border-radius:20px;width:60%;" height="100%"></img></p></span>
+  <span xid="span2" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;"><![CDATA[123]]></span></div>
+  <div xid="div2" style="height:10%;width:90%;margin-left:10%">
+   <span xid="span5" class="pull-left" style="width:80%;height:100%;"><![CDATA[静电除尘器    ]]>
+  <p xid="p2" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;">
+   <img src="./img/huangtiao.png" alt="" xid="image2" style="border-radius:20px;width:60%;" height="100%"></img></p></span> 
+   <span xid="span3" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;">123</span></div>
+  <div xid="div3" style="height:10%;width:90%;margin-left:10%">
+   <span xid="span7" class="pull-left" style="width:80%;height:100%;"><![CDATA[HEPA高效过滤器  ]]>
+  <p xid="p3" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;">
+   <img src="./img/hongtiao.png" alt="" xid="image3" style="border-radius:20px;width:60%;" height="100%"></img></p></span> 
+   <span xid="span6" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;">123</span></div>
+  <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="width:90%;margin-left:5%;border-bottom:2px solid #fff;">
+   </div></div>
   <div class="x-panel-bottom" xid="bottom1">
    <div component="$UI/system/components/justep/titleBar/titleBar" class="x-titlebar" xid="titleBar2">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row14" style="height:100%;width:100%;">

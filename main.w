@@ -160,7 +160,7 @@
       <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:16px;width:50%;">label</label></div> </div> 
   
   </span> 
-   <span xid="span17" class="pull-left" style="width:34%;background:url('./img/lv.png') no-repeat;background-size:100% 100%;border-radius:50% 50%;height:100%;">
+   <span xid="span17" class="pull-left" style="width:34%;background:url('./img/lv.png') no-repeat;background-size:100% 100%;border-radius:50% 50%;height:100%;margin-top:3%;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row31">
    <div class="x-col" xid="col43"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
    <div class="x-col" xid="col28"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
