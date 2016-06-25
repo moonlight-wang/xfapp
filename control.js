@@ -6,12 +6,22 @@ define(function(require) {
 		this.callParent();
 	};
 	Model.prototype.addCountBtnClick = function(event) {
-		var row = event.bindingContext.$object;
-		row.val("pinlv", parseInt(row.val("pinlv")) + 1);
+		/*this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = parseInt(this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent)+1;
+		this.comp('output1').value = parseInt(this.comp('output1').value)+1;*/
+		this.comp('output1').set('value',parseInt(this.comp('output1').get('value'))+1);
+		
 	};
 	Model.prototype.reduceCountBtnClick = function(event) {
-		var row = event.bindingContext.$object;
-		row.val("pinlv", (row.val("pinlv") > 0) ? parseInt(row.val("pinlv") - 1) : 0);
+		/*var val = parseInt(this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent);
+		if (val > 0){
+			this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = val - 1;
+			this.comp('output1').value = parseInt(this.comp('output1').value)-1;
+		} else {
+			this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = 0;
+			this.comp('output1').value = 0;
+		}*/
+		this.comp('output1').set('value',(parseInt(this.comp('output1').get('value'))>0)?parseInt(this.comp('output1').get('value'))-1:0);
+		console.log(this.comp('output1').value);
 	};
 	Model.prototype.menuBtnClick = function(event) {
 		justep.Shell.showLeft();
@@ -31,17 +41,25 @@ define(function(require) {
 		justep.Shell.showPage(require.toUrl(url));
 	};
 	Model.prototype.toggleChecked = function(event) {
-		/*var dsbtn = this.comp('toggle4');
-		dsbtn.get('disabled') ? dsbtn.set({
-			'disabled' : false
-		}) : dsbtn.set({
-			'disabled' : true
-		});*/
+		/*
+		 * var dsbtn = this.comp('toggle4'); dsbtn.get('disabled') ? dsbtn.set({
+		 * 'disabled' : false }) : dsbtn.set({ 'disabled' : true });
+		 */
 	};
 	Model.prototype.modelLoad = function(event) {
 		var valueData = this.comp('valueData');
+		var div4 = this.getElementByXid('div4');
+		
+		div4.style.height = window.screen.width*0.3 + "px";
+		var span1 = this.getElementByXid("span1");
+		this.getElementByXid('span7').style.lineHeight = div4.style.height;	
+		this.getElementByXid('span1').style.lineHeight = div4.style.height;	
+		this.getElementByXid('span4').style.lineHeight = div4.style.height;
 		var plData = this.comp('plData');
 		var mData = this.comp('mData');
+		span1.style.backgroundImage = "url(./img/lv.png)";
+		span1.style.backgroundSize = "100% 100%";
+		console.log(span1.style);
 		for (var i = 59; i >= 0; i--) {
 			mData.newData({
 				index : 0,
@@ -51,32 +69,37 @@ define(function(require) {
 				} ]
 			});
 		}
-		for (var j = 255; j > 49; j--) {
-			plData.newData({
-				index : 0,
-				defaultValues : [ {
-					"pl" : j,
-					"a" : j
-				} ]
-			});
+		for (var j = 255; j > 48; j--) {
+			if (j == 49) {
+				plData.newData({
+					index : 0,
+					defaultValues : [ {
+						"pl" : "静电除尘",
+						"a" : "静电除尘"
+					} ]
+				});
+			} else {
+				plData.newData({
+					index : 0,
+					defaultValues : [ {
+						"pl" : j,
+						"a" : j
+					} ]
+				});
+			}
 		}
-		plData.newData({
-				index : 0,
-				defaultValues : [ {
-					"pl" : "49",
-					"a" : "静电除尘"
-				} ]
-			});
+
 		valueData.newData({
 			index : 0,
 			defaultValues : [ {
 				"pinlv" : localStorage.getItem("pinLv"),
+				"vID" : "Hz"
 			} ]
 		});
 		var toggle = this.comp('toggle1');
 	};
-	Model.prototype.colseClick = function(event){
-		var msg2 = "AAEA051E01020000000000000000000032"+localStorage.getItem("address");
+	Model.prototype.colseClick = function(event) {
+		var msg2 = "AAEA051E01020000000000000000000032" + localStorage.getItem("address");
 		var arr = msg2.substring(4);
 		var sum = 0;
 		var i = 0;
@@ -95,6 +118,24 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : msg2
 		});
+	};
+	Model.prototype.doOK = function(event) {
+		var comp = event.source;
+		var value = comp.getValue();
+		if(localStorage.getItem("leixing")=="定时开"){
+			value= justep.Date.toString(value, "hh时mm分");
+			this.comp('output2').set('value',value);	
+		}else{
+			value= justep.Date.toString(value, "hh时mm分");
+			this.comp('output3').set('value',value);
+		}
+	};
+	Model.prototype.datePickerClick = function(event){
+		localStorage.setItem("leixing", event.source.label);
+		var comp = this.comp('datePicker');
+		comp.set('type',"timer");
+		comp.show();
+		comp.setValue(new Date());
 	};
 	Model.prototype.saveClick = function(event) {
 		var sid = localStorage.getItem("sID");
@@ -115,34 +156,39 @@ define(function(require) {
 		msg = msg + pl;
 		var toggle2 = this.comp('toggle2');
 		var mod = this.getElementByXid('select1').value;
-		if(toggle2.get('checked')){
+		if (toggle2.get('checked')) {
 			mod = "0" + parseInt("1" + mod).toString(16);
-			localStorage.setItem("lock","1");
-		} else{
+			localStorage.setItem("lock", "1");
+		} else {
 			mod = "0" + mod;
-			localStorage.setItem("lock","0");
+			localStorage.setItem("lock", "0");
 		}
 		msg = msg + mod;
 		var toggle1 = this.comp('toggle1');
-		var gn,mnt,mnt1;
-		if(toggle1.get('checked')) {
+		var gn, mnt, mnt1,hour,hour1;
+		if (toggle1.get('checked')) {
 			gn = "1";
-			if(this.getElementByXid('select3').value && this.getElementByXid('select4').value){
-				mnt = ("0" + parseInt(this.getElementByXid('select3').value).toString(16)).substr(-2); 
-				mnt1 = ("0" + parseInt(this.getElementByXid('select4').value).toString(16)).substr(-2);
-			}else{
+			if (this.comp('output2').get('value') && this.comp('output3').get('value')) {
+				mnt = ("0" + parseInt(this.comp('output2').get('value').substr(3)).toString(16)).substr(-2);
+				mnt1 = ("0" + parseInt(this.comp('output3').get('value').substr(3)).toString(16)).substr(-2);
+				hour = ("0" + parseInt(this.comp('output2').get('value')).toString(16)).substr(-2); // hour*2
+				hour1 = ("0" + parseInt(this.comp('output3').get('value')).toString(16)).substr(-2);
+				console.log(parseInt(this.comp('output2').get('value').substr(3)).toString(16));
+			} else {
 				justep.Util.hint("未选择开关机时间！", {
 					"type" : "danger"
 				}, "json");
 				return;
 			}
-		 }else{
-			 gn = "0";
-			 mnt="00";
-			 mnt1="00";
-		 }
-		var toggle3 = this.comp('toggle3');
-		toggle3.get('checked') ? gn = gn + "1" : gn = gn + "2"; // gn
+		} else {
+			gn = "0";
+			mnt = "00";
+			mnt1 = "00";
+			hour = "00";
+			hour1 = "00";
+		}
+		var toggle5 = this.comp('toggle5');
+		toggle5.get('checked') ? gn = gn + "1" : gn = gn + "2"; // gn
 		gn = "0" + parseInt(gn).toString(16);
 		var myDate = new Date();
 		var year = parseInt(myDate.toLocaleString().substr(2, 2)).toString(16);
@@ -150,19 +196,13 @@ define(function(require) {
 		var dat = ("0" + myDate.getDate().toString(16)).substr(-2);
 		var hours = ("0" + myDate.getHours().toString(16)).substr(-2);
 		var minute = ("0" + myDate.getMinutes().toString(16)).substr(-2);
-
-		msg = msg + gn + minute + hours + dat + month + year;
-		var hour = ("0" + parseInt(this.getElementByXid('select2').value).toString(16)).substr(-2); // hour*2
-		var hour1 = ("0" + parseInt(this.getElementByXid('select6').value).toString(16)).substr(-2);
-		msg = msg + mnt + hour + mnt1 + hour1;
-		var nww="01";
+		msg = msg + gn + minute + hours + dat + month + year + mnt + hour + mnt1 + hour1;
+		var nww = "01";
 		msg = msg + nww;
 		var chu = "32";
-		if (this.getElementByXid('select5').value) {
-			chu = parseInt(this.getElementByXid('select5').value).toString(16); // chu
-		} else {
-			chu = "32";
-		}
+		if (!isNaN(this.getElementByXid('select7').value)) {
+			chu = parseInt(this.getElementByXid('select7').value).toString(16); // chu
+		} 
 		if (localStorage.getItem("address")) {
 			msg = msg + chu + localStorage.getItem("address");
 		} else {
@@ -186,16 +226,16 @@ define(function(require) {
 		var idHex = '00000' + parseInt(sid).toString(16);
 		var socket = io('http://' + wbServerIP + ':4213');
 		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
-		/*socket.emit('appLogin', {
-			deviceId : iot.deviceId
-		});*/
+		/*
+		 * socket.emit('appLogin', { deviceId : iot.deviceId });
+		 */
 		socket.emit('app2server', {
 			deviceId : iot.deviceId,
 			msg : msg
 		});
-		/*justep.Util.hint("保存成功", {
-					"type" : "success"
-				}, 'json');*/
+		/*
+		 * justep.Util.hint("保存成功", { "type" : "success" }, 'json');
+		 */
 	};
 	return Model;
 });

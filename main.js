@@ -18,16 +18,16 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event) {
 		console.log(window.screen.height);
 		console.log(window.screen.width);
-		
-		/*if(window.screen.height<window.screen.width){
-			var mar = ((window.screen.width-window.screen.height/2)/2).toString();
-			var max = window.screen.height/2;
-			var win = this.comp("wing1");
-			win.$domNode.context.style.marginLeft=mar+"px";
-			win.$domNode.context.style.maxWidth=max+"px";
-			console.log(win.$domNode.context.style);
-		}*/
-		
+
+		/*
+		 * if(window.screen.height<window.screen.width){ var mar =
+		 * ((window.screen.width-window.screen.height/2)/2).toString(); var max =
+		 * window.screen.height/2; var win = this.comp("wing1");
+		 * win.$domNode.context.style.marginLeft=mar+"px";
+		 * win.$domNode.context.style.maxWidth=max+"px";
+		 * console.log(win.$domNode.context.style); }
+		 */
+
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
@@ -35,7 +35,7 @@ define(function(require) {
 		var sname = localStorage.getItem("sName");
 		var status = localStorage.getItem("status");
 		var span = this.getElementByXid("span17");
-		span.style.height = window.screen.width*0.34+"px";
+		// span.style.height = window.screen.width*0.34+"px";
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
@@ -69,42 +69,85 @@ define(function(require) {
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);
-			var arr=msg.substr(34,6);
-			localStorage.setItem("address",arr);
+			var arr = msg.substr(34, 6);
+			localStorage.setItem("address", arr);
 			localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
 			var mode = parseInt(msg[8] + msg[9], 16);
 			localStorage.setItem("neiWai", parseInt(msg[8], 16));
 			info.clear();
-			info.newData({
-				index : 0,
-				defaultValues : [ {
-					"fqy" : parseInt(msg[4] + msg[5], 16),
-					"mode" : modeCased(mode),
-					"TOVC" : parseInt(msg[6] + msg[7], 16),
-					"name" : sname,
-					"CO2" : parseInt(msg[22]+msg[23]+msg[20] + msg[21], 16),
-					"nPM" : parseInt(msg[18]+msg[19]+msg[16] + msg[17], 16),
-					"tmp" : parseInt(msg[26] + msg[27], 16)<100?parseInt(msg[26] + msg[27], 16):"-"+(parseInt(msg[26] + msg[27], 16)-100),
-					"hmy" : parseInt(msg[32] + msg[33], 16),
-					"status" : status,
-					"gn" : parseInt(msg[10] + msg[11], 16),
-				} ]
-			});
+
+			if (parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16) !== 0) {
+				info.newData({
+					index : 0,
+					defaultValues : [ {
+						"fqy" : parseInt(msg[4] + msg[5], 16),
+						"mode" : modeCased(mode),
+						"TOVC" : parseInt(msg[6] + msg[7], 16),
+						"name" : sname,
+						"CO2" : parseInt(msg[22] + msg[23] + msg[20] + msg[21], 16),
+						"nPM" : parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16),
+						"tmp" : parseInt(msg[26] + msg[27], 16) < 100 ? parseInt(msg[26] + msg[27], 16) : "-" + (parseInt(msg[26] + msg[27], 16) - 100),
+						"hmy" : parseInt(msg[32] + msg[33], 16),
+						"status" : status,
+						"gn" : parseInt(msg[10] + msg[11], 16),
+						"wPM" : parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16),
+					} ]
+				});
+			} else {
+				$.get('http://' + ajaxServerIP + '/contact/edit', {
+					ajax : 1,
+					userid : userid,
+					id : sid
+				}, function(data) {
+					adata.newData({
+						index : 0,
+						defaultValues : [ {
+							"city" : data.city,
+						} ]
+					});
+					$.get('http://' + ajaxServerIP + '/contact/getWeather', {
+						ajax : 1,
+						userid : userid,
+						city : data.city
+					}, function(wdata, wstatus) {
+						if (wstatus == 'success') {
+							var wth = wdata['HeWeather data service 3.0'][0];
+							info.newData({
+								index : 0,
+								defaultValues : [ {
+									"fqy" : parseInt(msg[4] + msg[5], 16),
+									"mode" : modeCased(mode),
+									"TOVC" : parseInt(msg[6] + msg[7], 16),
+									"name" : sname,
+									"CO2" : parseInt(msg[22] + msg[23] + msg[20] + msg[21], 16),
+									"nPM" : parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16),
+									"tmp" : parseInt(msg[26] + msg[27], 16) < 100 ? parseInt(msg[26] + msg[27], 16) : "-" + (parseInt(msg[26] + msg[27], 16) - 100),
+									"hmy" : parseInt(msg[32] + msg[33], 16),
+									"status" : status,
+									"gn" : parseInt(msg[10] + msg[11], 16),
+									"wPM" : wth.aqi.city.pm25,
+								} ]
+							});
+						}
+					}, 'json');
+				}, 'json');
+			}
+
 			var nPM = parseInt(info.val("nPM"));
 			if (nPM <= 35) {
-				span.style.backgroundImage="url('./img/lv.png')";
+				span.style.backgroundImage = "url('./img/lv.png')";
 			} else if (nPM > 35 && nPM <= 75) {
-				span.style.backgroundImage="url('./img/huang.png')";
+				span.style.backgroundImage = "url('./img/huang.png')";
 			} else if (nPM > 75 && nPM <= 115) {
-				span.style.backgroundImage="url('./img/ju.png')";
+				span.style.backgroundImage = "url('./img/ju.png')";
 			} else if (nPM > 115 && nPM <= 150) {
-				span.style.backgroundImage="url('./img/hong.png')";
+				span.style.backgroundImage = "url('./img/hong.png')";
 			} else if (nPM > 150 && nPM <= 250) {
-				span.style.backgroundImage="url('./img/zhong.png')";
+				span.style.backgroundImage = "url('./img/zhong.png')";
 			} else if (nPM > 250) {
-				span.style.backgroundImage="url('./img/yan.png')";
+				span.style.backgroundImage = "url('./img/yan.png')";
 			} else {
-				span.style.backgroundImage="url('./img/lv.png')";
+				span.style.backgroundImage = "url('./img/lv.png')";
 			}
 			localStorage.setItem("moshi", modeCased(mode));
 		});
@@ -139,9 +182,9 @@ define(function(require) {
 		}, 'json');
 
 	};
-	Model.prototype.mdataActive = function(){
+	Model.prototype.mdataActive = function() {
 		var mData = this.comp('mData');
-		if(localStorage.getItem("lock")){
+		if (localStorage.getItem("lock")) {
 			mData.clear();
 			mData.newData({
 				index : 0,
