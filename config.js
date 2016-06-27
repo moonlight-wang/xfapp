@@ -10,7 +10,7 @@ define(function(require){
     	this.duankou="4213";
 	};
     Model.prototype.saveClick = function(event){
-    	localStorage.setItem("ajaxServerIP",this.fIP+"/xf");
+    	localStorage.setItem("ajaxServerIP",this.fIP);
     	localStorage.setItem("wbServerIP",this.fIP);
     	localStorage.setItem("duankou",this.duankou);
     	justep.Util.hint("保存成功", {

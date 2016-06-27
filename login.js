@@ -22,11 +22,13 @@ define(function(require) {
 		localStorage.setItem('userName', this.username);
 		user.password = this.comp('passwordInput').value;
 		user.ajax = 1;
-		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/check_login', user, function(data) {
+		$.post('http://'+localStorage.getItem("ajaxServerIP")+'/public/check_login', user, function(data) {
+			console.log(data.status);
 			if (data.status == 1) {
 				localStorage.setItem("userid", data.userid);
+				console.log(">>>>>>>>>>>>");
 				justep.Shell.showPage('list');
-				justep.Shell.closePage('login');
+				//justep.Shell.closePage('login');
 			} else {
 				justep.Util.hint("用户名或密码有误！", {
 					"type" : "danger"

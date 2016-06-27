@@ -8,7 +8,7 @@
       xid="valueData" idColumn="vID"> 
       <column name="vID" type="Integer" xid="xid1"/>  
       <column label="频率" name="pinlv" type="String" xid="xid2"/>  
-      <data xid="default1">[{&quot;vID&quot;:{&quot;value&quot;:&quot;Hz&quot;},&quot;pinlv&quot;:&quot;30Hz&quot;}]</data></div>  
+      <data xid="default1">[{&quot;vID&quot;:{&quot;value&quot;:&quot;Hz&quot;},&quot;pinlv&quot;:&quot;30&quot;}]</data></div>  
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="plData" idColumn="col0">
       <column name="col0" type="String" xid="xid3"></column>
