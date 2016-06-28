@@ -38,6 +38,9 @@ define(function(require){
 				},
 				"about" : {
 					url : require.toUrl('./about.w')
+				},
+				"strainer" : {
+					url : require.toUrl('./strainer.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;

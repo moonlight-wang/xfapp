@@ -133,7 +133,7 @@
        <i xid="i2"></i>
        <span xid="span3">设置</span></a> </div> 
      <div class="x-col" xid="col33" style="Text-align:center;">
-      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/edit.w">
+      <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em" xid="button4" onClick="openPage" url="/xfapp/strainer.w">
        <i xid="i2"></i>
        <span xid="span3">更多</span></a> </div> </div> </div> </div></div> 
 <div component="$UI/system/components/justep/datePicker/datePicker" class="x-popPicker" xid="datePicker" type="datetime" onOK="doOK" style="left:75px;top:11px;">

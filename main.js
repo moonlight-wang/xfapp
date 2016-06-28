@@ -16,9 +16,9 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
-		/*var element = this.getElementByXid('span17');
+		var element = this.getElementByXid('span17');
 		var r = 0;
-		var i = 1;
+		var i = 5;
 		function rotate() {
 			r += i;
 			// if( Math.abs(r) >= 360 ) i*=-1;
@@ -28,7 +28,7 @@ define(function(require) {
 			element.style.OTransform = "rotate(" + r + "deg)";
 			element.style.transform = "rotate(" + r + "deg)";
 		}
-		var timer = setInterval(rotate, 2);*/
+		var timer = setInterval(rotate, 2);
 
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
@@ -154,6 +154,8 @@ define(function(require) {
 					span.style.backgroundImage = "url('./img/lv.png')";
 				}
 				localStorage.setItem("moshi", modeCased(mode));
+			}else if(msg.substr(0, 4) == "409A"){
+				localStorage.setItem("message",msg);
 			}
 		});
 		$.get('http://' + ajaxServerIP + '/contact/edit', {
@@ -179,7 +181,6 @@ define(function(require) {
 						defaultValues : [ {
 							"weather" : wth.now.cond.txt,
 							"temperature" : wth.now.tmp,
-							"wPM" : wth.aqi.city.pm25,
 						} ]
 					});
 				}
