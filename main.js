@@ -16,9 +16,9 @@ define(function(require) {
 		return require.toUrl(url);
 	};
 	Model.prototype.modelLoad = function(event) {
-		var element = this.getElementByXid('span17');
+		var element = this.getElementByXid('image4');
 		var r = 0;
-		var i = 5;
+		var i = 3;
 		function rotate() {
 			r += i;
 			// if( Math.abs(r) >= 360 ) i*=-1;
@@ -28,7 +28,7 @@ define(function(require) {
 			element.style.OTransform = "rotate(" + r + "deg)";
 			element.style.transform = "rotate(" + r + "deg)";
 		}
-		var timer = setInterval(rotate, 2);
+		var timer = setInterval(rotate, 1);
 
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
@@ -38,6 +38,7 @@ define(function(require) {
 		var status = localStorage.getItem("status");
 		var span = this.getElementByXid("span17");
 		 span.style.height = window.screen.width*0.34+"px";
+		 element.style.height = window.screen.width*0.34+"px";
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
@@ -136,22 +137,30 @@ define(function(require) {
 						}, 'json');
 					}, 'json');
 				}
-
+				
 				var nPM = parseInt(info.val("nPM"));
 				if (nPM <= 35) {
-					span.style.backgroundImage = "url('./img/lv.png')";
+					element.src = './img/lv.png';
 				} else if (nPM > 35 && nPM <= 75) {
-					span.style.backgroundImage = "url('./img/huang.png')";
+					element.src = './img/huang.png';
 				} else if (nPM > 75 && nPM <= 115) {
-					span.style.backgroundImage = "url('./img/ju.png')";
+					element.src = './img/ju.png';
 				} else if (nPM > 115 && nPM <= 150) {
-					span.style.backgroundImage = "url('./img/hong.png')";
+					element.src = './img/hong.png';
 				} else if (nPM > 150 && nPM <= 250) {
-					span.style.backgroundImage = "url('./img/zhong.png')";
+					element.src = './img/zhong.png';
 				} else if (nPM > 250) {
-					span.style.backgroundImage = "url('./img/yan.png')";
+					element.src = './img/yan.png';
 				} else {
-					span.style.backgroundImage = "url('./img/lv.png')";
+					element.src = './img/lv.png';
+				}
+				var hqy = parseInt(msg[4] + msg[5], 16);
+				if ((50-hqy)>0){
+					window.clearInterval(timer);
+					timer = setInterval(rotate, (50-hqy));
+				}else{
+					window.clearInterval(timer);
+					timer = setInterval(rotate, 1);
 				}
 				localStorage.setItem("moshi", modeCased(mode));
 			}else if(msg.substr(0, 4) == "409A"){

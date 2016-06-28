@@ -161,8 +161,8 @@
       <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
   
   </span> 
-   <span xid="span17" class="pull-left" style="width:34%;background:url('./img/lv.png') no-repeat;background-size:100% 100%;border-radius:50% 50%;height:100%;margin-top:5%;">
-    <div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
+   <span xid="span17" class="pull-left" style="width:34%;border-radius:50% 50%;height:100%;margin-top:5%;position:﻿﻿﻿﻿relative">
+    <img src="./img/lv.png" alt="" xid="image4" style="position:absolute;background-size:100% 100%;height:100%;width:34%;"></img><div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
    <div class="x-col" xid="col28"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
      <div class="x-col" xid="col38" style="Text-align:center;font-size:12px;">室内PM2.5
       <div xid="div31">
