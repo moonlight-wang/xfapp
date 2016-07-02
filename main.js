@@ -11,25 +11,11 @@ define(function(require) {
 	var Model = function() {
 		this.callParent();
 	};
-	// 图片路径转换
+	/*// 图片路径转换
 	Model.prototype.getImageUrl = function(url) {
 		return require.toUrl(url);
-	};
+	};*/
 	Model.prototype.modelLoad = function(event) {
-		var element = this.getElementByXid('image4');
-		var r = 0;
-		var i = 3;
-		function rotate() {
-			r += i;
-			// if( Math.abs(r) >= 360 ) i*=-1;
-			element.style.MozTransform = "rotate(" + r + "deg)";
-			element.style.webkitTransform = "rotate(" + r + "deg)";
-			element.style.msTransform = "rotate(" + r + "deg)";
-			element.style.OTransform = "rotate(" + r + "deg)";
-			element.style.transform = "rotate(" + r + "deg)";
-		}
-		var timer = setInterval(rotate, 1);
-
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
@@ -37,23 +23,12 @@ define(function(require) {
 		var sname = localStorage.getItem("sName");
 		var status = localStorage.getItem("status");
 		var span = this.getElementByXid("span17");
+		var element = this.getElementByXid('image4');
 		 span.style.height = window.screen.width*0.34+"px";
 		 element.style.height = window.screen.width*0.34+"px";
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
-		var iot = {};
-		var idHex = '00000' + parseInt(sid).toString(16);
-		socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
-		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
-		// // 连接后登录
-		socket.emit('appLogin', {
-			deviceId : iot.deviceId
-		});
-		socket.emit('app2server', {
-			deviceId : iot.deviceId,
-			msg : 'come from app'
-		});
 		info.newData({
 			index : 0,
 			defaultValues : [ {
@@ -69,6 +44,30 @@ define(function(require) {
 				"gn" : 2,
 			} ]
 		});
+		var r = 0;
+		var i = 3;
+		function rotate() {
+			r += i;
+			element.style.MozTransform = "rotate(" + r + "deg)";
+			element.style.webkitTransform = "rotate(" + r + "deg)";
+			element.style.msTransform = "rotate(" + r + "deg)";
+			element.style.OTransform = "rotate(" + r + "deg)";
+			element.style.transform = "rotate(" + r + "deg)";
+		}
+		var timer = setInterval(rotate, 1);
+		var iot = {};
+		var idHex = '00000' + parseInt(sid).toString(16);
+		socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+		// // 连接后登录
+		socket.emit('appLogin', {
+			deviceId : iot.deviceId
+		});
+		socket.emit('app2server', {
+			deviceId : iot.deviceId,
+			msg : 'come from app'
+		});
+		
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);

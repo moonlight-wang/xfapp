@@ -3,7 +3,6 @@ define(function(require) {
 	var justep = require("$UI/system/lib/justep");
 	var io = require("./socket.io");
 	require("$UI/system/lib/cordova/cordova");
-	require("cordova!cordova-plugin-screen-orientation");
 	
 	var Model = function() {
 		this.callParent();
@@ -39,7 +38,7 @@ define(function(require) {
 				var iot = {};
 				socket.emit('getOnlineListFirst');
 				socket.on('deviceList', function(iot) {
-					var lRow = list.getLastRow();
+					var lRow = list.getLastRow(),row;
 					list.first();
 					do {
 						row = list.getCurrentRow();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:331px;left:481px;" onLoad="modelLoad" onActive="mdataActive"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="valueData" idColumn="ID"><column name="ID" type="Integer" xid="xid1"></column>
+  <div component="$UI/system/components/justep/model/model" xid="model" style="height:auto;top:331px;left:481px;" onLoad="modelLoad" onActive="mdataActive"><div component="$UI/system/components/justep/data/data" autoLoad="false" xid="valueData" idColumn="ID"><column name="ID" type="Integer" xid="xid1"></column>
   <column label="室外PM2.5" name="wPM" type="Float" xid="xid2"></column>
   <column label="天气状况" name="weather" type="String" xid="xid6"></column>
   <column label="室外温度" name="temperature" type="String" xid="xid7"></column>
@@ -13,14 +13,14 @@
    <col name="name" xid="ruleCol2">
     <calculate xid="calculate2">
      <expr xid="default3"></expr></calculate> </col> </rule></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="mData" idColumn="mID"><column name="mID" type="Integer" xid="xid17"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="mData" idColumn="mID"><column name="mID" type="Integer" xid="xid17"></column>
   <column name="lx" type="Boolean" xid="xid20"></column>
   <column name="lock" type="Boolean" xid="xid22"></column>
   <data xid="default6">[{&quot;mID&quot;:1,&quot;lx&quot;:&quot;0&quot;,&quot;lock&quot;:&quot;0&quot;}]</data></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="aData" idColumn="ID"><column name="ID" type="Integer" xid="xid3"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="aData" idColumn="ID"><column name="ID" type="Integer" xid="xid3"></column>
   <column label="城市" name="city" type="String" xid="xid4"></column>
   <rule xid="rule3"></rule></div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="infoData" idColumn="ID"><column name="ID" type="Integer" xid="xid5"></column>
+  <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="infoData" idColumn="ID"><column name="ID" type="Integer" xid="xid5"></column>
   <column label="设备名" name="name" type="String" xid="xid8"></column>
   <column label="状态" name="status" type="String" xid="xid9"></column>
   <column label="模式" name="mode" type="String" xid="xid23"></column>
@@ -92,7 +92,7 @@
       <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-only-icon" xid="button2" icon="glyphicon glyphicon-th-list" style="width:63px;" onClick="click">
    <i xid="detailsBtn" class="glyphicon glyphicon-th-list"></i>
    <span xid="span2"></span></a></div> 
-     <div class="x-titlebar-title" xid="title1">空气净化器</div>
+     <div class="x-titlebar-title" xid="title1">中嘉新风系统</div>
      <div class="x-titlebar-right reverse" xid="right1">
       <a component="$UI/system/components/justep/button/button" class="btn btn-link" label="分享" onClick="shareClick" xid="button3">
    <i xid="i3"></i>
@@ -139,12 +139,12 @@
        <span xid="span10">在全国空气质量排名：</span>
        <span xid="span11" bind-text='$model.valueData.ref("ranking")' style="font-size:18px;"></span></div> </div> </div> 
     <div xid="div41" style="height:12%;margin-top:1%;"><span xid="span25" class="pull-left" style="width:50%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row34">
-   <div class="x-col" xid="col56" style="Text-align:center;">TVOC
+   <div class="x-col" xid="col56" style="Text-align:center;color:yellow;">TVOC
    <div xid="div42">
     <br xid="default15"></br>
     <span xid="span27" bind-text=' "0.0"+$model.infoData.val("TOVC")+"mg/m³"'></span></div> </div></div></span>
   <span xid="span26" class="pull-right" style="width:50%;border-left:2px solid #fff;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row35">
-   <div class="x-col" xid="col60" style="Text-align:center;">CO2
+   <div class="x-col" xid="col60" style="Text-align:center;color:rgba(58, 55, 183, 0.77);">CO2
    <div xid="div43">
     <br xid="default16"></br>
     <span xid="span28" bind-text=' $model.infoData.val("CO2")+"PPM"'></span></div> </div></div></span></div><div xid="div30" style="height:28%;">
@@ -187,12 +187,12 @@
       <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
   
   </span> </div><div xid="div44" style="height:12%;margin-top:5%;"><span xid="span29" style="width:50%;" class="pull-left"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row36">
-   <div class="x-col" xid="col64" style="Text-align:center;">温度
+   <div class="x-col" xid="col64" style="Text-align:center;color:rgb(224, 39, 45);">温度
    <div xid="div45">
     <br xid="default17"></br>
     <span xid="span31" bind-text=' $model.infoData.val("tmp")+"℃"'></span></div> </div></div></span>
   <span xid="span30" style="width:50%;border-left:2px solid #fff;" class="pull-right"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row37">
-   <div class="x-col" xid="col68" style="Text-align:center;">湿度
+   <div class="x-col" xid="col68" style="Text-align:center;color:rgba(4, 76, 4, 0.93);">湿度
    <div xid="div46">
     <br xid="default18"></br>
     <span xid="span32" bind-text=' $model.infoData.val("hmy")+"%"'></span></div> </div></div></span></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="margin-top:1%;background:url('./img/hengtiao.png') no-repeat;background-size:100% 100%;height:15%;">

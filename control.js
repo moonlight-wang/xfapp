@@ -6,20 +6,10 @@ define(function(require) {
 		this.callParent();
 	};
 	Model.prototype.addCountBtnClick = function(event) {
-		/*this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = parseInt(this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent)+1;
-		this.comp('output1').value = parseInt(this.comp('output1').value)+1;*/
 		this.comp('output1').set('value',parseInt(this.comp('output1').get('value'))+1);
 		
 	};
 	Model.prototype.reduceCountBtnClick = function(event) {
-		/*var val = parseInt(this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent);
-		if (val > 0){
-			this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = val - 1;
-			this.comp('output1').value = parseInt(this.comp('output1').value)-1;
-		} else {
-			this.comp('output1').valueOf().$domNode.val("pinlv").context.textContent = 0;
-			this.comp('output1').value = 0;
-		}*/
 		this.comp('output1').set('value',(parseInt(this.comp('output1').get('value'))>0)?parseInt(this.comp('output1').get('value'))-1:0);
 		console.log(this.comp('output1').value);
 	};
