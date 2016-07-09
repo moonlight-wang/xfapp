@@ -390,6 +390,15 @@ function modeCased(mode) {
 	case 13:
 		return "睡眠";
 		break;
+	case 1:
+		return "智能";
+		break;
+	case 2:
+		return "手动";
+		break;
+	case 3:
+		return "睡眠";
+		break;
 	default:
 		return "未知";
 	}

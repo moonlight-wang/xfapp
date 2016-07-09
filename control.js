@@ -39,18 +39,40 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event) {
 		var valueData = this.comp('valueData');
 		var div4 = this.getElementByXid('div4');
+		var optionzhi = this.getElementByXid('default9');
+		var optionshou = this.getElementByXid('default8');
+		var optionshui = this.getElementByXid('default7');
+		var toggle1 = this.comp('toggle1');
+		var toggle2 = this.comp('toggle2');
+		if(localStorage.getItem("lock")=="1"){
+			toggle2.set('checked',true);
+		}
 		
+		if(localStorage.getItem("moshi")=="手动"){
+			optionshou.selected = "selected";
+		}else if(localStorage.getItem("moshi")=="睡眠"){
+			optionshui.selected = "selected";
+		}else {
+			optionzhi.selected = "selected";
+		}
 		div4.style.height = window.screen.width*0.3 + "px";
 		var span1 = this.getElementByXid("span1");
 		this.getElementByXid('span7').style.lineHeight = div4.style.height;	
 		this.getElementByXid('span1').style.lineHeight = div4.style.height;	
 		this.getElementByXid('span4').style.lineHeight = div4.style.height;
 		var plData = this.comp('plData');
-		var mData = this.comp('mData');
+		//var mData = this.comp('mData');
 		span1.style.backgroundImage = "url(./img/lv.png)";
 		span1.style.backgroundSize = "100% 100%";
-		console.log(span1.style);
-		for (var i = 59; i >= 0; i--) {
+		valueData.clear();
+		valueData.newData({
+			index : 0,
+			defaultValues : [ {
+				"pinlv" : localStorage.getItem("pinLv"),
+				"vID" : "Hz"
+			} ]
+		});
+		/*for (var i = 59; i >= 0; i--) {
 			mData.newData({
 				index : 0,
 				defaultValues : [ {
@@ -58,7 +80,8 @@ define(function(require) {
 					"xianshi" : i + "分"
 				} ]
 			});
-		}
+		}*/
+		
 		for (var j = 255; j > 48; j--) {
 			if (j == 49) {
 				plData.newData({
@@ -78,18 +101,11 @@ define(function(require) {
 				});
 			}
 		}
-
-		valueData.newData({
-			index : 0,
-			defaultValues : [ {
-				"pinlv" : localStorage.getItem("pinLv"),
-				"vID" : "Hz"
-			} ]
-		});
-		var toggle = this.comp('toggle1');
+		
+		
 	};
 	Model.prototype.colseClick = function(event) {
-		var msg2 = "AAEA051E01020000000000000000000032" + localStorage.getItem("address");
+		var msg2 = "AAEA051E01020000000000000000000132" + localStorage.getItem("address");
 		var arr = msg2.substring(4);
 		var sum = 0;
 		var i = 0;
@@ -181,13 +197,13 @@ define(function(require) {
 		toggle5.get('checked') ? gn = gn + "1" : gn = gn + "2"; // gn
 		gn = "0" + parseInt(gn).toString(16);
 		var myDate = new Date();
-		var year = parseInt(myDate.toLocaleString().substr(2, 2)).toString(16);
+		var year = ("0"+parseInt(myDate.getFullYear().toString().substr(2,2)).toString(16)).substr(-2);
 		var month = ("0" + parseInt(myDate.getMonth() + 1).toString(16)).substr(-2);
 		var dat = ("0" + myDate.getDate().toString(16)).substr(-2);
 		var hours = ("0" + myDate.getHours().toString(16)).substr(-2);
 		var minute = ("0" + myDate.getMinutes().toString(16)).substr(-2);
 		msg = msg + gn + minute + hours + dat + month + year + mnt + hour + mnt1 + hour1;
-		var nww = "01";
+		var nww = "00";
 		msg = msg + nww;
 		var chu = "32";
 		if (!isNaN(this.getElementByXid('select7').value)) {
@@ -223,9 +239,9 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : msg
 		});
-		/*
-		 * justep.Util.hint("保存成功", { "type" : "success" }, 'json');
-		 */
+		
+		  justep.Util.hint("保存成功", { "type" : "success" }, 'json');
+		 
 	};
 	return Model;
 });

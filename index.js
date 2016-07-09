@@ -47,7 +47,7 @@ define(function(require){
 
 		CommonUtils.attachDoubleClickExitApp(function() {
 			
-			var isHomePage = shellImpl.pagesComp.contents[0].innerContainer.getInnerModel().comp('windowContainer1').getActiveIndex() == 0;
+			//var isHomePage = shellImpl.pagesComp.contents[0].innerContainer.getInnerModel().comp('windowContainer1').getActiveIndex() == 0;
 			if (shellImpl.pagesComp.getActiveIndex() === 0) {
 				return true;
 			}

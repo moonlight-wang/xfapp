@@ -14,7 +14,7 @@
       <column name="col0" type="String" xid="xid3"></column>
   <column name="pl" type="String" xid="xid4"></column>
   <column name="a" type="String" xid="xid8"></column>
-  <data xid="default11">[]</data></div>  
+  <data xid="default11">[{&quot;col0&quot;:&quot;1&quot;,&quot;pl&quot;:&quot;30&quot;,&quot;a&quot;:&quot;静电除尘&quot;}]</data></div>  
     <div component="$UI/system/components/justep/data/data" autoLoad="true"
       xid="mData" idColumn="col0">
       <column name="col0" type="String" xid="xid5"/>  
@@ -82,12 +82,12 @@
           </li> 
         </ul> 
       </div>  
-      <div xid="div4" style="margin-top:10%">
+      <div xid="div4" style="margin-top:10%;height:20%;">
    <span xid="span7" class="pull-left" style="Text-align:center;line-height:100%;width:35%;height:100%;"><![CDATA[]]>
   <a component="$UI/system/components/justep/button/button" class="btn btn-xs btn-only-icon" label="button" xid="button8" icon="icon-android-remove" onClick="reduceCountBtnClick" style="color:white;background-color:#35b3e4;">
    <i xid="i7" class="icon-android-remove"></i>
    <span xid="span8"></span></a></span>
-   <span xid="span1" class="pull-left" style="Text-align:center;line-height:100%;width:30%;height:100%;"><![CDATA[]]>
+   <span xid="span1" class="pull-left" style="Text-align:center;line-height:100%;width:30%;height:100%;background:url('./img/lv.png) no-repeat;background-size:100% 100%;"><![CDATA[]]>
   <div component="$UI/system/components/justep/output/output" class="x-output" xid="output1" style="text-align:right;margin-right:10px;margin-left:10px;display:inline-block;width:20%;font-size:20px;" bind-text=' $model.valueData.ref("pinlv")' bind-ref='$model.valueData.ref("pinlv")'></div>
   <div component="$UI/system/components/justep/output/output" class="x-output" xid="output4" style="text-align:left;display:inline-block;width:30%;" bind-text=' $model.valueData.ref("vID")'></div></span>
    <span xid="span4" class="pull-right" style="width:35%;height:100%;Text-align:center;line-height:100%;"><![CDATA[]]>
