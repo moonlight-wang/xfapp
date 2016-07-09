@@ -15,7 +15,8 @@
   <column name="col1" type="String" xid="xid2"></column></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data2" idColumn="chuxiao"><column name="chuxiao" type="String" xid="xid3"></column>
   <column name="jingdian" type="String" xid="xid4"></column>
-  <column name="gaoxiao" type="String" xid="xid6"></column></div></div>  
+  <column name="gaoxiao" type="String" xid="xid6"></column>
+  <data xid="default1">[{&quot;chuxiao&quot;:&quot;50%&quot;,&quot;jingdian&quot;:&quot;50%&quot;,&quot;gaoxiao&quot;:&quot;50%&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 

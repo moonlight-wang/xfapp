@@ -35,31 +35,7 @@ define(function(require) {
 				}
 			});
 
-			/*$.ajax({
-				"type" : "post",
-				"url" : 'http://' + localStorage.getItem("ajaxServerIP") + '/public/check_login',
-				"dataType" : "json",
-				"data" : {
-					"emp_no" : this.username,
-					"password" : this.comp('passwordInput').value,
-					"ajax" : 1
-				},
-				"success" : function(data) {
-					if (data.status == 1) {
-						localStorage.setItem("userid", data.userid);
-						console.log(">>>>>>>>>>>>");
-						justep.Shell.showPage('list');
-						// justep.Shell.closePage('login');
-					} else {
-						justep.Util.hint("用户名或密码有误！", {
-							"type" : "danger"
-						}, 'json');
-					}
-				},
-				"error" : function(xhr, txt) {
-					alert(txt);
-				}
-			});*/
+			
 		} else {
 			justep.Util.hint("未配置网络，请点击右上角配置！", {
 				"type" : "danger"

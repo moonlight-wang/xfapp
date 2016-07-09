@@ -139,12 +139,12 @@
        <span xid="span10">在全国空气质量排名：</span>
        <span xid="span11" bind-text='$model.valueData.ref("ranking")' style="font-size:18px;"></span></div> </div> </div> 
     <div xid="div41" style="height:12%;margin-top:1%;"><span xid="span25" class="pull-left" style="width:50%;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row34">
-   <div class="x-col" xid="col56" style="Text-align:center;color:yellow;">TVOC
+   <div class="x-col" xid="col56" style="Text-align:center;color:#e4e4e4;">TVOC
    <div xid="div42">
     <br xid="default15"></br>
     <span xid="span27" bind-text=' "0.0"+$model.infoData.val("TOVC")+"mg/m³"'></span></div> </div></div></span>
   <span xid="span26" class="pull-right" style="width:50%;border-left:2px solid #fff;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row35">
-   <div class="x-col" xid="col60" style="Text-align:center;color:rgba(58, 55, 183, 0.77);">CO2
+   <div class="x-col" xid="col60" style="Text-align:center;color:#e4e4e4;">CO2
    <div xid="div43">
     <br xid="default16"></br>
     <span xid="span28" bind-text=' $model.infoData.val("CO2")+"PPM"'></span></div> </div></div></span></div><div xid="div30" style="height:28%;">
@@ -152,13 +152,13 @@
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
    <div class="x-col" xid="col27"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
      <div class="x-col" xid="col34" style="Text-align:center;">
-      <label xid="label5" bind-text="$model.tvoc()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
+      <label xid="label5" bind-text="$model.tvoc()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgba(193,239,9,0.73);">label</label></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row4" style="border-bottom:2px solid #fff;height:20%;">
    <div class="x-col" xid="col4"></div>
    </div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row21" style="height:20%;">
    <div class="x-col" xid="col18"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row17" style="top:70%;">
      <div class="x-col" xid="col46" style="Text-align:center;">
-      <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
+      <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgb(224, 39, 45);">label</label></div> </div> 
   
   </span> 
    <span xid="span17" class="pull-left" style="width:34%;border-radius:50% 50%;height:100%;margin-top:5%;position:﻿﻿﻿﻿relative">
@@ -179,20 +179,20 @@
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row25">
    <div class="x-col" xid="col35"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row16">
      <div class="x-col" xid="col42" style="Text-align:center;">
-      <label xid="label6" bind-text="$model.CO()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
+      <label xid="label6" bind-text="$model.CO()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgba(58, 55, 183, 0.77);">label</label></div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row8" style="height:20%;border-bottom:2px solid #fff;">
    <div class="x-col" xid="col16"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row20" style="height:20%;">
    <div class="x-col" xid="col17"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row19">
      <div class="x-col" xid="col54" style="Text-align:center;">
-      <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;background-color:rgba(236, 243, 240, 0.31);border-radius:20px;font-size:17px;width:50%;">label</label></div> </div> 
+      <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgba(4, 76, 4, 0.93);">label</label></div> </div> 
   
   </span> </div><div xid="div44" style="height:12%;margin-top:5%;"><span xid="span29" style="width:50%;" class="pull-left"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row36">
-   <div class="x-col" xid="col64" style="Text-align:center;color:rgb(224, 39, 45);">温度
+   <div class="x-col" xid="col64" style="Text-align:center;color:#e4e4e4;">温度
    <div xid="div45">
     <br xid="default17"></br>
     <span xid="span31" bind-text=' $model.infoData.val("tmp")+"℃"'></span></div> </div></div></span>
   <span xid="span30" style="width:50%;border-left:2px solid #fff;" class="pull-right"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row37">
-   <div class="x-col" xid="col68" style="Text-align:center;color:rgba(4, 76, 4, 0.93);">湿度
+   <div class="x-col" xid="col68" style="Text-align:center;color:#e4e4e4;">湿度
    <div xid="div46">
     <br xid="default18"></br>
     <span xid="span32" bind-text=' $model.infoData.val("hmy")+"%"'></span></div> </div></div></span></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row12" style="margin-top:1%;background:url('./img/hengtiao.png') no-repeat;background-size:100% 100%;height:15%;">

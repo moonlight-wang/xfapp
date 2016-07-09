@@ -33,6 +33,7 @@ define(function(require){
 			var img2 = this.getElementByXid('image2');
 			var img3 = this.getElementByXid('image3');
 			var data2 = this.comp('data2');
+			data2.clear();
 			data2.newData({
 				index : 0,
 				defaultValues : [{
