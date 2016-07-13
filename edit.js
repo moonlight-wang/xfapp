@@ -68,6 +68,7 @@ define(function(require) {
 	Model.prototype.saveClicked = function(event) {
 		var sID = localStorage.getItem("sID");
 		var user = {};
+		console.log(this.comp('input1').val().length);
 		if (this.getElementByXid('county').value == "") {
 			justep.Util.hint("请正确选择地址！", {
 				"type" : "danger"
@@ -79,18 +80,24 @@ define(function(require) {
 			user.userid = localStorage.getItem("userid");
 			user.deviceid = sID;
 			user.devicename = this.comp('input1').val();
-			user.province = this.getElementByXid('province').value;
-			user.city = this.getElementByXid('city').value;
-			user.county = this.getElementByXid('county').value;
-			user.address = this.comp('input2').val();
-			user.mobile = this.comp('input3').val();
-			$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data, status) {
-				if (status == "success") {
-					justep.Util.hint("更改成功", {
-						"type" : "success"
-					}, 'json');
-				}
-			});
+			if (user.devicename.length > 4) {
+				justep.Util.hint("名称太长！最多四个", {
+					"type" : "success"
+				}, 'json');
+			} else {
+				user.province = this.getElementByXid('province').value;
+				user.city = this.getElementByXid('city').value;
+				user.county = this.getElementByXid('county').value;
+				user.address = this.comp('input2').val();
+				user.mobile = this.comp('input3').val();
+				$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/save', user, function(data, status) {
+					if (status == "success") {
+						justep.Util.hint("更改成功", {
+							"type" : "success"
+						}, 'json');
+					}
+				});
+			}
 		}
 	};
 	return Model;

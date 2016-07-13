@@ -41,6 +41,9 @@ define(function(require){
 				},
 				"strainer" : {
 					url : require.toUrl('./strainer.w')
+				},
+				"lxreset" : {
+					url : require.toUrl('./lxreset.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;
@@ -56,6 +59,8 @@ define(function(require){
 				
 	};
 	Model.prototype.modelLoad = function(event) {
+		localStorage.setItem("ajaxServerIP","iot.mengtiankeji.com");
+    	localStorage.setItem("wbServerIP","iot.mengtiankeji.com");
 		justep.Shell.userType = justep.Bind.observable();
 		justep.Shell.userName = justep.Bind.observable();
 		var userLocal = (localStorage.getItem("userUUID") && JSON.parse(localStorage.getItem("userUUID"))) || null;

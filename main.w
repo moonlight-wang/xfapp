@@ -14,7 +14,6 @@
     <calculate xid="calculate2">
      <expr xid="default3"></expr></calculate> </col> </rule></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="mData" idColumn="mID"><column name="mID" type="Integer" xid="xid17"></column>
-  <column name="lx" type="Boolean" xid="xid20"></column>
   <column name="lock" type="Boolean" xid="xid22"></column>
   <data xid="default6">[{&quot;mID&quot;:1,&quot;lx&quot;:&quot;0&quot;,&quot;lock&quot;:&quot;0&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="false" xid="aData" idColumn="ID"><column name="ID" type="Integer" xid="xid3"></column>
@@ -32,11 +31,19 @@
   <column label="室内PM2.5" name="nPM" type="String" xid="xid29"></column>
   <column label="功能开关" name="gn" type="String" xid="xid30"></column>
   <data xid="default4">[]</data>
+  <column label="室外pm2.5" name="wPM" type="String" xid="xid10"></column>
+  <column name="blast" type="Integer" xid="xid13"></column>
   <rule xid="rule2">
    <col name="TOVC" xid="ruleCol3">
     <calculate xid="calculate3">
-     <expr xid="default5"></expr></calculate> </col> </rule>
-  <column name="wPM" type="String" xid="xid10"></column></div></div> 
+     <expr xid="default5"></expr></calculate> </col> 
+   <col name="blast" xid="ruleCol4">
+    <calculate xid="calculate4">
+     <expr xid="default8"></expr></calculate> </col> </rule></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="lxData" idColumn="id"><column name="id" type="String" xid="xid11"></column>
+  <column name="lx" type="Boolean" xid="xid12"></column>
+  <rule xid="rule4"></rule>
+  <data xid="default7">[{&quot;id&quot;:&quot;1&quot;,&quot;lx&quot;:&quot;0&quot;}]</data></div></div> 
 <div component="$UI/system/components/justep/popMenu/popMenu" class="x-popMenu" xid="popMenu1" direction="left-bottom" style="width:60%;">
    <div class="pull-left x-popMenu-overlay" xid="div25" style="left:0px;"></div>
    <ul component="$UI/system/components/justep/menu/menu" class="x-menu pull-left dropdown-menu x-popMenu-content" xid="menu1">
@@ -69,7 +76,7 @@
      <span xid="span34">设备列表</span></a> </div> </div>
   <div class="list-group-item" xid="div34">
    <div class="h5" xid="div35">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="滤芯重置" xid="button22" style="width:100%;">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="滤芯重置" xid="button22" style="width:100%;" url="/xfapp/lxreset.w" onClick="openPage">
      <i xid="i21"></i>
      <span xid="span35">滤芯重置</span></a> </div> </div>
   <div class="list-group-item" xid="div36">
@@ -199,12 +206,12 @@
      <div class="x-col" xid="col2">
       <div xid="div12" style="Text-align:center;font-size:15px;">频率</div>
       <div xid="div13" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("fqy")+"Hz";'></div></div> 
-     <div class="x-col" xid="col8" style="display:none;">
-      <div xid="div14" style="Text-align:center;font-size:12px;">风量</div>
-      <div xid="div15" style="Text-align:center;font-size:12px;" bind-text='$model.mData.val("blast")? $model.mData.val("blast")+"m²/h":"";'></div></div> 
+     <div class="x-col" xid="col8">
+      <div xid="div14" style="Text-align:center;font-size:15px;">风量</div>
+      <div xid="div15" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("blast")+"m²/h"'></div></div> 
      <div class="x-col" xid="col14">
       <div xid="div16" style="Text-align:center;font-size:15px;">滤芯</div>
-      <div xid="div17" style="Text-align:center;font-size:15px;" bind-text=' $model.mData.val("lx") ==1?"更换":"良好";'></div></div> 
+      <div xid="div17" style="Text-align:center;font-size:15px;" bind-text=' $model.lxData.val("lx") ==1?"更换":"良好";'></div></div> 
      <div class="x-col" xid="col26">
       <div xid="div18" style="Text-align:center;font-size:15px;">功能</div>
       <div xid="div19" style="Text-align:center;font-size:15px;" bind-text=' $model.gongNeng()'></div></div> 

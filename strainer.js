@@ -42,6 +42,27 @@ define(function(require){
 					"gaoxiao" : parseInt((gaoxiao/2000)*100)+"%"
 				}]
 			});
+			if(parseInt((chuxiao/2000)*100)<35){
+				img1.src = "./img/lvtiao.png"; 
+			}else if(parseInt((chuxiao/2000)*100)<70){
+				img1.src = "./img/huangtiao.png";
+			}else{
+				img1.src = "./img/hongtiao.png";
+			}
+			if(parseInt((jingdian/2000)*100)<35){
+				img2.src = "./img/lvtiao.png"; 
+			}else if(parseInt((jingdian/2000)*100)<70){
+				img2.src = "./img/huangtiao.png";
+			}else{
+				img2.src = "./img/hongtiao.png";
+			}
+			if(parseInt((gaoxiao/2000)*100)<35){
+				img3.src = "./img/lvtiao.png"; 
+			}else if(parseInt((gaoxiao/2000)*100)<70){
+				img3.src = "./img/huangtiao.png";
+			}else{
+				img3.src = "./img/hongtiao.png";
+			}
 			img1.style.width = parseInt((chuxiao/2000)*100)+"%";
 			img2.style.width = parseInt((jingdian/2000)*100)+"%";
 			img3.style.width = parseInt((gaoxiao/2000)*100)+"%";
@@ -49,6 +70,7 @@ define(function(require){
 			img2.style.height = "100%";
 			img3.style.height = "100%";
 		}
+		
 		var data = this.comp('data1');
 		var lRow = data.getLastRow(), row,names=[];
 		/*data.first();
@@ -112,6 +134,7 @@ define(function(require){
 		};
 		var myChart = echarts.init(this.getElementByXid('main'));
 		myChart.setOption(option);
+		window.onresize = myChart.resize;
 	};
 	return Model;
 });

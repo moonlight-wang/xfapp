@@ -16,7 +16,7 @@
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data2" idColumn="chuxiao"><column name="chuxiao" type="String" xid="xid3"></column>
   <column name="jingdian" type="String" xid="xid4"></column>
   <column name="gaoxiao" type="String" xid="xid6"></column>
-  <data xid="default1">[{&quot;chuxiao&quot;:&quot;50%&quot;,&quot;jingdian&quot;:&quot;50%&quot;,&quot;gaoxiao&quot;:&quot;50%&quot;}]</data></div></div>  
+  <data xid="default1">[{&quot;chuxiao&quot;:&quot;20%&quot;,&quot;jingdian&quot;:&quot;50%&quot;,&quot;gaoxiao&quot;:&quot;70%&quot;}]</data></div></div>  
   <div component="$UI/system/components/justep/panel/panel" 
     class="x-panel x-full" xid="panel1"> 
       <div class="x-panel-top" xid="top1"> 
@@ -47,17 +47,17 @@
    <div class="x-col" style="Text-align:center;font-size:12px;" xid="col19" bind-text=' $model.infoData.ref("status")'></div></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1" style="width:90%;margin-left:5%">
    <div class="x-col" xid="col3" style="text-align:center;border-bottom:2px solid #fff;font-size:16px" label="滤芯状态">滤芯状态</div></div>
-  <div xid="div1" style="height:10%;width:90%;margin-left:10%"><span xid="span1" class="pull-left" style="width:80%;height:100%;"><![CDATA[粗效过滤]]><p xid="p1" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;"><img src="./img/lvtiao.png" alt="" xid="image1" style="border-radius:20px;width:60%;" height="100%"></img></p></span>
+  <div xid="div1" style="height:10%;width:90%;margin-left:10%"><span xid="span1" class="pull-left" style="width:80%;height:100%;"><![CDATA[粗效过滤]]><p xid="p1" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;"><img src="./img/lvtiao.png" alt="" xid="image1" style="border-radius:20px;width:25%;" height="100%"></img></p></span>
   <span xid="span2" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;" bind-text='$model.data2.ref("chuxiao")'><![CDATA[]]></span></div>
   <div xid="div2" style="height:10%;width:90%;margin-left:10%">
    <span xid="span5" class="pull-left" style="width:80%;height:100%;"><![CDATA[静电除尘器    ]]>
   <p xid="p2" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;">
-   <img src="./img/huangtiao.png" alt="" xid="image2" style="border-radius:20px;width:60%;" height="100%"></img></p></span> 
+   <img src="./img/huangtiao.png" alt="" xid="image2" style="border-radius:20px;width:50%;" height="100%"></img></p></span> 
    <span xid="span3" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;" bind-text='$model.data2.ref("jingdian")'><![CDATA[]]></span></div>
   <div xid="div3" style="height:10%;width:90%;margin-left:10%">
    <span xid="span7" class="pull-left" style="width:80%;height:100%;"><![CDATA[HEPA高效过滤器  ]]>
   <p xid="p3" style="background-color:#e4e4e4;border-radius:20px;width:100%;height:50%;">
-   <img src="./img/hongtiao.png" alt="" xid="image3" style="border-radius:20px;width:60%;" height="100%"></img></p></span> 
+   <img src="./img/hongtiao.png" alt="" xid="image3" style="border-radius:20px;width:70%;" height="100%"></img></p></span> 
    <span xid="span6" class="pull-right" style="width:20%;height:100%;text-align:center;line-height:70px;" bind-text='$model.data2.ref("gaoxiao")'><![CDATA[]]></span></div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2" style="width:90%;margin-left:5%;border-bottom:2px solid #fff;">
    </div>

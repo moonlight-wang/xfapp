@@ -88,7 +88,7 @@
    <i xid="i7" class="icon-android-remove"></i>
    <span xid="span8"></span></a></span>
    <span xid="span1" class="pull-left" style="Text-align:center;line-height:100%;width:30%;height:100%;background:url('./img/lv.png) no-repeat;background-size:100% 100%;"><![CDATA[]]>
-  <div component="$UI/system/components/justep/output/output" class="x-output" xid="output1" style="text-align:right;margin-right:10px;margin-left:10px;display:inline-block;width:20%;font-size:20px;" bind-text=' $model.valueData.ref("pinlv")' bind-ref='$model.valueData.ref("pinlv")'></div>
+  <div component="$UI/system/components/justep/output/output" class="x-output" xid="output1" style="text-align:right;margin-right:10px;margin-left:10px;display:inline-block;width:20%;font-size:25px;" bind-text=' $model.valueData.ref("pinlv")' bind-ref='$model.valueData.ref("pinlv")'></div>
   <div component="$UI/system/components/justep/output/output" class="x-output" xid="output4" style="text-align:left;display:inline-block;width:30%;" bind-text=' $model.valueData.ref("vID")'></div></span>
    <span xid="span4" class="pull-right" style="width:35%;height:100%;Text-align:center;line-height:100%;"><![CDATA[]]>
   <a component="$UI/system/components/justep/button/button" class="btn btn-xs btn-only-icon" label="button" xid="button9" icon="icon-android-add" onClick="addCountBtnClick" style="color:white;background-color:#35b3e4;">
@@ -97,8 +97,8 @@
         <div class="x-col" xid="col13" style="text-align:center;padding:20px">运行模式</div>  
         <div class="x-col" xid="col12"> 
            
-        <div xid="div6" class="styled-select" style="border-radius:20px;"><div component="$UI/system/components/justep/labelEdit/labelEdit" class="x-label-edit x-label30" xid="labelEdit2" style="width:60%;"> 
-            <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select1" style="height:333%;width:100%;border-radius:20px;"> 
+        <div xid="div6" class="styled-select" style="border-radius:20px;"><div component="$UI/system/components/justep/labelEdit/labelEdit" class="x-label-edit x-label30" xid="labelEdit2" style="width:60%;margin-right:20%"> 
+            <select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select1" style="width:100%;border-radius:20px;text-indent:10px"> 
               <option value="1" xid="default9">智能</option>  
               <option value="2" xid="default8">手动</option>  
               <option value="3" xid="default7" label="睡眠" /> 
@@ -113,7 +113,7 @@
    <span xid="span5">定时开</span></a>
   <div component="$UI/system/components/justep/output/output" class="x-output" xid="output2" style="Text-align:center;color:#e4e4e4;"></div></div>
    <div class="x-col" xid="col17" style="Text-align:center;">
-   <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-lg btn-only-icon btn-block" label="关机" xid="button10" icon="glyphicon glyphicon-off" style="height:492%;" onClick="colseClick">
+   <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-lg btn-only-icon btn-block" label="关机" xid="button10" icon="glyphicon glyphicon-off" onClick="colseClick" style="font-size:30px;">
     <i xid="i9" class="glyphicon glyphicon-off" style="color:red;backgroungd-size:100% 100%;"></i>
     <span xid="span10">关机</span></a> </div>
   <div class="x-col" xid="col8" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" style="border-radius:20px;" class="btn btn-default" label="定时关" xid="button5" onClick="datePickerClick">

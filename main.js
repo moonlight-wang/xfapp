@@ -18,6 +18,23 @@ define(function(require) {
 	Model.prototype.modelLoad = function(event) {
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var sid = localStorage.getItem("sID");
+		var blast = 5;
+		switch(sid.substr(0,2)){
+			case "00":
+				blast = 10;
+				break;
+			case "01":
+				blast = 5;
+				break;
+			case "02":
+				blast = 20;
+				break;
+			case "03":
+				blast = 15;
+				break;
+			default:
+				blast = 5;
+		}
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
@@ -29,6 +46,7 @@ define(function(require) {
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
+		var lxData = this.comp('lxData');
 		info.newData({
 			index : 0,
 			defaultValues : [ {
@@ -42,6 +60,8 @@ define(function(require) {
 				"hmy" : 56,
 				"status" : "在线",
 				"gn" : 2,
+				"wPM" : 40,
+				"blast" : 80
 			} ]
 		});
 		var r = 0;
@@ -95,6 +115,7 @@ define(function(require) {
 							"status" : status,
 							"gn" : parseInt(msg[10] + msg[11], 16),
 							"wPM" : parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16),
+							"blast" : parseInt(msg[4] + msg[5], 16)*47/blast
 						} ]
 					});
 				} else {
@@ -130,6 +151,7 @@ define(function(require) {
 										"status" : status,
 										"gn" : parseInt(msg[10] + msg[11], 16),
 										"wPM" : wth.aqi.city.pm25,
+										"blast" : parseInt(msg[4] + msg[5], 16)*47/blast
 									} ]
 								});
 							}
@@ -163,6 +185,14 @@ define(function(require) {
 				}
 				localStorage.setItem("moshi", modeCased(mode));
 			}else if(msg.substr(0, 4) == "409A"){
+				if((parseInt(msg[16] + msg[17],16)==1) || (parseInt(msg[18] + msg[19],16)==1) || (parseInt(msg[20] + msg[21],16)==1)){
+					lxData.newData({
+						index : 0,
+						defaultValues : [ {
+							"lx" : 1
+						} ]
+					});
+				}
 				localStorage.setItem("message",msg);
 			}
 		});
