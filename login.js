@@ -26,7 +26,6 @@ define(function(require) {
 			$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/check_login', user, function(data) {
 				if (data.status == 1) {
 					localStorage.setItem("userid", data.userid);
-					console.log(">>>>>>>>>>>>");
 					justep.Shell.showPage('list');
 					 justep.Shell.closePage('login'); } else {
 					justep.Util.hint("用户名或密码有误！", {

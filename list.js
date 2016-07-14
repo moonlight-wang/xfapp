@@ -15,7 +15,6 @@ define(function(require) {
 		var list = this.comp("listData");
 		var user = {};
 		user.userid = localStorage.getItem('userid');
-		console.log(user.userid);
 		user.ajax = 1;
 		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/index', user, function(data) {
 			var ldata = data.list;

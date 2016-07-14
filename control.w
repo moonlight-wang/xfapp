@@ -115,7 +115,8 @@
    <div class="x-col" xid="col17" style="Text-align:center;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-lg btn-only-icon btn-block" label="关机" xid="button10" icon="glyphicon glyphicon-off" onClick="colseClick" style="font-size:30px;">
     <i xid="i9" class="glyphicon glyphicon-off" style="color:red"></i>
-    <span xid="span10">关机</span></a> </div>
+    <span xid="span10">关机</span></a> 
+  </div>
   <div class="x-col" xid="col8" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" style="border-radius:20px;" class="btn btn-default" label="定时关" xid="button5" onClick="datePickerClick">
    <i xid="i3"></i>
    <span xid="span6">定时关</span></a>
@@ -140,4 +141,5 @@
    <div class="x-popPicker-overlay" xid="div1"></div>
    <div class="x-popPicker-content" xid="div2">
     <div class="x-poppicker-header" xid="div3">
-     <button class="btn btn-default x-btn-ok" xid="button1">确定</button></div> </div> </div></div>
+     <button class="btn btn-default x-btn-ok" xid="button1">确定</button></div> </div> </div>
+  <span component="$UI/system/components/justep/messageDialog/messageDialog" xid="messageDialog1" type="OKCancel" title="提示"></span></div>

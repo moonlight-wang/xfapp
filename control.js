@@ -106,7 +106,9 @@ define(function(require) {
 	};
 	Model.prototype.colseClick = function(event) {
 		if (this.getElementByXid('i9').style.color == "red") {
-
+			
+			
+			
 			this.getElementByXid('i9').style.color = "green";
 			var msg2 = "AAEA051E01020000000000000000000132" + localStorage.getItem("address");
 			var arr = msg2.substring(4);
@@ -271,5 +273,6 @@ define(function(require) {
 		}, 'json');
 
 	};
+	
 	return Model;
 });
