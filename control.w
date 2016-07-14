@@ -114,7 +114,7 @@
   <div component="$UI/system/components/justep/output/output" class="x-output" xid="output2" style="Text-align:center;color:#e4e4e4;"></div></div>
    <div class="x-col" xid="col17" style="Text-align:center;">
    <a component="$UI/system/components/justep/button/button" class="btn btn-link btn-lg btn-only-icon btn-block" label="关机" xid="button10" icon="glyphicon glyphicon-off" onClick="colseClick" style="font-size:30px;">
-    <i xid="i9" class="glyphicon glyphicon-off" style="color:red;backgroungd-size:100% 100%;"></i>
+    <i xid="i9" class="glyphicon glyphicon-off" style="color:red"></i>
     <span xid="span10">关机</span></a> </div>
   <div class="x-col" xid="col8" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" style="border-radius:20px;" class="btn btn-default" label="定时关" xid="button5" onClick="datePickerClick">
    <i xid="i3"></i>

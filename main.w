@@ -151,10 +151,10 @@
     <br xid="default15"></br>
     <span xid="span27" bind-text=' "0.0"+$model.infoData.val("TOVC")+"mg/m³"'></span></div> </div></div></span>
   <span xid="span26" class="pull-right" style="width:50%;border-left:2px solid #fff;"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row35">
-   <div class="x-col" xid="col60" style="Text-align:center;color:#e4e4e4;">CO2
+   <div class="x-col" xid="col60" style="Text-align:center;color:#e4e4e4;">温度
    <div xid="div43">
     <br xid="default16"></br>
-    <span xid="span28" bind-text=' $model.infoData.val("CO2")+"PPM"'></span></div> </div></div></span></div><div xid="div30" style="height:28%;">
+    <span xid="span28" bind-text=' $model.infoData.val("tmp")+"℃"'></span></div> </div></div></span></div><div xid="div30" style="height:28%;">
    <span xid="span5" class="pull-left" style="width:33%;height:100%;">
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row22">
    <div class="x-col" xid="col27"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row13">
@@ -168,8 +168,8 @@
       <label xid="label8" bind-text="$model.TEM()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgb(224, 39, 45);">label</label></div> </div> 
   
   </span> 
-   <span xid="span17" class="pull-left" style="width:34%;border-radius:50% 50%;height:100%;margin-top:5%;position:﻿﻿﻿﻿relative">
-    <img src="./img/lv.png" alt="" xid="image4" style="position:absolute;background-size:100% 100%;height:100%;width:34%;"></img><div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
+   <span xid="span17" class="pull-left" style="width:34%;height:100%;margin-top:5%;position:﻿﻿﻿﻿relative">
+    <img alt="" xid="image4" style="position:absolute;background-size:100% 100%;height:100%;width:34%;"></img><div component="$UI/system/components/justep/row/row" class="x-row" xid="row23">
    <div class="x-col" xid="col28"></div></div><div component="$UI/system/components/justep/row/row" class="x-row" xid="row15">
      <div class="x-col" xid="col38" style="Text-align:center;font-size:12px;">室内PM2.5
       <div xid="div31">
@@ -194,10 +194,10 @@
       <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgba(4, 76, 4, 0.93);">label</label></div> </div> 
   
   </span> </div><div xid="div44" style="height:12%;margin-top:5%;"><span xid="span29" style="width:50%;" class="pull-left"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row36">
-   <div class="x-col" xid="col64" style="Text-align:center;color:#e4e4e4;">温度
+   <div class="x-col" xid="col64" style="Text-align:center;color:#e4e4e4;">CO2
    <div xid="div45">
     <br xid="default17"></br>
-    <span xid="span31" bind-text=' $model.infoData.val("tmp")+"℃"'></span></div> </div></div></span>
+    <span xid="span31" bind-text=' $model.infoData.val("CO2")+"PPM"'></span></div> </div></div></span>
   <span xid="span30" style="width:50%;border-left:2px solid #fff;" class="pull-right"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row37">
    <div class="x-col" xid="col68" style="Text-align:center;color:#e4e4e4;">湿度
    <div xid="div46">

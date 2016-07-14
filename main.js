@@ -65,7 +65,8 @@ define(function(require) {
 			} ]
 		});
 		var r = 0;
-		var i = 3;
+		var i = 1;
+		element.src = './img/lv.png';
 		function rotate() {
 			r += i;
 			element.style.MozTransform = "rotate(" + r + "deg)";
@@ -96,6 +97,9 @@ define(function(require) {
 				localStorage.setItem("address", arr);
 				localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
 				var mode = parseInt(msg[8] + msg[9], 16);
+				if(mode!==0){localStorage.setItem("kg", "k");}else{
+					localStorage.setItem("kg", "g");
+				}
 				localStorage.setItem("neiWai", parseInt(msg[8], 16));
 
 				info.clear();
