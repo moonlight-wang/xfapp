@@ -44,6 +44,9 @@ define(function(require){
 				},
 				"lxreset" : {
 					url : require.toUrl('./lxreset.w')
+				},
+				"changeID" : {
+					url : require.toUrl('./changeID.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;

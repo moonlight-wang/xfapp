@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <div xmlns="http://www.w3.org/1999/xhtml" xid="window" class="window" component="$UI/system/components/justep/window/window" design="device:m;">  
-  <div component="$UI/system/components/justep/model/model" xid="model" style="top:255px;left:513px;height:auto;"><div component="$UI/system/components/justep/data/data" autoLoad="true" xid="fileData" idColumn="fID"><column name="fID" type="Integer" xid="xid1"></column>
-  <column name="filePath" type="String" xid="xid2"></column></div></div> 
+  <div component="$UI/system/components/justep/model/model" xid="model" style="top:255px;left:513px;height:auto;"></div> 
 <div component="$UI/system/components/justep/contents/contents" class="x-contents x-full" active="0" xid="contents1">
    <div class="x-contents-content" xid="content2"><div component="$UI/system/components/justep/panel/panel" class="x-panel x-full" xid="panel2">
    <div class="x-panel-top" xid="top2">
@@ -32,7 +31,7 @@
    <i xid="i1" class="icon-chevron-left"></i>
    <span xid="span1"></span></a></div>
    <div class="x-titlebar-title" xid="title1"></div>
-   <div class="x-titlebar-right reverse" xid="right1"></div></div><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1"  placeHolder="请输入设备ID号"></input>
+   <div class="x-titlebar-right reverse" xid="right1"></div></div><input component="$UI/system/components/justep/input/input" class="form-control" xid="input1"  placeHolder="请输入8位设备ID号"></input>
   <div xid="div4" style="Text-align:center;"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="添加" xid="button12" onClick="saveClick">
    <i xid="i12"></i>
    <span xid="span12"></span></a></div>

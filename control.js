@@ -4,6 +4,7 @@ define(function(require) {
 	var io = require("./socket.io");
 	var Model = function() {
 		this.callParent();
+		this.kg = 0;
 	};
 	Model.prototype.addCountBtnClick = function(event) {
 		this.comp('output1').set('value', parseInt(this.comp('output1').get('value')) + 1);
@@ -106,51 +107,11 @@ define(function(require) {
 	};
 	Model.prototype.colseClick = function(event) {
 		if (this.getElementByXid('i9').style.color == "red") {
-			
-			
-			
-			this.getElementByXid('i9').style.color = "green";
-			var msg2 = "AAEA051E01020000000000000000000132" + localStorage.getItem("address");
-			var arr = msg2.substring(4);
-			var sum = 0;
-			var i = 0;
-			for (; i < arr.length;) {
-				sum += parseInt(arr[i] + arr[i + 1], 16);
-				i += 2;
-			}
-			sum = sum.toString(16);
-			sum = sum.substr(-2);
-			msg2 = msg2 + sum + "AB";
-			var iot = {};
-			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
-			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
-			socket.emit('app2server', {
-				deviceId : iot.deviceId,
-				msg : msg2
-			});
+			this.comp("messageDialog1").show({'message':'确定关机吗'});
+			this.kg = 0;
 		} else {
-			this.getElementByXid('i9').style.color = "red";
-			var msg2 = "AAEA051E01020000000000000000000032" + localStorage.getItem("address");
-			var arr = msg2.substring(4);
-			var sum = 0;
-			var i = 0;
-			for (; i < arr.length;) {
-				sum += parseInt(arr[i] + arr[i + 1], 16);
-				i += 2;
-			}
-			sum = sum.toString(16);
-			sum = sum.substr(-2);
-			msg2 = msg2 + sum + "AB";
-			var iot = {};
-			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
-			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
-			socket.emit('app2server', {
-				deviceId : iot.deviceId,
-				msg : msg2
-			});
-
+			this.comp("messageDialog1").show({'message':'确定开机吗'});
+			this.kg = 1;
 		}
 	};
 	Model.prototype.doOK = function(event) {
@@ -272,6 +233,52 @@ define(function(require) {
 			"type" : "success"
 		}, 'json');
 
+	};
+	
+	Model.prototype.messageDialog1OK = function(event){
+		if(this.kg == 0){
+			this.getElementByXid('i9').style.color = "green";
+			var msg2 = "AAEA051E01020000000000000000000132" + localStorage.getItem("address");
+			var arr = msg2.substring(4);
+			var sum = 0;
+			var i = 0;
+			for (; i < arr.length;) {
+				sum += parseInt(arr[i] + arr[i + 1], 16);
+				i += 2;
+			}
+			sum = sum.toString(16);
+			sum = sum.substr(-2);
+			msg2 = msg2 + sum + "AB";
+			var iot = {};
+			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
+			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+			socket.emit('app2server', {
+				deviceId : iot.deviceId,
+				msg : msg2
+			});
+		}else{
+			this.getElementByXid('i9').style.color = "red";
+			var msg2 = "AAEA051E01020000000000000000000032" + localStorage.getItem("address");
+			var arr = msg2.substring(4);
+			var sum = 0;
+			var i = 0;
+			for (; i < arr.length;) {
+				sum += parseInt(arr[i] + arr[i + 1], 16);
+				i += 2;
+			}
+			sum = sum.toString(16);
+			sum = sum.substr(-2);
+			msg2 = msg2 + sum + "AB";
+			var iot = {};
+			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
+			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+			socket.emit('app2server', {
+				deviceId : iot.deviceId,
+				msg : msg2
+			});
+		}
 	};
 	
 	return Model;

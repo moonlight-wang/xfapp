@@ -194,7 +194,7 @@
       <label xid="label9" bind-text="$model.Humidity()" style="Text-align:center;border-radius:20px;font-size:17px;width:50%;background-color:rgba(4, 76, 4, 0.93);">label</label></div> </div> 
   
   </span> </div><div xid="div44" style="height:12%;margin-top:5%;"><span xid="span29" style="width:50%;" class="pull-left"><div component="$UI/system/components/justep/row/row" class="x-row" xid="row36">
-   <div class="x-col" xid="col64" style="Text-align:center;color:#e4e4e4;">CO2
+   <div class="x-col" xid="col64" style="Text-align:center;color:#e4e4e4;">CO₂
    <div xid="div45">
     <br xid="default17"></br>
     <span xid="span31" bind-text=' $model.infoData.val("CO2")+"PPm"'></span></div> </div></div></span>
@@ -208,7 +208,7 @@
       <div xid="div13" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("fqy")+"Hz";'></div></div> 
      <div class="x-col" xid="col8">
       <div xid="div14" style="Text-align:center;font-size:15px;">风量</div>
-      <div xid="div15" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("blast")+"m²/h"'></div></div> 
+      <div xid="div15" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("blast")+"m³/h"'></div></div> 
      <div class="x-col" xid="col14">
       <div xid="div16" style="Text-align:center;font-size:15px;">滤芯</div>
       <div xid="div17" style="Text-align:center;font-size:15px;" bind-text=' $model.lxData.val("lx") ==1?"更换":"良好";'></div></div> 

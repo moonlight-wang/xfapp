@@ -339,6 +339,8 @@ define(function(require) {
 		var url = event.source.$domNode.attr('url');
 		if (url.substr(0, 1) == "/")
 			url = '$UI' + url;
+		this.owner.close();
+		socket.disconnect();
 		justep.Shell.showPage(require.toUrl(url));
 	};
 

@@ -142,4 +142,4 @@
    <div class="x-popPicker-content" xid="div2">
     <div class="x-poppicker-header" xid="div3">
      <button class="btn btn-default x-btn-ok" xid="button1">确定</button></div> </div> </div>
-  <span component="$UI/system/components/justep/messageDialog/messageDialog" xid="messageDialog1" type="OKCancel" title="提示"></span></div>
+  <span component="$UI/system/components/justep/messageDialog/messageDialog" xid="messageDialog1" type="OKCancel" title="提示" onOK="messageDialog1OK"></span></div>
