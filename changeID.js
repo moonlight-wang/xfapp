@@ -7,7 +7,8 @@ define(function(require) {
 	};
 
 	Model.prototype.button1Click = function(event) {
-		if (this.comp("input1").val().length !== 8 || parseInt(this.comp("input1").val()[3]) > 5 || parseInt(this.comp("input1").val()[5]) > 7) {
+		var input1 = this.comp('input1').val();
+		if (input1.length !== 8 || parseInt(input1[3]) > 5 || parseInt(input1[5]) > 7) {
 			justep.Util.hint("ID号不符合规则！", {
 				"type" : "danger"
 			}, 'json');
@@ -20,8 +21,9 @@ define(function(require) {
 				console.log(data);
 				if (data.status) {
 					var msg = "AABB00";
-					var dId = ("000000" + parseInt(this.comp("input1").val()).toString(16)).substr(-6).toUpperCase();
-					var msg = msg + dId.substr(-2) + dId.substr(2, 2) + dId.substr(0, 2) + "0000000000000000000000000000";
+					
+					var dId = ("000000" + parseInt(input1).toString(16)).substr(-6).toUpperCase();
+					msg = msg + dId.substr(-2) + dId.substr(2, 2) + dId.substr(0, 2) + "0000000000000000000000000000";
 					var arr = msg.substring(4);
 					var sum = 0;
 					var i = 0;

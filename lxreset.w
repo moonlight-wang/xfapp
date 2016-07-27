@@ -20,9 +20,10 @@
           </div>
         </div> 
       </div>  
-    <div class="x-panel-content" xid="content1"><input component="$UI/system/components/justep/input/input" placeHolder="请输入滤芯寿命" class="form-control" xid="input1"></input>
-  <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="重置" xid="button1" style="width:40%;margin-left:30%" onClick="button1Click">
+    <div class="x-panel-content" xid="content1"><input component="$UI/system/components/justep/input/input" placeHolder="初效过滤寿命" class="form-control" xid="input1"></input>
+  <input component="$UI/system/components/justep/input/input" class="form-control" xid="input2" placeHolder="静电除尘寿命"></input><input component="$UI/system/components/justep/input/input" class="form-control" xid="input3" placeHolder="高效过滤寿命"></input><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="重置" xid="button1" style="width:40%;margin-left:30%" onClick="button1Click">
    <i xid="i1"></i>
-   <span xid="span1">重置</span></a></div>
+   <span xid="span1">重置</span></a>
+  </div>
   </div> 
 </div>
