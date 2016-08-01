@@ -32,7 +32,7 @@
               <i class="icon-unlocked" xid="i3"/> 
             </span>  
             <input component="$UI/system/components/justep/input/password" class="form-control x-inputText"
-              xid="passwordInput" placeHolder="请输入密码"/> 
+              xid="passwordInput" placeHolder="请输入密码" bind-value="password"/> 
           </div> 
         </div> 
       </div>  

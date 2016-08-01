@@ -24,6 +24,8 @@
   <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="保存" xid="button1" style="width:30%;" onClick="button1Click" tabindex="1">
    <i xid="i1"></i>
    <span xid="span1">保存</span></a>
-  </div>
+  <div xid="div1" style="margin-top:10%"><a component="$UI/system/components/justep/button/button" class="btn btn-default" label="删除" xid="button3" style="width:30%;" onClick="button3Click">
+   <i xid="i3"></i>
+   <span xid="span3">删除</span></a></div></div>
   </div> 
 </div>

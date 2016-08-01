@@ -322,10 +322,16 @@ define(function(require) {
 		var nData = this.comp("infoData");
 		var gn = parseInt(nData.val("gn"));
 		switch (gn) {
-		case 1 || 11 || 21 || 31:
+		case 1 :
+		case 11 :
+		case 21 :
+		case 31 :
 			return "开";
 			break;
-		case 2 || 12 || 22 || 32:
+		case 2 :
+		case 12 :
+		case 22 :
+		case 32 :
 			return "关";
 			break;
 		default:
@@ -339,8 +345,7 @@ define(function(require) {
 		var url = event.source.$domNode.attr('url');
 		if (url.substr(0, 1) == "/")
 			url = '$UI' + url;
-		this.owner.close();
-		socket.disconnect();
+		
 		justep.Shell.showPage(require.toUrl(url));
 	};
 
@@ -412,6 +417,14 @@ define(function(require) {
 	};
 	Model.prototype.shareClick = function(event) {
 		plugins.socialsharing.share("中嘉新风", null, null, "http://iot.mengtiankeji.com");
+	};
+	Model.prototype.button21Click = function(event){
+		var url = event.source.$domNode.attr('url');
+		if (url.substr(0, 1) == "/")
+			url = '$UI' + url;
+		this.owner.close();
+		socket.disconnect();
+		justep.Shell.showPage(require.toUrl(url));
 	};
 	return Model;
 });

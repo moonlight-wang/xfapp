@@ -15,11 +15,12 @@ define(function(require) {
 		} else {
 			var user = {};
 			user.ajax = 1;
+			//user.opmon = "add";
 			user.userid = 1;
 			user.deviceid = parseInt(this.comp("input1").val());
-			$.post('http://' + localStorage.getItem("ajaxServerIP") + '/contact/saveDeviceID', user, function(data, status) {
+			$.post('http://'+localStorage.getItem('ajaxServerIP')+'/contact/saveDeviceID', user, function(data, status) {
 				console.log(data);
-				if (data.status) {
+				if (data.status==1) {
 					var msg = "AABB00";
 					
 					var dId = ("000000" + parseInt(input1).toString(16)).substr(-6).toUpperCase();
@@ -56,6 +57,26 @@ define(function(require) {
 				}
 			});
 		}
+	};
+
+	Model.prototype.button3Click = function(event){
+			var user = {};
+			user.ajax = 1;
+			//user.opmon = "add";
+			user.userid = 1;
+			user.deviceid = parseInt(this.comp("input1").val());
+			$.post('http://'+localStorage.getItem('ajaxServerIP')+'/contact/delDeviceID', user, function(data, status) {
+				console.log(data);
+				if(data.status == 1){
+					justep.Util.hint("删除成功", {
+						"type" : "success"
+					}, 'json');
+				}else{
+					justep.Util.hint("删除失败", {
+						"type" : "danger"
+					}, 'json');
+				}
+			});
 	};
 
 	return Model;

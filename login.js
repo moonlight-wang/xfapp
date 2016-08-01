@@ -5,7 +5,9 @@ define(function(require) {
 	var Model = function() {
 		this.callParent();
 		this.username = justep.Bind.observable('nameInput');
-		this.username = 'wang1';
+		this.password = justep.Bind.observable('passwordInput');
+		this.username = localStorage.getItem('userName');
+		this.password = localStorage.getItem('password');
 	};
 	// 进入注册页
 	Model.prototype.registeredClick = function(event) {
@@ -20,6 +22,7 @@ define(function(require) {
 			var user = {};
 			user.emp_no = this.username;
 			localStorage.setItem('userName', this.username);
+			localStorage.setItem('password', this.password);
 			user.password = this.comp('passwordInput').value;
 			user.ajax = 1;
 

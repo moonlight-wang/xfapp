@@ -64,7 +64,7 @@
         <div class="x-col" xid="col7" style="Text-align:center;line-height:100%;padding:20px">
   <div xid="div5" style="border-radius:20px;" class="styled-select"><select component="$UI/system/components/justep/select/select" class="form-control pull-left x-edit" xid="select7" bind-options="plData" bind-optionsValue="pl" bind-optionsLabel="a" bind-ref='$model.plData.ref("a")' style="height:100%;margin-left:10%;width:80%;border-radius:20px;"></select></div></div>  
         <div class="x-col" xid="col6"> 
-          <span component="$UI/system/components/justep/button/toggle" class="x-toggle" xid="toggle5" style="height:100%;"></span></div> 
+          <span component="$UI/system/components/justep/button/toggle" class="x-toggle" xid="toggle5" style="height:100%;margin-top:10px;"></span></div> 
       </div>  
       <div component="$UI/system/components/justep/list/list" class="x-list"
         xid="list1" data="valueData" style="display:none;"> 

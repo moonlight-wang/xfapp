@@ -71,7 +71,7 @@
    <span xid="span33">地址选择</span></a></div> </div>
   <div class="list-group-item" xid="div23">
    <div class="h5" xid="div24">
-    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="设备列表" xid="button21" style="width:100%;" url="/xfapp/list.w" onClick="openPage">
+    <a component="$UI/system/components/justep/button/button" class="btn btn-link pull-full" label="设备列表" xid="button21" style="width:100%;" url="/xfapp/list.w" onClick="button21Click">
      <i xid="i20"></i>
      <span xid="span34">设备列表</span></a> </div> </div>
   <div class="list-group-item" xid="div34">
