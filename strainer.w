@@ -11,8 +11,9 @@
     <col name="TOVC" xid="ruleCol3">
      <calculate xid="calculate3">
       <expr xid="default5"></expr></calculate> </col> </rule> </div>
-  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="col0"><column name="col0" type="String" xid="xid1"></column>
-  <column name="col1" type="String" xid="xid2"></column></div>
+  <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data1" idColumn="col0" onAfterRefresh="data1DataChange"><column name="col0" type="String" xid="xid1"></column>
+  <column name="col1" type="String" xid="xid2"></column>
+  <data xid="default2">[{&quot;col0&quot;:&quot;19&quot;,&quot;col1&quot;:&quot;30&quot;},{&quot;col0&quot;:&quot;20&quot;,&quot;col1&quot;:&quot;29&quot;},{&quot;col0&quot;:&quot;16&quot;,&quot;col1&quot;:&quot;40&quot;},{&quot;col0&quot;:&quot;23&quot;,&quot;col1&quot;:&quot;50&quot;}]</data></div>
   <div component="$UI/system/components/justep/data/data" autoLoad="true" xid="data2" idColumn="chuxiao"><column name="chuxiao" type="String" xid="xid3"></column>
   <column name="jingdian" type="String" xid="xid4"></column>
   <column name="gaoxiao" type="String" xid="xid6"></column>

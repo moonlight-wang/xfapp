@@ -17,6 +17,8 @@ define(function(require) {
 	};*/
 	Model.prototype.modelLoad = function(event) {
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
+		var first = true;
+		var jishi = 0 ; 
 		var sid = localStorage.getItem("sID");
 		var blast = 5;
 		switch(sid.substr(0,2)){
@@ -91,7 +93,7 @@ define(function(require) {
 		
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
-			console.log(msg);
+			//console.log(msg);
 			if (msg.substr(0, 4) == "40DA") {
 				var arr = msg.substr(34, 6);
 				localStorage.setItem("address", arr);
@@ -101,10 +103,11 @@ define(function(require) {
 					localStorage.setItem("kg", "g");
 				}
 				localStorage.setItem("neiWai", parseInt(msg[8], 16));
-
 				info.clear();
 
 				if (parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16) !== 0) {
+					var pm25in = parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16);
+					var pm25out =parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
 					info.newData({
 						index : 0,
 						defaultValues : [ {
@@ -158,11 +161,31 @@ define(function(require) {
 										"blast" : parseInt(msg[4] + msg[5], 16)*47/blast
 									} ]
 								});
+								var pm25in = parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16);
+								var pm25out =parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
 							}
 						}, 'json');
 					}, 'json');
 				}
+				console.log(pm25in+'    '+first);
+				if(jishi%720 == 0){
 				
+					if(pm25in){
+						$.post('http://' + ajaxServerIP + '/contact/saveInfo', {
+							ajax : 1,
+							userid : userid,
+							recievedate : new Date().getTime(),
+							id : sid,
+							pm25in : pm25in,
+							pm25out : pm25out
+						}, function(data) {
+							console.log(data);
+						});
+						
+					}
+				}
+				
+				jishi+=1;
 				var nPM = parseInt(info.val("nPM"));
 				if (nPM <= 35) {
 					element.src = './img/lv.png';
@@ -200,6 +223,7 @@ define(function(require) {
 				localStorage.setItem("message",msg);
 			}
 		});
+		
 		$.get('http://' + ajaxServerIP + '/contact/edit', {
 			ajax : 1,
 			userid : userid,
@@ -416,7 +440,7 @@ define(function(require) {
 		});
 	};
 	Model.prototype.shareClick = function(event) {
-		plugins.socialsharing.share("中嘉新风", null, null, "http://iot.mengtiankeji.com");
+		plugins.socialsharing.share("中嘉新风", null, null, window.location.href);
 	};
 	Model.prototype.button21Click = function(event){
 		var url = event.source.$domNode.attr('url');

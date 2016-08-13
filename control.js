@@ -7,8 +7,9 @@ define(function(require) {
 		this.kg = 0;
 	};
 	Model.prototype.addCountBtnClick = function(event) {
-		this.comp('output1').set('value', parseInt(this.comp('output1').get('value')) + 1);
-
+		if(parseInt(this.comp('output1').get('value'))<60){
+			this.comp('output1').set('value', parseInt(this.comp('output1').get('value')) + 1);
+		}
 	};
 	Model.prototype.reduceCountBtnClick = function(event) {
 		this.comp('output1').set('value', (parseInt(this.comp('output1').get('value')) > 0) ? parseInt(this.comp('output1').get('value')) - 1 : 0);

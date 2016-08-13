@@ -50,7 +50,8 @@
               <span xid="span5"/> 
             </a>  
             <span xid="span8" class="text-black">没有账号？</span>  
-            <span class="text-danger" xid="emailReg" style="margin-left:10px;" bind-click="registeredClick" url="registerEmail"><![CDATA[注册新账号]]></span></div> 
+            <span class="text-danger" xid="emailReg" style="margin-left:10px;" bind-click="registeredClick" url="registerEmail"><![CDATA[注册新账号]]></span>
+  <span class="text-danger" xid="span6" style="margin-left:10px;" url="changePassword" bind-click="span6Click"><![CDATA[忘记密码？]]></span></div> 
         </div> 
       </div> 
     </div> 

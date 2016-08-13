@@ -33,7 +33,7 @@ define(function(require) {
 						i += 2;
 					}
 					sum = sum.toString(16);
-					sum = sum.substr(-2);
+					sum = ("0"+sum).substr(-2);
 					msg = msg + sum + "AB";
 					var iot = {};
 					var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');

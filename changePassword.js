@@ -1,46 +1,11 @@
-define(function(require) {
+define(function(require){
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
-	var Baas = justep.Baas;
-	var Model = function() {
+
+	var Model = function(){
 		this.callParent();
 	};
-
-	// 注册
-	Model.prototype.verifyButton = function(event) {
-		var userName = this.comp("userName").val();
-		var val = this.comp("repassword").val();
-		var password = this.comp("password").val();
-		var res = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{8,22}$/;
-		if (res.test(password)) {
-			var user = {};
-			user.ajax = 1;
-			user.emp_no = userName;
-			user.password = password;
-			user.verify = this.comp('verifyCode').val();
-			user.tel = this.comp('tel').val();
-			user.repassword = val;
-			console.log(user);
-			$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/regist', user, function(data) {
-				if (data.status == 0) {
-					justep.Util.hint(data['info'], {
-						"type" : "danger"
-					}, 'json');
-				} else {
-					justep.Util.hint('注册成功，请返回登录！', {
-						"type" : "success"
-					}, 'json');
-				}
-			});
-		} else {
-			justep.Util.hint("密码格式不正确！", {
-				"type" : "danger"
-			}, 'json');
-		}
-	};
-
-	Model.prototype.sendsmsButton = function(event) {
-		
+	Model.prototype.sendsmsButton = function(event){
 		var tel = this.comp('tel').val();
 
 		if (!(/^1[3|4|5|7|8]\d{9}$/.test(tel))) {
@@ -53,7 +18,7 @@ define(function(require) {
 		var user = {};
 		user.ajax = 1;
 		user.tel = tel;
-		user.emp_no = this.comp("userName").val();
+		user.emp_no = localStorage.getItem('userName');
 		$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/getcode', user, function(data) {
 			console.log(data);
 			if (data.successCounts == 1) {
@@ -66,12 +31,12 @@ define(function(require) {
 				}, 'json');
 			}
 		});
-
+		
 	};
-
-	Model.prototype.modelLoad = function(event) {
+	
+	Model.prototype.modelLoad = function(event){
 		var comp = this.comp("sendsmsbutton");
-		Timmer.apply(comp, [ 120, "免费获取验证码", "重新发送" ]);
+		Timmer.apply(comp, [ 60, "免费获取验证码", "重新发送" ]);
 	};
 	function Timmer(loopSecond, titile1, title2, lisentner) { // todo
 		// 还要检查一个结果返回变量。
@@ -97,8 +62,37 @@ define(function(require) {
 			}
 		}
 
-	}
-	;
-
+	};
+	Model.prototype.verifyButton = function(event){
+		var userName = localStorage.getItem('userName');
+		var val = this.comp("repassword").val();
+		var password = this.comp("password").val();
+		var res = /^[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{8,22}$/;
+		if (res.test(password)) {
+			var user = {};
+			user.ajax = 1;
+			user.emp_no = userName;
+			user.password = password;
+			user.verify = this.comp('verifyCode').val();
+			user.tel = this.comp('tel').val();
+			user.repassword = val;
+			console.log(user);
+			$.post('http://' + localStorage.getItem("ajaxServerIP") + '/public/resetPassword', user, function(data) {
+				if (data.status == 0) {
+					justep.Util.hint(data['info'], {
+						"type" : "danger"
+					}, 'json');
+				} else {
+					justep.Util.hint('重置成功，请返回登录！', {
+						"type" : "success"
+					}, 'json');
+				}
+			});
+		} else {
+			justep.Util.hint("密码格式不正确！", {
+				"type" : "danger"
+			}, 'json');
+		}
+	};
 	return Model;
 });

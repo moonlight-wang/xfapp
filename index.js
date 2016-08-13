@@ -47,6 +47,9 @@ define(function(require){
 				},
 				"changeID" : {
 					url : require.toUrl('./changeID.w')
+				},
+				"changePassword" : {
+					url : require.toUrl('./changePassword.w')
 				}
 				}});
 				shellImpl.useDefaultExitHandler = false;

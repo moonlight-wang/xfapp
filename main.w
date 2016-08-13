@@ -234,4 +234,5 @@
        <a component="$UI/system/components/justep/button/button" class="btn btn-default" label="更多" style="background-color:rgba(186, 197, 190, 0.37);border-radius:3em;" xid="button4" onClick="openPage" url="/xfapp/strainer.w">
         <i xid="i2"></i>
         <span xid="span4">更多</span></a> </div> </div> </div> </div> </div></div> 
-   </div></div>
+   </div>
+  <span component="$UI/system/components/justep/timer/timer" xid="timer1"></span></div>

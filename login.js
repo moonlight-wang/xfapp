@@ -48,5 +48,11 @@ define(function(require) {
 			}, 'json');
 		}
 	};
+	Model.prototype.span6Click = function(event){
+		var username = this.comp('nameInput').val();
+		localStorage.setItem('userName', username);
+		var demo = $(event.target).attr("url");
+		justep.Shell.showPage(demo);
+	};
 	return Model;
 });
