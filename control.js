@@ -12,7 +12,7 @@ define(function(require) {
 		}
 	};
 	Model.prototype.reduceCountBtnClick = function(event) {
-		this.comp('output1').set('value', (parseInt(this.comp('output1').get('value')) > 0) ? parseInt(this.comp('output1').get('value')) - 1 : 0);
+		this.comp('output1').set('value', (parseInt(this.comp('output1').get('value')) > 10) ? parseInt(this.comp('output1').get('value')) - 1 : 10);
 		console.log(this.comp('output1').value);
 	};
 	Model.prototype.menuBtnClick = function(event) {
@@ -39,6 +39,7 @@ define(function(require) {
 		 */
 	};
 	Model.prototype.modelLoad = function(event) {
+		var sid = localStorage.getItem("sID");
 		var valueData = this.comp('valueData');
 		var div4 = this.getElementByXid('div4');
 		var optionzhi = this.getElementByXid('default9');
@@ -46,6 +47,12 @@ define(function(require) {
 		var optionshui = this.getElementByXid('default7');
 		var toggle1 = this.comp('toggle1');
 		var toggle2 = this.comp('toggle2');
+		if(localStorage.getItem(sid+"output2") && localStorage.getItem(sid+"output3")){
+			toggle1.set('checked', true);
+			this.comp('output2').set('value', localStorage.getItem(sid+"output2"));
+			this.comp('output3').set('value', localStorage.getItem(sid+"output3"));
+			
+		}
 		if (localStorage.getItem("kg") == "k") {
 
 			this.getElementByXid('i9').style.color = "red";
@@ -165,11 +172,13 @@ define(function(require) {
 		if (toggle1.get('checked')) {
 			gn = "1";
 			if (this.comp('output2').get('value') && this.comp('output3').get('value')) {
-				mnt = ("0" + parseInt(this.comp('output2').get('value').substr(3)).toString(16)).substr(-2);
-				mnt1 = ("0" + parseInt(this.comp('output3').get('value').substr(3)).toString(16)).substr(-2);
-				hour = ("0" + parseInt(this.comp('output2').get('value')).toString(16)).substr(-2); // hour*2
-				hour1 = ("0" + parseInt(this.comp('output3').get('value')).toString(16)).substr(-2);
-				console.log(parseInt(this.comp('output2').get('value').substr(3)).toString(16));
+				mnt = ("00" + parseInt(this.comp('output2').get('value').substr(3)).toString(16)).substr(-2);
+				mnt1 = ("00" + parseInt(this.comp('output3').get('value').substr(3)).toString(16)).substr(-2);
+				hour = ("00" + parseInt(this.comp('output2').get('value')).toString(16)).substr(-2); // hour*2
+				hour1 = ("00" + parseInt(this.comp('output3').get('value')).toString(16)).substr(-2);
+				localStorage.setItem(sid+"output2", this.comp('output2').get('value'));
+				localStorage.setItem(sid+"output3", this.comp('output3').get('value'));
+				console.log("0"+parseInt(this.comp('output2').get('value').substr(3)).toString(16));
 			} else {
 				justep.Util.hint("未选择开关机时间！", {
 					"type" : "danger"
@@ -187,11 +196,11 @@ define(function(require) {
 		toggle5.get('checked') ? gn = gn + "1" : gn = gn + "2"; // gn
 		gn = "0" + parseInt(gn).toString(16);
 		var myDate = new Date();
-		var year = ("0" + parseInt(myDate.getFullYear().toString().substr(2, 2)).toString(16)).substr(-2);
-		var month = ("0" + parseInt(myDate.getMonth() + 1).toString(16)).substr(-2);
-		var dat = ("0" + myDate.getDate().toString(16)).substr(-2);
-		var hours = ("0" + myDate.getHours().toString(16)).substr(-2);
-		var minute = ("0" + myDate.getMinutes().toString(16)).substr(-2);
+		var year = ("00" + parseInt(myDate.getFullYear().toString().substr(2, 2)).toString(16)).substr(-2);
+		var month = ("00" + parseInt(myDate.getMonth() + 1).toString(16)).substr(-2);
+		var dat = ("00" + myDate.getDate().toString(16)).substr(-2);
+		var hours = ("00" + myDate.getHours().toString(16)).substr(-2);
+		var minute = ("00" + myDate.getMinutes().toString(16)).substr(-2);
 		msg = msg + gn + minute + hours + dat + month + year + mnt + hour + mnt1 + hour1;
 		var nww = "00";
 		msg = msg + nww;

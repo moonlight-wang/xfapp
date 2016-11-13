@@ -1,6 +1,7 @@
 define(function(require) {
 	var $ = require("jquery");
 	var justep = require("$UI/system/lib/justep");
+	var html2canva = require("./html2canvas");
 	var utils = require("$UI/system/components/justep/common/utils");
 	var bmap = require('$UI/system/components/justep/bmap/bmap');
 	var io = require("./socket.io");
@@ -11,40 +12,40 @@ define(function(require) {
 	var Model = function() {
 		this.callParent();
 	};
-	/*// 图片路径转换
-	Model.prototype.getImageUrl = function(url) {
-		return require.toUrl(url);
-	};*/
+	/*
+	 * // 图片路径转换 Model.prototype.getImageUrl = function(url) { return
+	 * require.toUrl(url); };
+	 */
 	Model.prototype.modelLoad = function(event) {
+		var refesh = 0;
 		this.getElementByXid('label7').innerHTML = localStorage.getItem("userName");
 		var first = true;
-		var jishi = 0 ; 
+		var jishi = 0;
 		var sid = localStorage.getItem("sID");
 		var blast = 5;
-		switch(sid.substr(0,2)){
-			case "00":
-				blast = 10;
-				break;
-			case "01":
-				blast = 5;
-				break;
-			case "02":
-				blast = 20;
-				break;
-			case "03":
-				blast = 15;
-				break;
-			default:
-				blast = 5;
+		switch (sid.substr(0, 2)) {
+		case "00":
+			blast = 10;
+			break;
+		case "01":
+			blast = 5;
+			break;
+		case "02":
+			blast = 20;
+			break;
+		case "03":
+			blast = 15;
+			break;
+		default:
+			blast = 5;
 		}
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
-		var status = localStorage.getItem("status");
 		var span = this.getElementByXid("span17");
 		var element = this.getElementByXid('image4');
-		 span.style.height = window.screen.width*0.34+"px";
-		 element.style.height = window.screen.width*0.34+"px";
+		span.style.height = window.screen.width * 0.34 + "px";
+		element.style.height = window.screen.width * 0.34 + "px";
 		var value = this.comp('valueData');
 		var adata = this.comp('aData');
 		var info = this.comp('infoData');
@@ -90,24 +91,54 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : iot.deviceId+' come from app'
 		});
+<<<<<<< HEAD
 		
 		//后端推送来消息时
 		socket.on('server2app', function(msg) {
 			console.log(msg);
+=======
+		socket.on('appOffline', function(data) {
+			info.clear();
+			info.newData({
+				index : 0,
+				defaultValues : [ {
+					"fqy" : 40,
+					"mode" : "智能",
+					"TOVC" : 43,
+					"name" : "测试",
+					"CO2" : 360,
+					"nPM" : 23,
+					"tmp" : 26,
+					"hmy" : 56,
+					"status" : "离线",
+					"gn" : 2,
+					"wPM" : 40,
+					"blast" : 80
+				} ]
+			});
+		});
+		// // 后端推送来消息时
+		socket.on('server2app', function(msg) {
+			// console.log(msg);
+>>>>>>> b8aeb4ec8793a6edea3c1aaf325affe184d4329b
 			if (msg.substr(0, 4) == "40DA") {
 				var arr = msg.substr(34, 6);
 				localStorage.setItem("address", arr);
 				localStorage.setItem("pinLv", parseInt(msg[4] + msg[5], 16));
 				var mode = parseInt(msg[8] + msg[9], 16);
-				if(mode!==0){localStorage.setItem("kg", "k");}else{
+				if (mode !== 0) {
+					localStorage.setItem("kg", "k");
+				} else {
 					localStorage.setItem("kg", "g");
 				}
 				localStorage.setItem("neiWai", parseInt(msg[8], 16));
-				info.clear();
 
 				if (parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16) !== 0) {
+					var status = localStorage.getItem("status");
+					refesh = 0;
 					var pm25in = parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16);
-					var pm25out =parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
+					var pm25out = parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
+					info.clear();
 					info.newData({
 						index : 0,
 						defaultValues : [ {
@@ -122,10 +153,17 @@ define(function(require) {
 							"status" : status,
 							"gn" : parseInt(msg[10] + msg[11], 16),
 							"wPM" : parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16),
-							"blast" : parseInt(msg[4] + msg[5], 16)*47/blast
+							"blast" : parseInt(msg[4] + msg[5], 16) * 47 / blast
 						} ]
 					});
 				} else {
+					if (refesh == 1) {
+						return;
+					}
+					if (parseInt(msg.substr(4, 30), 16) == 0) {
+						status = "离线";
+						refesh = 1;
+					}
 					$.get('http://' + ajaxServerIP + '/contact/edit', {
 						ajax : 1,
 						userid : userid,
@@ -144,6 +182,7 @@ define(function(require) {
 						}, function(wdata, wstatus) {
 							if (wstatus == 'success') {
 								var wth = wdata['HeWeather data service 3.0'][0];
+								info.clear();
 								info.newData({
 									index : 0,
 									defaultValues : [ {
@@ -158,19 +197,19 @@ define(function(require) {
 										"status" : status,
 										"gn" : parseInt(msg[10] + msg[11], 16),
 										"wPM" : wth.aqi.city.pm25,
-										"blast" : parseInt(msg[4] + msg[5], 16)*47/blast
+										"blast" : parseInt(msg[4] + msg[5], 16) * 47 / blast
 									} ]
 								});
 								var pm25in = parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16);
-								var pm25out =parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
+								var pm25out = parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
 							}
 						}, 'json');
 					}, 'json');
 				}
-				console.log(pm25in+'    '+first);
-				if(jishi%720 == 0){
-				
-					if(pm25in){
+				// console.log(pm25in+' '+first);
+				if (jishi % 720 == 0) {
+
+					if (pm25in) {
 						$.post('http://' + ajaxServerIP + '/contact/saveInfo', {
 							ajax : 1,
 							userid : userid,
@@ -179,13 +218,13 @@ define(function(require) {
 							pm25in : pm25in,
 							pm25out : pm25out
 						}, function(data) {
-							console.log(data);
+							// console.log(data);
 						});
-						
+
 					}
 				}
-				
-				jishi+=1;
+
+				jishi += 1;
 				var nPM = parseInt(info.val("nPM"));
 				if (nPM <= 35) {
 					element.src = './img/lv.png';
@@ -203,16 +242,20 @@ define(function(require) {
 					element.src = './img/lv.png';
 				}
 				var hqy = parseInt(msg[4] + msg[5], 16);
-				if ((50-hqy)>0){
+				if (parseInt(msg.substr(4, 30), 16) == 0) {
 					window.clearInterval(timer);
-					timer = setInterval(rotate, (50-hqy));
-				}else{
-					window.clearInterval(timer);
-					timer = setInterval(rotate, 1);
+				} else {
+					if ((50 - hqy) > 0) {
+						window.clearInterval(timer);
+						timer = setInterval(rotate, (50 - hqy));
+					} else {
+						window.clearInterval(timer);
+						timer = setInterval(rotate, 1);
+					}
 				}
 				localStorage.setItem("moshi", modeCased(mode));
-			}else if(msg.substr(0, 4) == "409A"){
-				if((parseInt(msg[16] + msg[17],16)==1) || (parseInt(msg[18] + msg[19],16)==1) || (parseInt(msg[20] + msg[21],16)==1)){
+			} else if (msg.substr(0, 4) == "409A") {
+				if ((parseInt(msg[16] + msg[17], 16) == 1) || (parseInt(msg[18] + msg[19], 16) == 1) || (parseInt(msg[20] + msg[21], 16) == 1)) {
 					lxData.newData({
 						index : 0,
 						defaultValues : [ {
@@ -220,10 +263,10 @@ define(function(require) {
 						} ]
 					});
 				}
-				localStorage.setItem("message",msg);
+				localStorage.setItem("message", msg);
 			}
 		});
-		
+
 		$.get('http://' + ajaxServerIP + '/contact/edit', {
 			ajax : 1,
 			userid : userid,
@@ -348,16 +391,16 @@ define(function(require) {
 		var nData = this.comp("infoData");
 		var gn = parseInt(nData.val("gn"));
 		switch (gn) {
-		case 1 :
-		case 11 :
-		case 21 :
-		case 31 :
+		case 1:
+		case 11:
+		case 21:
+		case 31:
 			return "开";
 			break;
-		case 2 :
-		case 12 :
-		case 22 :
-		case 32 :
+		case 2:
+		case 12:
+		case 22:
+		case 32:
 			return "关";
 			break;
 		default:
@@ -371,7 +414,7 @@ define(function(require) {
 		var url = event.source.$domNode.attr('url');
 		if (url.substr(0, 1) == "/")
 			url = '$UI' + url;
-		
+
 		justep.Shell.showPage(require.toUrl(url));
 	};
 
@@ -438,13 +481,27 @@ define(function(require) {
 				content : "",
 				src : "justep"
 			});
-			console.log(position);
+			// console.log(position);
 		});
 	};
 	Model.prototype.shareClick = function(event) {
-		plugins.socialsharing.share("中嘉新风", null, null, window.location.href);
+		plugins.socialsharing.share("中嘉新风", null, null, "http://iot.mengtiankeji.com")
+		/*
+		 * // window.location.href); // event.preventDefault();
+		 * html2canvas(this.getElementByXid('content2'), { allowTaint : true,
+		 * taintTest : false, onrendered : function(canvas) { canvas.id =
+		 * "mycanvas"; // document.body.appendChild(canvas); // 生成base64图片数据 var
+		 * dataUrl = canvas.toDataURL();
+		 * $.post('http://iot.mengtiankeji.com/contact/saveImg', { ajax : 1,
+		 * userid : 4, dataUrl : dataUrl }, function(data) { });
+		 * 
+		 * var newImg = document.createElement("img"); newImg.src = dataUrl;
+		 * document.body.appendChild(newImg);
+		 *  } });
+		 */
+		// plugins.socialsharing.share("中嘉新风", null, null, dataUrl);
 	};
-	Model.prototype.button21Click = function(event){
+	Model.prototype.button21Click = function(event) {
 		var url = event.source.$domNode.attr('url');
 		if (url.substr(0, 1) == "/")
 			url = '$UI' + url;
