@@ -36,7 +36,7 @@ define(function(require) {
 					sum = ("0"+sum).substr(-2);
 					msg = msg + sum + "AB";
 					var iot = {};
-					var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+					var socket = io(localStorage.getItem("wbServerIP"));
 					iot.deviceId = "FFFFFF";
 					// // 连接后登录
 					socket.emit('appLogin', {

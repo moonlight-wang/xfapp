@@ -129,14 +129,14 @@ define(function(require) {
 	Model.prototype.datePickerClick = function(event) {
 		localStorage.setItem("leixing", event.source.label);
 		var comp = this.comp('datePicker');
-		comp.set('type', "timer");
+		comp.set('type', "datetime");
 		comp.show();
 		comp.setValue(new Date());
 	};
 	Model.prototype.saveClick = function(event) {
 		var sid = localStorage.getItem("sID");
 		var msg = "AAEA05"; // 05
-		var wbServerIP = localStorage.getItem("wbServerIP");
+//		var wbServerIP = localStorage.getItem("wbServerIP");
 		var pl = this.comp('output1').value;
 		if (pl !== null) {
 			pl = parseInt(pl).toString(16);
@@ -220,8 +220,8 @@ define(function(require) {
 		console.log(msg);
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		var socket = io('http://' + wbServerIP + ':4213');
-		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+		var socket = io(localStorage.getItem("wbServerIP"));
+		iot.deviceId = idHex.substr(-6).toUpperCase();
 		/*
 		 * socket.emit('appLogin', { deviceId : iot.deviceId });
 		 */
@@ -232,7 +232,7 @@ define(function(require) {
 
 		justep.Util.hint("保存成功", {
 			"type" : "success"
-		}, 'json');
+		});
 
 	};
 	
@@ -252,7 +252,7 @@ define(function(require) {
 			msg2 = msg2 + sum + "AB";
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			socket.emit('app2server', {
 				deviceId : iot.deviceId,
@@ -273,7 +273,7 @@ define(function(require) {
 			msg2 = msg2 + sum + "AB";
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			socket.emit('app2server', {
 				deviceId : iot.deviceId,

@@ -38,14 +38,14 @@ define(function(require) {
 				} else {
 					justep.Util.hint("用户名或密码有误！", {
 						"type" : "danger"
-					}, 'json');
+					});
 				}
 			});
 
 		} else {
 			justep.Util.hint("未配置网络，请点击右上角配置！", {
 				"type" : "danger"
-			}, 'json');
+			});
 		}
 	};
 	Model.prototype.span6Click = function(event){

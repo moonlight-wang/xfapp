@@ -135,7 +135,7 @@
          <img src="$UI/xfapp/img/tianqi.png" alt="" xid="image2" height="100%" style="width:50%;"></img></div> 
         <div class="x-col" style="Text-align:center;font-size:12px;" xid="col10">
          <div xid="div6" bind-text=' $model.valueData.ref("weather")'></div>
-         <div xid="div7" bind-text=' $model.valueData.ref("temperature")'></div></div> </div> </div> </div> </div> 
+         <div xid="div7" bind-text=" $model.valueData.ref(&quot;temperature&quot;)+'℃'"></div></div> </div> </div> </div> </div> 
     <div component="$UI/system/components/justep/row/row" class="x-row" xid="row27" style="border-top:3px solid #fff;width:80%;margin-left:10%">
    <div class="x-col" xid="col39"></div>
    <div class="x-col" xid="col40"></div>
@@ -211,7 +211,7 @@
       <div xid="div15" style="Text-align:center;font-size:15px;" bind-text=' $model.infoData.val("blast")+"m³/h"'></div></div> 
      <div class="x-col" xid="col14">
       <div xid="div16" style="Text-align:center;font-size:15px;">滤芯</div>
-      <div xid="div17" style="Text-align:center;font-size:15px;" bind-text=' $model.lxData.val("lx") ==1?"更换":"良好";'></div></div> 
+      <div xid="div17" style="Text-align:center;font-size:15px;height:100%;width:100%;" bind-text=' $model.lxData.val("lx") ==1?"更换":"良好";'></div></div> 
      <div class="x-col" xid="col26">
       <div xid="div18" style="Text-align:center;font-size:15px;">功能</div>
       <div xid="div19" style="Text-align:center;font-size:15px;" bind-text=' $model.gongNeng()'></div></div> 

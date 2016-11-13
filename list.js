@@ -69,7 +69,7 @@ define(function(require) {
 			if (ldata == null) {
 				justep.Util.hint("当前没有设备，请添加！", {
 					"type" : "danger"
-				}, 'json');
+				});
 			} else {
 				var j = ldata.length - 1;
 				for (var i = j; i >= 0; i--) {
@@ -82,17 +82,18 @@ define(function(require) {
 						} ]
 					});
 				}
-				var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+				var socket = io(localStorage.getItem("wbServerIP"));
 				var iot = {};
-				socket.emit('getOnlineListFirst');
+				socket.emit('getOnlineList');
 				socket.on('deviceList', function(iot) {
+					console.log(iot);
 					var lRow = list.getLastRow(),row;
 					list.first();
 					do {
 						row = list.getCurrentRow();
 						for (var i = 0; i < iot.length; i++) {
-							var tid = '0000000' + parseInt(iot[i].substr(3), '16').toString();
-							var deviceId = tid.substr(tid.length - 8);
+							var tid = '0000000' + parseInt(iot[i].substr(3),16).toString();
+							var deviceId = tid.substr(-8);
 							if (list.val("sID") == deviceId) {
 								list.setValue("status", "在线");
 							}
@@ -118,7 +119,7 @@ define(function(require) {
 		} else {
 			justep.Util.hint("当前设备离线！", {
 				"type" : "danger"
-			}, 'json');
+			});
 		}
 	};
 	Model.prototype.openPages = function(event) {

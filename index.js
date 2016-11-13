@@ -66,7 +66,7 @@ define(function(require){
 	};
 	Model.prototype.modelLoad = function(event) {
 		localStorage.setItem("ajaxServerIP","iot.mengtiankeji.com");
-    	localStorage.setItem("wbServerIP","iot.mengtiankeji.com");
+    	localStorage.setItem("wbServerIP","http://iot.mengtiankeji.com:4214");
 		justep.Shell.userType = justep.Bind.observable();
 		justep.Shell.userName = justep.Bind.observable();
 		var userLocal = (localStorage.getItem("userUUID") && JSON.parse(localStorage.getItem("userUUID"))) || null;
@@ -74,11 +74,10 @@ define(function(require){
 			justep.Shell.userName.set(userLocal.name || "UNKNOWN");
 			justep.Shell.userType.set(userLocal.accountType || "UNKNOWN");
 		} else {
+		
 		}
 		
 	};
-
-	
 
 	return Model;
 });

@@ -32,7 +32,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -60,7 +60,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -72,7 +72,7 @@ define(function(require) {
 
 			justep.Util.hint("重置成功", {
 				"type" : "success"
-			}, 'json');
+			});
 			
 		}
 	};
@@ -113,7 +113,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -141,7 +141,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -178,7 +178,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -206,7 +206,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -244,7 +244,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });
@@ -272,7 +272,7 @@ define(function(require) {
 			console.log(lxmsg);
 			var iot = {};
 			var idHex = '00000' + parseInt(localStorage.getItem("sID")).toString(16);
-			var socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
+			var socket = io(localStorage.getItem("wbServerIP"));
 			iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
 			/*
 			 * socket.emit('appLogin', { deviceId : iot.deviceId });

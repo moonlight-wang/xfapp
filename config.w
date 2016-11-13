@@ -24,14 +24,14 @@
    <div class="x-col" xid="col10">
     <div xid="div2">
      <span xid="span4" style="width:20%;Text-align:right;" class="pull-left">
-      <label xid="label2"><![CDATA[服务端IP：]]></label></span> 
+      <label xid="label2"><![CDATA[服务器：]]></label></span> 
      <span xid="span3" class="pull-right" style="width:80%;">
       <input component="$UI/system/components/justep/input/input" class="form-control" xid="input1" bind-value="fIP"></input></span> </div> </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row1">
    <div class="x-col" xid="col1">
     <div xid="div1">
      <span xid="span2" style="width:20%;Text-align:right;" class="pull-left">
-      <label xid="label1"><![CDATA[服务端口：]]></label></span> 
+      <label xid="label1"><![CDATA[端口号：]]></label></span> 
      <span xid="span1" class="pull-right" style="width:80%;">
       <input component="$UI/system/components/justep/input/input" class="form-control" xid="input2" bind-value="duankou"></input></span> </div> </div> </div>
   <div component="$UI/system/components/justep/row/row" class="x-row" xid="row2">

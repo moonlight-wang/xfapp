@@ -80,20 +80,20 @@ define(function(require) {
 		var timer = setInterval(rotate, 1);
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		socket = io('http://' + localStorage.getItem("wbServerIP") + ':4213');
-		iot.deviceId = idHex.substr(idHex.length - 6).toUpperCase();
+		socket = io(localStorage.getItem("wbServerIP"));
+		iot.deviceId = idHex.substr(-6).toUpperCase();
 		// // 连接后登录
 		socket.emit('appLogin', {
 			deviceId : iot.deviceId
 		});
 		socket.emit('app2server', {
 			deviceId : iot.deviceId,
-			msg : 'come from app'
+			msg : iot.deviceId+' come from app'
 		});
 		
-		// // 后端推送来消息时
+		//后端推送来消息时
 		socket.on('server2app', function(msg) {
-			//console.log(msg);
+			console.log(msg);
 			if (msg.substr(0, 4) == "40DA") {
 				var arr = msg.substr(34, 6);
 				localStorage.setItem("address", arr);
@@ -235,23 +235,25 @@ define(function(require) {
 					"city" : data.city,
 				} ]
 			});
-			$.get('http://' + ajaxServerIP + '/contact/getWeather', {
-				ajax : 1,
-				userid : userid,
-				city : data.city
-			}, function(wdata, wstatus) {
-				if (wstatus == 'success') {
-					var wth = wdata['HeWeather data service 3.0'][0];
-					value.newData({
-						index : 0,
-						defaultValues : [ {
-							"weather" : wth.now.cond.txt,
-							"temperature" : wth.now.tmp,
-						} ]
-					});
-				}
-			}, 'json');
-		}, 'json');
+			if(data.city!=''){
+				$.get('http://' + ajaxServerIP + '/contact/getWeather', {
+					ajax : 1,
+					userid : userid,
+					city : data.city
+				}, function(wdata, wstatus) {
+					if (wstatus == 'success') {
+						var wth = wdata['HeWeather data service 3.0'][0];
+						value.newData({
+							index : 0,
+							defaultValues : [ {
+								"weather" : wth.now.cond.txt,
+								"temperature" : wth.now.tmp,
+							} ]
+						})
+					}
+				}, 'json')
+			}
+		}, 'json')
 
 	};
 	Model.prototype.mdataActive = function() {
