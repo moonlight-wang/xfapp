@@ -22,23 +22,46 @@ define(function(require) {
 		var first = true;
 		var jishi = 0;
 		var sid = localStorage.getItem("sID");
-		var blast = 5;
-		switch (sid.substr(0, 2)) {
-		case "00":
-			blast = 10;
-			break;
-		case "01":
-			blast = 5;
-			break;
-		case "02":
-			blast = 20;
-			break;
-		case "03":
-			blast = 15;
-			break;
-		default:
-			blast = 5;
+		//是否是室内式
+		var isInner=(sid.substr(0, 2)=='04'||sid.substr(0, 2)=='05')?true:false;
+		//风量因子
+		var blastIndex = 47/10;
+		var fqIndex=1;
+//		switch (sid.substr(0, 2)) {
+//		case "00":
+//			blast = 10;
+//			break;
+//		case "01":
+//			blast = 5;
+//			break;
+//		case "02":
+//			blast = 20;
+//			break;
+//		case "03":
+//			blast = 15;
+//			break;
+//		default:
+//			blast = 5;
+//		}
+		if(sid.substring(0, 3)=='500'){
+			blastIndex=47/5;
+		}else if(sid.substring(0, 3)=='260'){
+			blastIndex=47/10;
+		}else if(sid.substring(0, 3)=='125'){
+			blastIndex=10;
+			fqIndex=1/4;
+		}else if(sid.substring(0, 3)=='200'){
+			blastIndex=4;
+		}else if(sid.substring(0, 2)=='15'){
+			blastIndex=19;
+		}else if(sid.substring(0, 2)=='50'){
+			blastIndex=10;
+		}else if(sid.substring(0, 2)=='80'){
+			blastIndex=16;
+		}else if(sid.substring(0, 2)=='35'){
+			blastIndex=7;
 		}
+		
 		var ajaxServerIP = localStorage.getItem("ajaxServerIP");
 		var userid = localStorage.getItem("userid");
 		var sname = localStorage.getItem("sName");
@@ -91,12 +114,7 @@ define(function(require) {
 			deviceId : iot.deviceId,
 			msg : iot.deviceId+' come from app'
 		});
-<<<<<<< HEAD
-		
-		//后端推送来消息时
-		socket.on('server2app', function(msg) {
-			console.log(msg);
-=======
+	
 		socket.on('appOffline', function(data) {
 			info.clear();
 			info.newData({
@@ -120,7 +138,6 @@ define(function(require) {
 		// // 后端推送来消息时
 		socket.on('server2app', function(msg) {
 			// console.log(msg);
->>>>>>> b8aeb4ec8793a6edea3c1aaf325affe184d4329b
 			if (msg.substr(0, 4) == "40DA") {
 				var arr = msg.substr(34, 6);
 				localStorage.setItem("address", arr);
@@ -142,7 +159,7 @@ define(function(require) {
 					info.newData({
 						index : 0,
 						defaultValues : [ {
-							"fqy" : parseInt(msg[4] + msg[5], 16),
+							"fqy" : Math.floor(parseInt(msg[4] + msg[5], 16)*fqIndex),
 							"mode" : modeCased(mode),
 							"TOVC" : parseInt(msg[6] + msg[7], 16),
 							"name" : sname,
@@ -153,59 +170,10 @@ define(function(require) {
 							"status" : status,
 							"gn" : parseInt(msg[10] + msg[11], 16),
 							"wPM" : parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16),
-							"blast" : parseInt(msg[4] + msg[5], 16) * 47 / blast
+							"blast" : Math.floor(parseInt(msg[4] + msg[5], 16) * blastIndex)
 						} ]
 					});
-				} else {
-					if (refesh == 1) {
-						return;
-					}
-					if (parseInt(msg.substr(4, 30), 16) == 0) {
-						status = "离线";
-						refesh = 1;
-					}
-					$.get('http://' + ajaxServerIP + '/contact/edit', {
-						ajax : 1,
-						userid : userid,
-						id : sid
-					}, function(data) {
-						adata.newData({
-							index : 0,
-							defaultValues : [ {
-								"city" : data.city,
-							} ]
-						});
-						$.get('http://' + ajaxServerIP + '/contact/getWeather', {
-							ajax : 1,
-							userid : userid,
-							city : data.city
-						}, function(wdata, wstatus) {
-							if (wstatus == 'success') {
-								var wth = wdata['HeWeather data service 3.0'][0];
-								info.clear();
-								info.newData({
-									index : 0,
-									defaultValues : [ {
-										"fqy" : parseInt(msg[4] + msg[5], 16),
-										"mode" : modeCased(mode),
-										"TOVC" : parseInt(msg[6] + msg[7], 16),
-										"name" : sname,
-										"CO2" : parseInt(msg[22] + msg[23] + msg[20] + msg[21], 16),
-										"nPM" : parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16),
-										"tmp" : parseInt(msg[26] + msg[27], 16) < 100 ? parseInt(msg[26] + msg[27], 16) : "-" + (parseInt(msg[26] + msg[27], 16) - 100),
-										"hmy" : parseInt(msg[32] + msg[33], 16),
-										"status" : status,
-										"gn" : parseInt(msg[10] + msg[11], 16),
-										"wPM" : wth.aqi.city.pm25,
-										"blast" : parseInt(msg[4] + msg[5], 16) * 47 / blast
-									} ]
-								});
-								var pm25in = parseInt(msg[18] + msg[19] + msg[16] + msg[17], 16);
-								var pm25out = parseInt(msg[14] + msg[15] + msg[12] + msg[13], 16);
-							}
-						}, 'json');
-					}, 'json');
-				}
+				} 
 				// console.log(pm25in+' '+first);
 				if (jishi % 720 == 0) {
 
@@ -216,7 +184,7 @@ define(function(require) {
 							recievedate : new Date().getTime(),
 							id : sid,
 							pm25in : pm25in,
-							pm25out : pm25out
+							pm25out : isInner?'000':pm25out
 						}, function(data) {
 							// console.log(data);
 						});
@@ -290,7 +258,7 @@ define(function(require) {
 							index : 0,
 							defaultValues : [ {
 								"weather" : wth.now.cond.txt,
-								"temperature" : wth.now.tmp,
+								"temperature" : wth.now.tmp+'℃',
 							} ]
 						})
 					}

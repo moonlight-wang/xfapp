@@ -7,11 +7,11 @@ define(function(require){
 		this.fIP = justep.Bind.observable('input1');
     	this.duankou = justep.Bind.observable('input2');
     	this.fIP="iot.mengtiankeji.com";
-    	this.duankou="4213";
+    	this.duankou="4214";
 	};
     Model.prototype.saveClick = function(event){
     	localStorage.setItem("ajaxServerIP",this.fIP);
-    	localStorage.setItem("wbServerIP",this.fIP);
+    	localStorage.setItem("wbServerIP",'http://'+this.fIP+':'+this.duankou);
     	localStorage.setItem("duankou",this.duankou);
     	justep.Util.hint("保存成功", {
 					"type" : "success"

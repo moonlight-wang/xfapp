@@ -229,7 +229,7 @@ define(function(require) {
 		console.log(msg);
 		var iot = {};
 		var idHex = '00000' + parseInt(sid).toString(16);
-		var socket = io(localStorage.getItem("wbServerIP"));
+//		var socket = io(localStorage.getItem("wbServerIP"));
 		iot.deviceId = idHex.substr(-6).toUpperCase();
 		/*
 		 * socket.emit('appLogin', { deviceId : iot.deviceId });
